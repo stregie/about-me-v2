@@ -5,72 +5,60 @@
   <title>Introduction site</title>
   <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
 
-  <link rel = "apple-touch-icon" sizes = "57x57" href = "/images/favicon/apple-icon-57x57.png">
-  <link rel = "apple-touch-icon" sizes = "60x60" href = "/images/favicon/apple-icon-60x60.png">
-  <link rel = "apple-touch-icon" sizes = "72x72" href = "/images/favicon/apple-icon-72x72.png">
-  <link rel = "apple-touch-icon" sizes = "76x76" href = "/images/favicon/apple-icon-76x76.png">
-  <link rel = "apple-touch-icon" sizes = "114x114" href = "/images/favicon/apple-icon-114x114.png">
-  <link rel = "apple-touch-icon" sizes = "120x120" href = "/images/favicon/apple-icon-120x120.png">
-  <link rel = "apple-touch-icon" sizes = "144x144" href = "/images/favicon/apple-icon-144x144.png">
-  <link rel = "apple-touch-icon" sizes = "152x152" href = "/images/favicon/apple-icon-152x152.png">
-  <link rel = "apple-touch-icon" sizes = "180x180" href = "/images/favicon/apple-icon-180x180.png">
-  <link rel = "icon" type = "image/png" sizes = "192x192"  href = "/images/favicon/android-icon-192x192.png">
-  <link rel = "icon" type = "image/png" sizes = "32x32" href = "/images/favicon/favicon-32x32.png">
-  <link rel = "icon" type = "image/png" sizes = "96x96" href = "/images/favicon/favicon-96x96.png">
-  <link rel = "icon" type = "image/png" sizes = "16x16" href = "/images/favicon/favicon-16x16.png">
-  <link rel = "manifest" href = "/images/favicon/manifest.json">
-  <meta name = "msapplication-TileColor" content = "#ffffff">
-  <meta name = "msapplication-TileImage" content = "images/favicon/ms-icon-144x144.png">
-  <meta name = "theme-color" content = "#ffffff">
-  
-  <link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity = "sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin = "anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet"> 
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   <script src = "https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src = "https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity = "sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin = "anonymous"></script>
 
-  <link rel = "stylesheet" href = "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
-
-  <link rel = "preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" as = "style" />
-  <link rel = "stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <!-- Icons from https://fonts.google.com/icons?icon.set=Material+Symbols&icon.style=Outlined -->
-    
+  <link rel = "stylesheet" href = "/css/00_header-footer.css">
   <link rel = "stylesheet" href = "/css/00_general.css">
-  <!-- <link rel = "stylesheet" href = "https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"> -->
+  <script src = "/js/00_header.js"></script>
+
 </head>
 
 <body>
   <header>
-    <nav class = "navbar navbar-expand-md navbar-light fixed-top">
-      <div class = "container">
-      <a class = "navbar-brand" href = "/">ST</a>
-      <button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target = "#navbarNav" aria-controls = "navbarNav" aria-expanded = "false" aria-label = "Toggle navigation">
-        <span class = "navbar-toggler-icon"></span>
-      </button>
-      <div class = "collapse navbar-collapse" id = "navbarNav">
-        <ul class = "navbar-nav">
-          <li class = "nav-item">
-            <a class = "nav-link" href = "/aboutme/">about me<span class = "sr-only">(current)</span></a>
-          </li>
-          <li class = "nav-item dropdown">
-            <a class = "nav-link dropdown-toggle" href = "#" id = "navbarDropdown" role = "button" data-toggle = "dropdown" aria-expanded = "false">
-              things i can do
-            </a>
-            <div class = "dropdown-menu" aria-labelledby = "navbarDropdown">
-              <a class = "dropdown-item" href = "/snake/">Snake (Native JavaScript)</a>
-              <a class = "dropdown-item" href = "/news/">News Site (EJS, MongoDB)</a>
-              <a class = "dropdown-item" href = "/news/editor/">News Editor (jQuery, MongoDB)</a>
-              <a class = "dropdown-item" href = "/fileuploader/">File uploader (AWS S3)</a>
-              <a class = "dropdown-item" href = "/react/gallery/">Image Gallery (React)</a>
-              <!-- <div class = "dropdown-divider"></div> -->
-              <!-- <a class = "dropdown-item" href = "#">Something else here</a> -->
-            </div>
-          </li>
-          <li class = "nav-item">
-            <a class = "nav-link" href = "/contact/">contact</a>
-          </li>
-        </ul>
-      </div>
-      </div>
+    <nav class = "navigation">
+      <ul class = "navigation-brand">
+        <li class = "navigation-item"><a href = "/">ST Demosite</a></li>
+        <li class = "navigation-item off-canvas-toggler">
+          <button id = "off-canvas-toggler-btn">
+            <span id = "toggler-btn-topbar" class = "toggler-btn-bar"></span>
+            <span id = "toggler-btn-middlebar" class = "toggler-btn-bar"></span>
+            <span id = "toggler-btn-bottombar" class = "toggler-btn-bar"></span>
+          </button>
+        </li>
+      </ul>
+      
+      <ul class = "navigation-menu hide">
+        <li class = "navigation-item"><a href = "/aboutme/">About me</a></li>
+        <li class = "navigation-item navigation-dropdown">
+          <button class = "navigation-dropdown-btn">Mini-sites <span class = "navigation-dropdown-arrow"></span></button>          
+          <ul class = "navigation-dropdown-menu">
+            <li class = "navigation-dropdown-item"><a href = "/snake/">Snake <span class = "technology">Native JavaScript</span></a></li>
+            <li class = "navigation-dropdown-item"><a href = "/news/">News Site <span class = "technology">Templating, MongoDB</span></a></li>
+            <li class = "navigation-dropdown-item"><a href = "/news/editor/">News Editor <span class = "technology">jQuery, MongoDB</span></a></li>
+            <li class = "navigation-dropdown-item"><a href = "/fileuploader/">File Uploader <span class = "technology">AWS S3</span></a></li>
+            <li class = "navigation-dropdown-item"><a href = "/react/gallery/">Image Gallery <span class = "technology">React</span></a></li>
+          </ul>
+        </li>
+        <!-- <li class = "navigation-item navigation-dropdown">
+          <button class = "navigation-dropdown-btn" href = "#">Dropdown 2<span class = "navigation-dropdown-arrow"></span></button>          
+          <ul class = "navigation-dropdown-menu">
+            <li class = "navigation-dropdown-item"><a href = "#">Item 1<span class = "technology">Info 1</span></a></li>
+            <li class = "navigation-dropdown-item"><a href = "#">Item 2 <span class = "technology">Info 2</span></a></li>
+            <li class = "navigation-dropdown-item"><a href = "#">Item 3</a></li>
+          </ul>
+        </li> -->
+        <li class = "navigation-item"><a href = "/#contact">Contact</a></li>
+      </ul>
     </nav>
-  </header>
+    <div class = "navigation-spacer"></div>
 
-  <section id = "content">
+    <script>
+     
+    </script>
+  </header>
