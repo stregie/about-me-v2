@@ -1,0 +1,56 @@
+<%# <html> %>
+<%- include('00a_header.ejs') %>
+    <link rel = "stylesheet" href = "/css/04_snake.css">    
+
+    <div class = "container">
+      <h1>snake</h1>
+      <p>A classic snake game. Use the <strong>arrow</strong> or <strong>W, S, A, D</strong> keys to control the snake. For test purposes you can also press <strong>G</strong> to make the snake grow or press <strong>F</strong> to reposition the apple to a new random place. <strong>Escape</strong> quits the game. The game window is not responsive, feel free to use the zoom funcion of the browser if it is too big or too small.</p>
+      <p>To play a new game, please refresh the page. The speed can be adjusted during the game too, although the lowest speed setting is saved to the highscore.</p>
+      
+      <div id = "game-controls">
+        <span id = "speed-controls">
+          <button id = "btn-dec-speed" class = "btn btn-simple btn-sp">-</button>
+          <span class = "game-controls-display bordered-box" id = "speed-display" class = "box">0</span>
+          <button id = "btn-inc-speed" class = "btn btn-simple btn-sp">+</button>
+          <span class = "game-controls-label">Speed</span>
+        </span>
+
+
+        <span id = "score-controls">
+          <span class = "game-controls-label">Score</span>
+          <span class = "game-controls-display bordered-box" id = "score" class = "box">200</span>
+          <button id = "btn-highscore" class = "btn btn-simple btn-hs" type = "button">Highscore</button>
+          <button id = "btn-back" class = "btn btn-simple btn-hs d-none" type = "button">Back to the game</button>
+        </span>
+      </div>
+
+      <div id = "snake-game">
+        <!-- <p>Score: <span id = "score">0</span></p> -->
+        <canvas class = "bordered-box" id = "snake-canvas" width = "800" height = "440"></canvas> <!-- Canvas width and height should be dividable by 20 -->        
+      </div>
+
+      <div id = "start-btn-container">
+        <button class = "btn btn-simple btn-block" id = "start-button">Start</button>        
+      </div>
+      <!-- <button class = "btn btn-simple btn-block" id = "getHighScore">get Highscore</button> -->
+
+      <h4 id = "snake-screensize-alert">Sorry, your screen is too small for the game. Try zooming out if using a computer. Unfortunately it doesn't work on phones or tablets.</h4>
+
+      <div id = "highscore" class = "d-none">
+        <table class = "table table-striped table-borderless">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Score</th>
+              <th>Speed</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src = "/js/04_snake.js"></script>
+<%- include('00b_footer.ejs') %>
+<%# </html> %>

@@ -1,0 +1,22 @@
+.input-feedback{
+  color: red;
+  margin-left:  auto;
+  margin-right:  16px;
+}
+#submit-response{
+  height: 360px;
+  margin-bottom: 50px;
+}
+#submit-response h2{
+  line-height: 320px;
+  text-align: center;
+  vertical-align: middle;
+
+  color: var(--color-text-3);
+  font-weight: bold;
+  font-size: 2em;
+}
+#submit-response p{
+  font-size: 1.4em;
+  text-align: center;
+}

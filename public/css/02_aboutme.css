@@ -1,0 +1,21 @@
+.aboutme-list-container{
+  background: var(--color-bg-3);
+  border-radius: 10px;
+  /*padding:  20px;*/
+  margin-bottom: 20px;
+}
+.aboutme-list-container h4{
+  font-size: 1.8em;
+  font-weight: bold;
+
+}
+.aboutme-list-container img{
+  border-radius: 10px 10px 0px 0px;
+}
+.aboutme-list-container p{
+  margin-bottom: 10px;
+  line-height:  20px;
+}
+.aboutme-list-container .text{
+  padding: 0px 30px 20px 30px;
+}

@@ -1,0 +1,64 @@
+<%# <html> %>
+<%- include('00a_header.ejs') %>
+    <link rel = "stylesheet" href = "/css/03_contact.css">    
+
+    <div class = "container">
+      <h1>contact</h1>
+      <div class = "row">
+        <div class = "col-sm-10 offset-sm-2">
+          <p>Just a simple contact form. Feel free to contact me here, although probably you already have my e-mail or phone number.</p>
+        </div>
+      </div>
+
+      <form id = "contactform" name = "contactform">
+          <div id = "contactname" class = "form-group row">
+            <label for = "contactname" class = "col-sm-2 col-form-label">Name</label>
+            <div class = "col-sm-10">
+              <input name = "contactname" type = "text" class = "form-control" maxlength = "127" placeholder = "Name">
+            </div>            
+            <div class = "input-feedback d-none">Feedback</div>            
+          </div>
+
+          <div id = "contactcompany" class = "form-group row">
+            <label for = "contactcompany" class = "col-sm-2 col-form-label">Company</label>
+            <div class = "col-sm-10">
+              <input name = "contactcompany" type = "text" class = "form-control" maxlength = "127" placeholder = "Company">
+            </div>
+            <div class = "input-feedback d-none">Feedback</div>
+          </div>
+
+          <div id = "contactmail" class = "form-group row">
+            <label for = "contactmail" class = "col-sm-2 col-form-label">E-mail</label>
+            <div class = "col-sm-10">
+              <input name = "contactmail" type = "text" class = "form-control" maxlength = "127" placeholder = "E-mail">
+            </div>
+            <div class = "input-feedback d-none">Feedback</div>                 
+          </div>
+  
+          <div id = "contactmessage" class = "form-group row">
+            <label for = "contactmessage" class = "col-sm-2 col-form-label">Message</label>
+            <div class = "col-sm-10">
+              <textarea name = "contactmessage" class = "form-control" rows = "6" maxlength = "10000" placeholder = "Message" ></textarea>
+            </div>
+            <div class = "input-feedback d-none">Feedback</div>     
+          </div>
+
+          <div class = "form-group row justify-content-end">
+            <div class = "col-4 col-sm-3 col-lg-2">
+              <button id = "contactsubmit" type = "button" form = "contact" value = "submit" class = "btn btn-simple btn-block">Send</button>
+            </div>
+            <div class = "input-feedback d-none">Feedback</div>
+          </div>          
+      </form>
+
+      <div id = "submit-response" class = "d-none">
+        <h2>Thank you for sending your mail.</h2>
+        <p><a href = "/contact/">Back</a></p>
+      </div>
+    </div>
+
+    <script src = "/js/03_contact.js"></script>
+
+<%- include('00b_footer.ejs') %>
+<%# </html> %>
+

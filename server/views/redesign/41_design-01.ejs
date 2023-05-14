@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset="UTF-8">
+  <title>Introduction site</title>
+  <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet"> 
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  <script src = "https://code.jquery.com/jquery-3.6.0.min.js"></script>  
+  <link rel = "stylesheet" href = "/css/41_design01.css">
+</head>
+
+<body>
+  <!-- If there are too many menu items, the responsivity limit for collapse should be changed -->
+  <header>
+    <nav id = "navigation-bar" class = "navigation-bar" toggle = "collapsed">
+      <a class = "navigation-brand" href = "#home">ST</a>
+      <button id = "navigation-expand-button" type = "button">Expand</button>
+      <div id = "navigation-items" class = "hidden" toggle = "collapsed">
+        <a class = "navigation-item" href = "#home">About me</a>
+        <a class = "navigation-item" href = "#home">Things I can do</a>
+        <a class = "navigation-item" href = "#home">Contact</a>
+      </div>.
+    <!-- <div class = "naviagation-dropdown">
+        </div>  -->
+    </nav>
+  </header>
+  <p id = "test">Content</p>
+  <script>
+    $(document).ready(function(){
+      $('#navigation-expand-button').click(expandCollapse);
+    });
+
+    function expandCollapse(){
+      if ($('#navigation-bar').attr('toggle') === "collapsed") {
+        $('#navigation-items').removeClass('hidden');
+        $('#navigation-bar').attr('toggle', "expanded");
+      } else {
+        $('#navigation-items').addClass('hidden');
+        $('#navigation-bar').attr('toggle', "collapsed");
+      }
+
+    }
+  </script>
+</body>
+</html>

@@ -1,3 +1,14 @@
+# Custom files
+.gitignore
+development.env
+cmdhere.lnk
+start_browsersync.lnk
+start_server.lnk
+
+server/config/env-vars.js
+
+
+
 # Logs
 logs
 *.log

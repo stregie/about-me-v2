@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset="UTF-8">
+  <title>Introduction site</title>
+  <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet"> 
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  <script src = "https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <link rel = "stylesheet" href = "/css/redesign/00_header-footer.css">
+  <link rel = "stylesheet" href = "/css/redesign/00_general.css">
+
+</head>
+
+<body>
+  <header>
+    <nav class = "navigation">
+      <ul class = "navigation-brand">
+        <li class = "navigation-item"><a href = "#home">ST Demosite</a></li>
+        <li class = "navigation-item off-canvas-toggler">
+          <button id = "off-canvas-toggler-btn">
+            <span id = "toggler-btn-topbar" class = "toggler-btn-bar"></span>
+            <span id = "toggler-btn-middlebar" class = "toggler-btn-bar"></span>
+            <span id = "toggler-btn-bottombar" class = "toggler-btn-bar"></span>
+          </button>
+        </li>
+      </ul>
+      
+      <ul class = "navigation-menu hide">
+        <li class = "navigation-item"><a href = "#">About me</a></li>
+        <li class = "navigation-item navigation-dropdown">
+          <button class = "navigation-dropdown-btn">Mini-sites <span class = "navigation-dropdown-arrow"></span></button>          
+          <ul class = "navigation-dropdown-menu">
+            <li class = "navigation-dropdown-item"><a href = "/redesign/snake/">Snake <span class = "technology">Native JavaScript</span></a></li>
+            <li class = "navigation-dropdown-item"><a href = "/redesign/news/">News Site <span class = "technology">Templating, MongoDB</span></a></li>
+            <li class = "navigation-dropdown-item"><a href = "/redesign/news/editor/">News Editor <span class = "technology">jQuery, MongoDB</span></a></li>
+            <li class = "navigation-dropdown-item"><a href = "/redesign/fileuploader/">File Uploader <span class = "technology">AWS S3</span></a></li>
+            <li class = "navigation-dropdown-item"><a href = "/redesign/react/gallery/">Image Gallery <span class = "technology">React</span></a></li>
+          </ul>
+        </li>
+        <li class = "navigation-item navigation-dropdown">
+          <button class = "navigation-dropdown-btn" href = "#">Dropdown 2<span class = "navigation-dropdown-arrow"></span></button>          
+          <ul class = "navigation-dropdown-menu">
+            <li class = "navigation-dropdown-item"><a href = "#">Item 1<span class = "technology">Info 1</span></a></li>
+            <li class = "navigation-dropdown-item"><a href = "#">Item 2 <span class = "technology">Info 2</span></a></li>
+            <li class = "navigation-dropdown-item"><a href = "#">Item 3</a></li>
+          </ul>
+        </li>
+        <li class = "navigation-item"><a href = "#">Contact</a></li>
+      </ul>
+    </nav>
+    <div class = "navigation-spacer"></div>
+
+    <script>
+      $(document).ready(function(){
+        $('#off-canvas-toggler-btn').click(toggleOffCanvas);
+        $('.navigation-dropdown-btn').click(toggleDropdown);
+      });
+      function toggleOffCanvas(){
+        $('.navigation-menu').toggleClass('hide');
+        $(this).toggleClass('active');
+      };
+      function toggleDropdown(){      
+        $(this).nextAll(".navigation-dropdown-menu").toggleClass("open");
+        $(this).toggleClass("open");      
+      };
+
+      let prevScrollPos = window.pageYOffset; // Position a moment ago
+      let scrollStartPos = window.pageYOffset; // Position before the last 100 px long scroll
+     
+      window.addEventListener('scroll', (event) => {
+        let currScrollPos = window.pageYOffset;        
+        let scrollDistance = Math.abs(currScrollPos - scrollStartPos);
+        let offCanvasStatus = $('#off-canvas-toggler-btn').attr('class');
+
+        if (currScrollPos < 100 || offCanvasStatus == "active"){ // always visible when scrolled to top or if off-canvas is active
+          $('.navigation').removeClass('navigation-hide');
+        } else {
+          if (scrollDistance > 100){
+            if (prevScrollPos < currScrollPos){ // Scroll down
+              $('.navigation').addClass('navigation-hide');            
+            } else if (prevScrollPos > currScrollPos){ // Scroll up
+              $('.navigation').removeClass('navigation-hide');
+            }
+            scrollStartPos = window.pageYOffset;
+          }
+        }
+
+        prevScrollPos = window.pageYOffset;
+      });
+    </script>
+  </header>

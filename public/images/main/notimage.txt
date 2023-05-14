@@ -1,0 +1,2 @@
+not an image
+This was here for testing purposes for the gallery to check if it would list images only.

@@ -1,0 +1,54 @@
+:root{
+  /* universal colors */
+  --color-bg-01: #333333;
+  --color-bg-02: #555555;
+  --color-bg-navbar-01: #000000;
+  --color-bg-navbar-02: #333333;
+  --color-bg-navbar-03: #555555;
+  --color-navbar-border-01: #666;
+  --color-item-01: #FF7700;
+  --color-item-02: #FF8822;
+  --color-txt-navbar: #FFFFFF;
+  --color-txt-01: #FFFFFF;
+  --color-txt-02: #000000;
+}
+body {
+  font-family: "Inter", "Arial", sans-serif;
+}
+
+.content-block{
+  color: var(--color-txt-01);
+/*  font-family: "Inter", "Arial", sans-serif;*/
+  padding: 60px 0px;
+  font-size: 0.9rem;
+}
+.content-block:nth-of-type(odd){
+  background: var(--color-bg-01);
+}
+.content-block:nth-of-type(even){
+  background: var(--color-bg-02);
+}
+.content-block a{
+  color: inherit;
+  text-decoration: none;
+}
+.content-block .row{
+  margin-bottom: 20px;
+}
+.content-block-top-text{
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+}
+.content-block-top-text h1 {
+  text-align: center; 
+}
+.btn-simple{
+  background: var(--color-item-01);
+  color: var(--color-txt-02);
+  padding: 10px;
+  min-width: 140px;
+}
+.btn-simple:hover{
+  background: var(--color-item-02);
+  color: var(--color-txt-02);
+}
