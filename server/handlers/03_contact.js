@@ -11,13 +11,21 @@ exports.submit = (req, res) => {
   };
 
   MongoClient.connect(mongoUrl, { useUnifiedTopology: true }, function(err, db) {
-    if (err) throw err;
-    let dbo = db.db('introduction-site');
+    if (err){
+      console.log(err);
+      res.status(502).send(`Delivery failed: database error.`);
+    } else {
+      let dbo = db.db('introduction-site');
 
-    dbo.collection('contact-mails').insertOne(mongodat, function(err, result) {
-      if (err) throw err;
-      res.send("Message sent successfully");
-      db.close();
-    });
+      dbo.collection('contact-mails').insertOne(mongodat, function(err, result) {
+        if (err) {
+          console.log(err);
+          res.status(502).send(`Delivery failed: database error.`);
+        } else {
+          res.send("Message was sent successfully.");
+          db.close();
+        }
+      });
+    }
   });
 };

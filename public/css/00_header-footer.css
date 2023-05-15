@@ -25,8 +25,13 @@ html{
 
 }
 .navigation a{
-  text-decoration: none;
   color: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+}
+.navigation a:hover{
+  color: inherit;
+
 }
 .navigation button{
   background: inherit;  
@@ -249,6 +254,7 @@ html{
     margin-bottom: 8px;
   }
   .navigation .navigation-menu{
+    overflow-y: scroll;
 
   }
   .navigation-menu .navigation-item {

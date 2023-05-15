@@ -26,11 +26,21 @@
   font-size: 2.5vw;
   text-shadow: 0px 0px 5px black;
 }
+#main-introduction {
+  font-size: 1.4rem;
+  font-style: italic;
+  text-align: right;
+}
 
 .main-minisite-image{
   position: relative;       
 }
 .main-minisite-item {
+}
+a .main-minisite-item{
+  color: var(--color-txt-01);
+/*  background: green;*/
+
 }
 .main-minisite-item h4{
   padding: 10px;
@@ -40,7 +50,8 @@
   text-align: center;
 }
 .main-minisite-item-text{
-  width: 100%;  
+  width: 100%;
+  font-weight: 400;
 }
 .main-minisite-image{
   overflow: hidden;
@@ -51,18 +62,53 @@
 .main-minisite-item:hover .main-minisite-image img{
   transform: scale(1.05);
 }
-#contactform{
+
+
+#contact-form-container{
+  position: relative;
 }
-#contactform input, #contactform textarea{
+#contact-form{
+}
+#contact-form input, #contact-form textarea{
+  border: none;
   border-radius: 0px;
+  background: var(--color-bg-03);
+  color: var(--color-txt-02);
+  padding: 20px;
 }
-#contactform input:focus{
+#contact-form input:focus, #contact-form textarea:focus{
   border-color: #FFF;
-  box-shadow: 2px #AAA;
+  box-shadow: 0 0 5px 0.15rem var(--color-border-02);
+/*  background: green;*/
 }
-#contactform .input-feedback{
-  height: 20px;
+#contact-form input::placeholder, #contact-form textarea::placeholder{
+  color: var(--color-txt-03);
+
 }
+#contact-form .contact-feedback{
+  color: red;
+}
+#contact-form .contact-feedback.hidden{
+  visibility: hidden;
+}
+#contact-form.hidden{
+  visibility: hidden;
+}
+
+#submit-response{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+#submit-response.hidden{
+  visibility: hidden;
+}
+
 @media (min-width: 576px){
   .main-minisite-item-text{
     background: #000000AA;
@@ -86,7 +132,7 @@
   .main-minisite-item-text{
     background: #000000;
     display: block;
-    padding: 10px;
+    padding: 20px;
     position: relative;
     text-align: left;
   }
