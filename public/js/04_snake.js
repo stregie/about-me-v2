@@ -39,8 +39,12 @@ function snakeGame() {
   // The new Object() method is used instead an object literal to avoid accessing properties before declaration
   const canvas = new Object();
   canvas.squareSize = 20; // side of a square
-  canvas.rightedge = canvasHtml.getAttributeNode("width").value / canvas.squareSize;
-  canvas.bottom = canvasHtml.getAttributeNode("height").value / canvas.squareSize;
+  // canvas.rightedge = canvasHtml.getAttributeNode("width").value / canvas.squareSize;
+  // canvas.bottom = canvasHtml.getAttributeNode("height").value / canvas.squareSize;
+  canvas.rightedge = canvasHtml.offsetWidth / canvas.squareSize;
+  canvas.bottom = canvasHtml.offsetHeight / canvas.squareSize;
+  console.log(canvasHtml.offsetWidth);
+  console.log(canvasHtml.offsetHeight);
   canvas.clear = () => { 
     ctx.clearRect(0, 0, canvas.rightedge * canvas.squareSize, canvas.bottom * canvas.squareSize);
   };
@@ -54,7 +58,7 @@ function snakeGame() {
   const snake = new Object();
   snake.direction = [1, 0];
   snake.body = [[5, 5], [4, 5], [3, 5], [2, 5]];
-  snake.color = getComputedStyle(document.documentElement).getPropertyValue('--color-item-3');
+  snake.color = getComputedStyle(document.documentElement).getPropertyValue('--color-item-01');
   snake.draw = () => {
     snake.body.forEach((coord) => canvas.drawSquare(coord, snake.color));
   };

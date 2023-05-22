@@ -2,25 +2,27 @@
 <%- include('00a_header.ejs') %>
     <link rel = "stylesheet" href = "/css/05_news.css">
 
-    <div class = "container">
-      <div class = "col-sm-12 col-md-10 offset-md-1">
-        
-        
-<% article.forEach((item, index) => { -%>
-        <% if(item.element === "heading"){%><h2><%= item.content %></h2><%}-%>
-        <% if(item.element === "heading" && index <= 3){%><p class = "article-author-date"><span><%= displaydate(metadata.date) %></span> <span><%= metadata.author %></span></p><%}-%>
-        <% if(item.element === "lead-paragraph"){%><p class = "lead-paragraph"><%= item.content %></p><%}-%>
-        <% if(item.element === "paragraph"){%><p><%= item.content %></p><%}-%>
-        <% if(item.element === "subheading"){%><h3><%= item.content %></h3><%}-%>
-        <% if(item.element === "quote"){%><blockquote><%= item.content %></blockquote><%}-%>
-        <% if(item.element === "image"){%><img class = "img-fluid" src = "<%=item.content%>"><%}-%>
-        <% if(item.element === "figcaption"){%><figcaption><%= item.content %></figcaption><%}-%>
-<% }); -%>
-        <p><a href = "/news/">Back</a></p>
+    <section class = "news-minisite">
+      <div class = "container">
+        <div class = "col-sm-12 col-md-10 offset-md-1">
+          
+          
+  <% article.forEach((item, index) => { -%>
+          <% if(item.element === "heading"){%><h2><%= item.content %></h2><%}-%>
+          <% if(item.element === "heading" && index <= 3){%><p class = "article-author-date"><span><%= displaydate(metadata.date) %></span> <span><%= metadata.author %></span></p><%}-%>
+          <% if(item.element === "lead-paragraph"){%><p class = "lead-paragraph"><%= item.content %></p><%}-%>
+          <% if(item.element === "paragraph"){%><p><%= item.content %></p><%}-%>
+          <% if(item.element === "subheading"){%><h3><%= item.content %></h3><%}-%>
+          <% if(item.element === "quote"){%><blockquote><%= item.content %></blockquote><%}-%>
+          <% if(item.element === "image"){%><img class = "img-fluid" src = "<%=item.content%>"><%}-%>
+          <% if(item.element === "figcaption"){%><figcaption><%= item.content %></figcaption><%}-%>
+  <% }); -%>
+          <a href = "/news/">Back</a>
 
 
+        </div>
       </div>
-    </div>
+    </section>
 <%- include('00b_footer.ejs') %>
 <%# </html> %>
 

@@ -1,225 +1,229 @@
 <%# <html> %>
 <%- include('00a_header.ejs') %>
     <link rel = "stylesheet" href = "/css/05_news.css">    
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <!-- Icons from https://fonts.google.com/icons?icon.set=Material+Symbols&icon.style=Outlined -->
 
     <script src="/js/jquery-autoresize.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
 
+    <section class = "news-minisite">
 
 
-    <div id = "news-editor-templates" class = "d-none">
-      <div id = "heading-template" class = "article-input-group" element = "heading">
-        <h2><textarea class = "article-input" rows = "1">Heading</textarea></h2>
-        <span class = "edit material-symbols-outlined">edit</span>
-        <div class = "toolbar">
-          <span class = "drag-indicator-icon material-symbols-outlined">unfold_more</span>
-          <span class = "delete-icon material-symbols-outlined" >delete</span>
-        </div>
-      </div>
 
-      <div id = "subheading-template" class = "article-input-group" element = "subheading">
-        <h3><textarea class = "article-input" rows = "1">Subheading</textarea></h3>
-        <span class = "edit material-symbols-outlined">edit</span>
-        <div class = "toolbar">
-          <span class = "drag-indicator-icon material-symbols-outlined">unfold_more</span>
-          <span class = "delete-icon material-symbols-outlined">delete</span>
-        </div>
-      </div>
 
-      <div id = "lead-paragraph-template" class = "article-input-group" element = "lead-paragraph">
-        <p class = "lead-paragraph"><textarea class = "article-input" rows = "1">Lead paragraph</textarea></p>
-        <span class = "edit material-symbols-outlined">edit</span>
-        <div class = "toolbar">
-          <span class = "drag-indicator-icon material-symbols-outlined">unfold_more</span>
-          <span class = "delete-icon material-symbols-outlined">delete</span>
-        </div>
-      </div>
-
-      <div id = "paragraph-template" class = "article-input-group" element = "paragraph">
-        <p><textarea class = "article-input" rows = "1">Paragraph</textarea></p>
-        <span class = "edit material-symbols-outlined">edit</span>
-        <div class = "toolbar">
-          <span class = "drag-indicator-icon material-symbols-outlined">unfold_more</span>
-          <span class = "delete-icon material-symbols-outlined" >delete</span>
-        </div>
-      </div>
-
-      <div id = "quote-template" class = "article-input-group" element = "quote">
-        <blockquote><textarea class = "article-input" rows = "1">Quote</textarea></blockquote>
-        <span class = "edit material-symbols-outlined">edit</span>
-        <div class = "toolbar">
-          <span class = "drag-indicator-icon material-symbols-outlined">unfold_more</span>
-          <span class = "delete-icon material-symbols-outlined" >delete</span>
-        </div>
-      </div>
-
-      <div id = "image-template" class = "article-input-group" element = "image">
-        <button class = "img-pseudobutton"><img class = "article-input img-fluid" tabindex = "1" src = "/images/news/00_placeholder.jpg"></button>
-        <span class = "edit material-symbols-outlined">edit</span>
-        <div id = "img-toolbar" class = "toolbar img-toolbar container">
-          <div class = "row">
-            <div id = "imin-container" class = "col-sm-2">
-              <span class = "drag-indicator-icon material-symbols-outlined">unfold_more</span>
-              <span class = "delete-icon material-symbols-outlined">delete</span>
-            </div>
-            <div id = "imin" class = "col">
-              <div class="input-group mb-2">
-                <input type = "text" class="form-control image-input" value = "/images/news/20220623_zug-um-zug-deutsche-bahn-01.jpg">
-                <div class="input-group-prepend">
-                  <button type = "button" class="input-group-text btn btn-simple refresh-btn">Load image</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class = "row">
-            <p class = "img-url-list"><a href = "/react/gallery/" target = "_blank">Select image from Gallery</a></p>
-          </div>
-        </div>
-      </div>
-
-      <div id = "figcaption-template" class = "article-input-group" element = "figcaption">
-        <figcaption><textarea class = "article-input" rows = "1">Figcaption</textarea></figcaption>
-        <span class = "edit material-symbols-outlined">edit</span>
-        <div class = "toolbar">
-          <span class = "drag-indicator-icon material-symbols-outlined">unfold_more</span>
-          <span class = "delete-icon material-symbols-outlined" >delete</span>
-        </div>
-      </div>      
-    </div>
-
-    <div class = "container">
-      <div class = "col-sm-12 col-md-10 offset-md-1">                       
-        <div id = "article-fields"></div>
-      </div>
-    </div>
-
-    <div class = "container">
-      <div id = "editor-tools" class = "col-sm-12 col-md-10 offset-md-1">
-        <div class = "row editor-buttons">
-          <div class = "editor-button-container col-sm-3">
-            <button type = "button" class = "btn btn-simple" onclick = "addField('heading')">
-              <span class = "material-symbols-outlined">title</span>
-              <div>Heading</div>
-            </button>
-          </div>
-
-          <div class = "editor-button-container col-sm-3">
-            <button type = "button" class = "btn btn-simple" onclick = "addField('subheading')">
-              <span class = "material-symbols-outlined" style = "font-size: 1.8rem">title</span>
-              <div>Subhead</div>
-            </button>
-          </div>
-
-          <div class = "editor-button-container col-sm-3">
-            <button type = "button" class = "btn btn-simple" onclick = "addField('lead-paragraph')">
-              <span class = "material-symbols-outlined" style = "font-weight: bold">notes</span>
-              <div>Lead paragraph</div>
-            </button>
-          </div>
-
-          <div class = "editor-button-container col-sm-3">
-            <button type = "button" class = "btn btn-simple" onclick = "addField('paragraph')">
-              <span class = "material-symbols-outlined">format_align_left</span>
-              <div>Paragraph</div>
-            </button>
+      <div id = "news-editor-templates" class = "d-none">
+        <div id = "heading-template" class = "article-input-group" element = "heading">
+          <h2><textarea class = "article-input" rows = "1">Heading</textarea></h2>
+          <span class = "edit material-symbols-outlined">edit</span>
+          <div class = "toolbar">
+            <span class = "drag-indicator-icon material-symbols-outlined">unfold_more</span>
+            <span class = "delete-icon material-symbols-outlined" >delete</span>
           </div>
         </div>
 
-        <div class = "row editor-buttons">
-          <div class = "editor-button-container col-sm-4">
-            <button type = "button" id = "image-button" class = "btn btn-simple" onclick = "addField('image')">
-              <span class = "material-symbols-outlined">Photo</span>
-              <div>Image</div>
-            </button>
-          </div>
-
-          <div class = "editor-button-container col-sm-4">
-            <button type = "button" class = "btn btn-simple" onclick = "addField('figcaption')">
-              <span class = "material-symbols-outlined" style = "border-bottom: 4px solid">image</span>
-              <div>Image caption</div>
-            </button>
-          </div>
-
-          <div class = "editor-button-container col-sm-4">
-            <button type = "button" class = "btn btn-simple" onclick = "addField('quote')">
-              <span class = "material-symbols-outlined">align_horizontal_left</span>
-              <div>Quote</div>
-            </button>
+        <div id = "subheading-template" class = "article-input-group" element = "subheading">
+          <h3><textarea class = "article-input" rows = "1">Subheading</textarea></h3>
+          <span class = "edit material-symbols-outlined">edit</span>
+          <div class = "toolbar">
+            <span class = "drag-indicator-icon material-symbols-outlined">unfold_more</span>
+            <span class = "delete-icon material-symbols-outlined">delete</span>
           </div>
         </div>
 
-
-
-        <form id = "metadata">
-          <div class = "form-group row">
-            <div class = "col-sm-2 col-form-label">
-              <label for = "metadata-id">ID</label>
-            </div>
-            <div class = "col-sm-10">
-               <div class="input-group mb-2">
-                <input id = "metadata-id" type = "text" class="form-control" placeholder = "YYYYMMDD-first-five-words-of-title">
-                <div class="input-group-prepend">
-                  <button type = "button" class="input-group-text btn btn-simple" onclick = "generateIdforForm()">Generate</button>
-                </div>
-              </div>
-            </div>            
-          </div>
-
-          <div class = "form-group row">
-            <label for = "metadata-author" class="col-sm-2 col-form-label">Author</label>
-            <div class = "col-sm-10">
-              <input id = "metadata-author" type = "text" class="form-control" placeholder = "Author">
-            </div>
-          </div>
-
-          <div class = "form-group row">
-            <label for = "metadata-summary" class="col-sm-2 col-form-label">Summary</label>
-            <div class = "col-sm-10">
-              <textarea id = "metadata-summary" class="form-control" placeholder = "Summary"> </textarea>
-            </div>
-          </div>
-
-          <div class = "form-group row">
-            <label for = "metadata-thumbnail" class="col-sm-2 col-form-label">Thumbnail</label>
-            <div class = "col-sm-10">
-              <input id = "metadata-thumbnail" type = "text" class="form-control" value = "/images/news/thumbnails/">
-            </div>
-          </div>
-        </form>
-
-        <div id = "delete-save-publish" class = "row">
-          <div class = "col-sm">
-            <button type = "button" class = "btn btn-danger btn-block col" onclick = "deleteCheck()">Delete</button>
-          </div>
-          <div class = "col-sm">
-            <button type = "button" class = "btn btn-simple btn-block" onclick = "decide('save', 'news-drafts')">Save draft</button>
-          </div>
-          <div class = "col-sm">
-            <button type = "button" class = "btn btn-simple btn-block" onclick = "decide('publish', 'news-articles')">Publish</button>
+        <div id = "lead-paragraph-template" class = "article-input-group" element = "lead-paragraph">
+          <p class = "lead-paragraph"><textarea class = "article-input" rows = "1">Lead paragraph</textarea></p>
+          <span class = "edit material-symbols-outlined">edit</span>
+          <div class = "toolbar">
+            <span class = "drag-indicator-icon material-symbols-outlined">unfold_more</span>
+            <span class = "delete-icon material-symbols-outlined">delete</span>
           </div>
         </div>
 
-        <div id = "responses">
-          <div id = "general-response" class = "d-none">
-            <p id = "general-response-message"></p>
+        <div id = "paragraph-template" class = "article-input-group" element = "paragraph">
+          <p><textarea class = "article-input" rows = "1">Paragraph</textarea></p>
+          <span class = "edit material-symbols-outlined">edit</span>
+          <div class = "toolbar">
+            <span class = "drag-indicator-icon material-symbols-outlined">unfold_more</span>
+            <span class = "delete-icon material-symbols-outlined" >delete</span>
           </div>
+        </div>
 
-          <div id = "delete-question" class = "d-none">
-            <p><strong>Are you sure you want to delete this article? This cannot be undone.</strong></p>
+        <div id = "quote-template" class = "article-input-group" element = "quote">
+          <blockquote><textarea class = "article-input" rows = "1">Quote</textarea></blockquote>
+          <span class = "edit material-symbols-outlined">edit</span>
+          <div class = "toolbar">
+            <span class = "drag-indicator-icon material-symbols-outlined">unfold_more</span>
+            <span class = "delete-icon material-symbols-outlined" >delete</span>
+          </div>
+        </div>
+
+        <div id = "image-template" class = "article-input-group" element = "image">
+          <button class = "img-pseudobutton"><img class = "article-input img-fluid" tabindex = "1" src = "/images/news/00_placeholder.jpg"></button>
+          <span class = "edit material-symbols-outlined">edit</span>
+          <div id = "img-toolbar" class = "toolbar img-toolbar container">
             <div class = "row">
-              <div class = "col">
-                <button type = "button" class = "btn btn-simple btn-block col" onclick = "deleteNo()">No</button>
+              <div id = "imin-container" class = "col-sm-2">
+                <span class = "drag-indicator-icon material-symbols-outlined">unfold_more</span>
+                <span class = "delete-icon material-symbols-outlined">delete</span>
               </div>
-              <div class = "col">
-                <button type = "button" class = "btn btn-danger btn-block col" onclick = "decide('delete', db)">Yes</button>
+              <div id = "imin" class = "col">
+                <div class="input-group mb-2">
+                  <input type = "text" class="form-control image-input" value = "/images/news/20220623_zug-um-zug-deutsche-bahn-01.jpg">
+                  <div class="input-group-prepend">
+                    <button type = "button" class="input-group-text btn btn-simple refresh-btn">Load image</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = "row">
+              <p class = "img-url-list"><a href = "/react/gallery/" target = "_blank">Select image from Gallery</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div id = "figcaption-template" class = "article-input-group" element = "figcaption">
+          <figcaption><textarea class = "article-input" rows = "1">Figcaption</textarea></figcaption>
+          <span class = "edit material-symbols-outlined">edit</span>
+          <div class = "toolbar">
+            <span class = "drag-indicator-icon material-symbols-outlined">unfold_more</span>
+            <span class = "delete-icon material-symbols-outlined" >delete</span>
+          </div>
+        </div>      
+      </div>
+
+      <div class = "container">
+        <div class = "col-sm-12 col-md-10 offset-md-1">                       
+          <div id = "article-fields"></div>
+        </div>
+      </div>
+
+      <div class = "container">
+        <div id = "editor-tools" class = "col-sm-12 col-md-10 offset-md-1">
+          <div class = "row editor-buttons">
+            <div class = "editor-button-container col-sm-3">
+              <button type = "button" class = "btn btn-simple" onclick = "addField('heading')">
+                <span class = "material-symbols-outlined">title</span>
+                <div>Heading</div>
+              </button>
+            </div>
+
+            <div class = "editor-button-container col-sm-3">
+              <button type = "button" class = "btn btn-simple" onclick = "addField('subheading')">
+                <span class = "material-symbols-outlined" style = "font-size: 1.8rem">title</span>
+                <div>Subhead</div>
+              </button>
+            </div>
+
+            <div class = "editor-button-container col-sm-3">
+              <button type = "button" class = "btn btn-simple" onclick = "addField('lead-paragraph')">
+                <span class = "material-symbols-outlined" style = "font-weight: bold">notes</span>
+                <div>Lead paragraph</div>
+              </button>
+            </div>
+
+            <div class = "editor-button-container col-sm-3">
+              <button type = "button" class = "btn btn-simple" onclick = "addField('paragraph')">
+                <span class = "material-symbols-outlined">format_align_left</span>
+                <div>Paragraph</div>
+              </button>
+            </div>
+          </div>
+
+          <div class = "row editor-buttons">
+            <div class = "editor-button-container col-sm-4">
+              <button type = "button" id = "image-button" class = "btn btn-simple" onclick = "addField('image')">
+                <span class = "material-symbols-outlined">Photo</span>
+                <div>Image</div>
+              </button>
+            </div>
+
+            <div class = "editor-button-container col-sm-4">
+              <button type = "button" class = "btn btn-simple" onclick = "addField('figcaption')">
+                <span class = "material-symbols-outlined" style = "border-bottom: 4px solid">image</span>
+                <div>Image caption</div>
+              </button>
+            </div>
+
+            <div class = "editor-button-container col-sm-4">
+              <button type = "button" class = "btn btn-simple" onclick = "addField('quote')">
+                <span class = "material-symbols-outlined">align_horizontal_left</span>
+                <div>Quote</div>
+              </button>
+            </div>
+          </div>
+
+
+
+          <form id = "metadata">
+            <div class = "form-group row">
+              <div class = "col-sm-2 col-form-label">
+                <label for = "metadata-id">ID</label>
+              </div>
+              <div class = "col-sm-10">
+                 <div class="input-group mb-2">
+                  <input id = "metadata-id" type = "text" class="form-control" placeholder = "YYYYMMDD-first-five-words-of-title">
+                  <div class="input-group-prepend">
+                    <button type = "button" class="input-group-text btn btn-simple" onclick = "generateIdforForm()">Generate</button>
+                  </div>
+                </div>
+              </div>            
+            </div>
+
+            <div class = "form-group row">
+              <label for = "metadata-author" class="col-sm-2 col-form-label">Author</label>
+              <div class = "col-sm-10">
+                <input id = "metadata-author" type = "text" class="form-control" placeholder = "Author">
+              </div>
+            </div>
+
+            <div class = "form-group row">
+              <label for = "metadata-summary" class="col-sm-2 col-form-label">Summary</label>
+              <div class = "col-sm-10">
+                <textarea id = "metadata-summary" class="form-control" placeholder = "Summary"> </textarea>
+              </div>
+            </div>
+
+            <div class = "form-group row">
+              <label for = "metadata-thumbnail" class="col-sm-2 col-form-label">Thumbnail</label>
+              <div class = "col-sm-10">
+                <input id = "metadata-thumbnail" type = "text" class="form-control" value = "/images/news/thumbnails/">
+              </div>
+            </div>
+          </form>
+
+          <div id = "delete-save-publish" class = "row">
+            <div class = "col-sm">
+              <button type = "button" class = "btn btn-danger btn-block col" onclick = "deleteCheck()">Delete</button>
+            </div>
+            <div class = "col-sm">
+              <button type = "button" class = "btn btn-simple btn-block" onclick = "decide('save', 'news-drafts')">Save draft</button>
+            </div>
+            <div class = "col-sm">
+              <button type = "button" class = "btn btn-simple btn-block" onclick = "decide('publish', 'news-articles')">Publish</button>
+            </div>
+          </div>
+
+          <div id = "responses">
+            <div id = "general-response" class = "d-none">
+              <p id = "general-response-message"></p>
+            </div>
+
+            <div id = "delete-question" class = "d-none">
+              <p><strong>Are you sure you want to delete this article? This cannot be undone.</strong></p>
+              <div class = "row">
+                <div class = "col">
+                  <button type = "button" class = "btn btn-simple btn-block col" onclick = "deleteNo()">No</button>
+                </div>
+                <div class = "col">
+                  <button type = "button" class = "btn btn-danger btn-block col" onclick = "decide('delete', db)">Yes</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <script>
       <% if (articleData !== null) { %>

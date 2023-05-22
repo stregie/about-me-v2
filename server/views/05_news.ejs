@@ -1,19 +1,35 @@
 <%# <html> %>
 <%- include('00a_header.ejs') %>
+
     <link rel = "stylesheet" href = "/css/05_news.css">
-    
-    <div class = "container">
-      <h1>news</h1>
-      
-      <div class = "row">
-<% newsList.forEach((newsItem, index) => { %>
-        <div class = "article-summary col-lg-4 col-sm-6">
-          <a href = "/news/article/<%= newsItem.metadata.id %>/"><img class = "img-fluid img-border" src = "<%= newsItem.metadata.thumbnail %>"></a>
-          <a href = "/news/article/<%= newsItem.metadata.id %>/"><h3><%= newsItem.metadata.title %></h3></a>
-          <p><%= newsItem.metadata.summary %></p>
-      </div>          
-<% }) %>
+
+    <div class = "minisite-info">
+      <div class = "container">
+        <div class = "row">
+          <div class = "minisite-info-text col-md-7 col-lg-8">
+            <h1>News</h1>
+            <p>Etiam fermentum enim eget nunc gravida, eu cursus justo eleifend. In condimentum venenatis metus, eget lobortis sapien semper tincidunt. Sed metus libero, viverra nec est vitae, bibendum varius tortor. Nunc sed quam a sapien facilisis mattis. Donec nec orci at lectus consectetur egestas vitae eget augue.</p>
+            <!-- <p>Etiam fermentum enim eget nunc gravida, eu cursus justo eleifend. In condimentum venenatis metus, eget lobortis sapien semper tincidunt. Sed metus libero, viverra nec est vitae, bibendum varius tortor. Nunc sed quam a sapien facilisis mattis. Donec nec orci at lectus consectetur egestas vitae eget augue. Nunc posuere lacus nulla, a lacinia magna consectetur at. Duis placerat, ante vel accumsan auctor, ex metus euismod purus, et commodo diam leo vel nibh.</p> -->
+          </div>
+        </div>
+      </div>
+      <div class = "minisite-info-image d-none d-md-block">
+      </div>
     </div>
+    
+    <section class = "news-minisite">   
+      <div class = "container">
+        <div class = "row">
+    <% newsList.forEach((newsItem, index) => { %>
+          <div class = "article-summary col-lg-4 col-sm-6">
+            <a href = "/news/article/<%= newsItem.metadata.id %>/"><img class = "img-fluid img-border" src = "<%= newsItem.metadata.thumbnail %>"></a>
+            <a href = "/news/article/<%= newsItem.metadata.id %>/"><h3><%= newsItem.metadata.title %></h3></a>
+            <p><%= newsItem.metadata.summary %></p>
+          </div>          
+    <% }) %>
+        </div>
+      </div>
+    </section>
 
 <%- include('00b_footer.ejs') %>
 <%# </html> %>

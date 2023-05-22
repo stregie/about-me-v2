@@ -1,10 +1,11 @@
-// Contact
-
 $(document).ready(function(){
   $('#contact-submit').click(submit);
-  $('#contact-switch').click(switchView);
+  $('#contact-enable').click(enableFields);
+  $('#contact-disable').click(disableFields);
+  // $('#contact-switch').click(switchView);
 });
 
+// Contact submit handler
 function submit(){
   // Remove form validation feedback in case it's there from a previous submit
   $('#contact-name').find('.contact-feedback').addClass('hidden');
@@ -45,12 +46,9 @@ function submit(){
   if(!valid){
     return
   }
+
+  disableFields();
   
-  // Disable fields while submitting
-  $('#contact-name').find('input').attr('disabled', 'disabled');
-  $('#contact-company').find('input').attr('disabled', 'disabled');
-  $('#contact-mail').find('input').attr('disabled', 'disabled');
-  $('#contact-message').find('textarea').attr('disabled', 'disabled');
 
   fetch('/contact/submit/', {
     method: 'POST',
@@ -61,19 +59,18 @@ function submit(){
   })
   .then(res => res.text())
   .then(response => {
-    console.log("success");
     $('#contact-form').addClass('hidden');
     $('#submit-success').removeClass('d-none');
     $('#submit-success').text(response);
     $('#submit-failure').addClass('d-none');
     $('#submit-response').removeClass('hidden');
+    enableFields();
     setTimeout(() => {
     $('#contact-form').removeClass('hidden');
       $('#submit-response').addClass('hidden');
     }, 5000);
   })
   .catch((error) => {
-    console.log('error');
     $('#contactform').addClass('hidden');
     $('#submit-success').addClass('d-none');
     $('#submit-failure').removeClass('d-none');
@@ -81,6 +78,23 @@ function submit(){
   });
 };
 
+// Disables input fields while submitting
+function disableFields(){
+  $('#contact-name').find('input').prop('disabled', true);
+  $('#contact-company').find('input').prop('disabled', true);
+  $('#contact-mail').find('input').prop('disabled', true);
+  $('#contact-message').find('textarea').prop('disabled', true); 
+};
+
+// Enables input fields after submitting
+function enableFields(){
+  $('#contact-name').find('input').prop('disabled', false);
+  $('#contact-company').find('input').prop('disabled', false);
+  $('#contact-mail').find('input').prop('disabled', false);
+  $('#contact-message').find('textarea').prop('disabled', false); 
+};
+
+// Validates the format of the entered e-mail address
 function checkMail(email){
   return String(email)
     .toLowerCase()
@@ -89,6 +103,7 @@ function checkMail(email){
     );
 };
 
+// Switch between contact form and server response view for styling and testing purposes
 let status = 0;
 function switchView(){
   if(status == 0){

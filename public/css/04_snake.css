@@ -1,91 +1,69 @@
-#start-btn-container{
-  width: 806px;
-  margin: 20px auto 20px auto;
-
-}
-/*.start-button{
-  display: block;
-  margin: auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  width: 806px;
-
-}*/
-#game-controls{
-  margin: auto;
-  margin-bottom: 20px;
-  display:  flex;
-
-  vertical-align: middle;
-  line-height: 40px;
-  height: 46px;
-  width: 806px;
-
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.game-controls-label{
-  padding-top: 3px;  
-}
-.game-controls-display{
-  width: 80px;
-  text-align: center;
-}
-
-#speed-controls {
-  display: flex;
-}
-#speed-controls span,
-#speed-controls button {
-  margin-right: 20px;
-  width: 46px;
-}
-
-#score-controls {
-  display: flex;
-  margin-left: auto;
-}
-#score-controls span,
-#score-controls button {
-  margin-left: 20px;
-}
-
-.btn-hs {
-  width: 170px;
-}
-@media (min-width: 992px){
-  #game-controls{
-    display: flex;
+@media (min-width: 768px) { /* md */
+  .minisite-info{
+    background-image: none;
   }
-  #snake-game,
-  #start-btn-container{
-    display: block;
-  }
-  #snake-screensize-alert{
+  .minisite-info-image{    
+    background-image: url("/images/design/Nokia_snake.jpg");    
+  }  
+
+}
+@media (max-width: 767px) { /* sm */
+  .minisite-info-image{
     display: none;
   }
-}
-@media (max-width: 991px){ /*(Large devices only)*/
-  #game-controls,
-  #snake-game,
-  #start-btn-container{
-    display: none;
-  }
-  #snake-screensize-alert{
-    display: block;
-    text-align: center;
-  }
+  .minisite-info{
+    background-image: url("/images/design/Nokia_snake-dark.jpg");
+  }   
 }
 
-/*#highscore{
-  width: 806px;
-  margin:  auto;
-  font-size:  1.2em;
-  text-align:  center;
-  font-weight:  bold;
-  letter-spacing:  2px;
+#snake-game{
+  
 }
-#highscore thead {
-  font-size:  1.6em;
-}*/
+#snake-game canvas{
+  border: 5px solid black;
+  background: var(--color-bg-01);
+
+/*  height: 220px;
+  width: 400px;*/
+}
+
+@media (min-width: 1400px) { /* xxl */
+  #snake-game canvas{
+    height: 720px;
+    width: 1320px;
+  }  
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+  #snake-game canvas{
+    height: 620px;
+    width: 1140px;
+  }  
+
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  #snake-game canvas{
+    height: 520px;
+    width: 960px;
+  }  
+  
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  #snake-game canvas{
+    height: 380px;
+    width: 720px;
+  }  
+
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  #snake-game canvas{
+    height: 297px;
+    width: 540px;
+  }  
+  
+}
+@media (min-width: 380px) and (max-width: 575px) { /* xs */
+  #snake-game canvas{
+    height: 180px;
+    width: 340px;
+  }
+}
