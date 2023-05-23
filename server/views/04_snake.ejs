@@ -7,7 +7,8 @@
         <div class = "row">
           <div class = "minisite-info-text col-md-7 col-lg-8">
             <h1>Snake</h1>
-            <p>Etiam fermentum enim eget nunc gravida, eu cursus justo eleifend. In condimentum venenatis metus, eget lobortis sapien semper tincidunt. Sed metus libero, viverra nec est vitae, bibendum varius tortor. Nunc sed quam a sapien facilisis mattis. Donec nec orci at lectus consectetur egestas vitae eget augue.</p>
+            <p>The classic snake game on a 40 × 22 board. Written in native JavaScript, graphics created with Canvas.</p>
+            <p>Controls: <b>W, S, A, D</b> or <b>arrow keys</b>. Reload page to restart game.</p>
             <!-- <p>Etiam fermentum enim eget nunc gravida, eu cursus justo eleifend. In condimentum venenatis metus, eget lobortis sapien semper tincidunt. Sed metus libero, viverra nec est vitae, bibendum varius tortor. Nunc sed quam a sapien facilisis mattis. Donec nec orci at lectus consectetur egestas vitae eget augue. Nunc posuere lacus nulla, a lacinia magna consectetur at. Duis placerat, ante vel accumsan auctor, ex metus euismod purus, et commodo diam leo vel nibh.</p> -->
           </div>
         </div>
@@ -20,38 +21,38 @@
       <div class = "container" id = "aaa">
         <div class = "row">
       
-            <div id = "game-controls" class = "d-non">
-              <span id = "speed-controls">
+            <div id = "game-controls">
+              <div id = "speed-controls" class = "col-6">
                 <button id = "btn-dec-speed" class = "btn btn-simple btn-sp">-</button>
-                <span class = "game-controls-display bordered-box" id = "speed-display" class = "box">0</span>
+                <div class = "game-controls-display bordered-box" id = "speed-display">0</div>
                 <button id = "btn-inc-speed" class = "btn btn-simple btn-sp">+</button>
-                <span class = "game-controls-label">Speed</span>
-              </span>
+                <div class = "game-controls-label">Speed</div>
+              </div>
 
 
-              <span id = "score-controls">
-                <span class = "game-controls-label">Score</span>
-                <span class = "game-controls-display bordered-box" id = "score" class = "box">200</span>
+              <div id = "score-controls" class = "float-end">
+                <div class = "game-controls-label">Score</div>
+                <div class = "game-controls-display bordered-box" id = "score">200</div>
                 <button id = "btn-highscore" class = "btn btn-simple btn-hs" type = "button">Highscore</button>
                 <button id = "btn-back" class = "btn btn-simple btn-hs d-none" type = "button">Back to the game</button>
-              </span>
+              </div>
             </div>
 
             <div id = "snake-game" class = "d-flex justify-content-center">
               <!-- <p>Score: <span id = "score">0</span></p> -->
-              <canvas id = "snake-canvas" height = "720" width = "1320"></canvas> <!-- Canvas width and height should be dividable by 20 -->        
+              <canvas id = "snake-canvas" height = "440" width = "800"></canvas> <!-- Canvas width and height should be dividable by 20 -->        
             </div>
 
             <div id = "start-btn-container">
               <button class = "btn btn-simple btn-block" id = "start-button">Start</button>
             </div>
-            <p class = "d-block d-sm-none">xs</p>
+            <!-- <p class = "d-block d-sm-none">xs</p>
             <p class = "d-none d-sm-block d-md-none">sm</p>
             <p class = "d-none d-md-block d-lg-none">md</p>
             <p class = "d-none d-lg-block d-xl-none">lg</p>
             <p class = "d-none d-xl-block d-xxl-none">xl</p>
             <p class = "d-none d-xxl-block">xxl</p>
-            <p id = "width-display"></p>
+            <p id = "width-display"></p> -->
             
             <!-- <button class = "btn btn-simple btn-block" id = "getHighScore">get Highscore</button> -->
 

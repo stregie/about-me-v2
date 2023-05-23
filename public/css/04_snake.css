@@ -15,8 +15,26 @@
     background-image: url("/images/design/Nokia_snake-dark.jpg");
   }   
 }
+#game-controls{
+  margin-bottom: 20px;
+}
+#game-controls div{
+  display: inline-block;
+}
+#speed-controls button{
+  width: 67px;
+}
+#game-controls .bordered-box{
+  width: 50px;
+  text-align: center;
+}
+.game-controls-label, .game-controls-display {
+  font-size: 1.4rem;
+}
 
 #snake-game{
+  margin-bottom: 20px;
+
   
 }
 #snake-game canvas{
@@ -27,43 +45,47 @@
   width: 400px;*/
 }
 
-@media (min-width: 1400px) { /* xxl */
+#highscore{
+  background: var(--color-bg-03);
+}
+
+@media (min-width: 1400px) {
   #snake-game canvas{
-    height: 720px;
-    width: 1320px;
+    height: 715px;
+    width: 1310px;
   }  
 }
 @media (min-width: 1200px) and (max-width: 1399px) {
   #snake-game canvas{
-    height: 620px;
-    width: 1140px;
+    height: 616px;
+    width: 1120px;
   }  
 
 }
 @media (min-width: 992px) and (max-width: 1199px) {
   #snake-game canvas{
-    height: 520px;
-    width: 960px;
+    height: 517px;
+    width: 940px;
   }  
   
 }
 @media (min-width: 768px) and (max-width: 991px) {
   #snake-game canvas{
-    height: 380px;
-    width: 720px;
+    height: 385px;
+    width: 700px;
   }  
 
 }
 @media (min-width: 576px) and (max-width: 767px) {
   #snake-game canvas{
-    height: 297px;
-    width: 540px;
-  }  
+    height: 286px;
+    width: 520px;
+  }
   
 }
-@media (min-width: 380px) and (max-width: 575px) { /* xs */
+@media (min-width: 380px) and (max-width: 575px) {
   #snake-game canvas{
-    height: 180px;
+    height: 187px;
     width: 340px;
   }
 }
