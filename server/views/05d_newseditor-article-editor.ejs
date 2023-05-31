@@ -8,10 +8,6 @@
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
 
     <section class = "news-minisite">
-
-
-
-
       <div id = "news-editor-templates" class = "d-none">
         <div id = "heading-template" class = "article-input-group" element = "heading">
           <h2><textarea class = "article-input" rows = "1">Heading</textarea></h2>
@@ -71,7 +67,7 @@
                 <div class="input-group mb-2">
                   <input type = "text" class="form-control image-input" value = "/images/news/20220623_zug-um-zug-deutsche-bahn-01.jpg">
                   <div class="input-group-prepend">
-                    <button type = "button" class="input-group-text btn btn-simple refresh-btn">Load image</button>
+                    <button type = "button" class="input-group-text">Load image</button><!--btn btn-simple refresh-btn-->
                   </div>
                 </div>
               </div>
@@ -98,32 +94,35 @@
         </div>
       </div>
 
+
       <div class = "container">
-        <div id = "editor-tools" class = "col-sm-12 col-md-10 offset-md-1">
+        <div id = "editor-tools" class = "col-sm-12 col-md-10 offset-md-1 g-0">
+          <div class = "row editor-tools-title">Insert field to the end of the article</div>
+
           <div class = "row editor-buttons">
-            <div class = "editor-button-container col-sm-3">
-              <button type = "button" class = "btn btn-simple" onclick = "addField('heading')">
-                <span class = "material-symbols-outlined">title</span>
+            <div class = "editor-button-container col-sm-3 g-0">
+              <button type = "button" class = "btn-editor" onclick = "addField('heading')">
+                <span class = "material-symbols-outlined" style = "font-size: 1.8rem">title</span>
                 <div>Heading</div>
               </button>
             </div>
 
-            <div class = "editor-button-container col-sm-3">
-              <button type = "button" class = "btn btn-simple" onclick = "addField('subheading')">
-                <span class = "material-symbols-outlined" style = "font-size: 1.8rem">title</span>
+            <div class = "editor-button-container col-sm-3 g-0">
+              <button type = "button" class = "btn-editor" onclick = "addField('subheading')">
+                <span class = "material-symbols-outlined">title</span>
                 <div>Subhead</div>
               </button>
             </div>
 
-            <div class = "editor-button-container col-sm-3">
-              <button type = "button" class = "btn btn-simple" onclick = "addField('lead-paragraph')">
+            <div class = "editor-button-container col-sm-3 g-0">
+              <button type = "button" class = "btn-editor" onclick = "addField('lead-paragraph')">
                 <span class = "material-symbols-outlined" style = "font-weight: bold">notes</span>
                 <div>Lead paragraph</div>
               </button>
             </div>
 
-            <div class = "editor-button-container col-sm-3">
-              <button type = "button" class = "btn btn-simple" onclick = "addField('paragraph')">
+            <div class = "editor-button-container col-sm-3 g-0">
+              <button type = "button" class = "btn-editor" onclick = "addField('paragraph')">
                 <span class = "material-symbols-outlined">format_align_left</span>
                 <div>Paragraph</div>
               </button>
@@ -131,99 +130,165 @@
           </div>
 
           <div class = "row editor-buttons">
-            <div class = "editor-button-container col-sm-4">
-              <button type = "button" id = "image-button" class = "btn btn-simple" onclick = "addField('image')">
+            <div class = "editor-button-container col-sm-4 g-0">
+              <button type = "button" id = "image-button" class = "btn-editor" onclick = "addField('image')">
                 <span class = "material-symbols-outlined">Photo</span>
                 <div>Image</div>
               </button>
             </div>
 
-            <div class = "editor-button-container col-sm-4">
-              <button type = "button" class = "btn btn-simple" onclick = "addField('figcaption')">
+            <div class = "editor-button-container col-sm-4 g-0">
+              <button type = "button" class = "btn-editor" onclick = "addField('figcaption')">
                 <span class = "material-symbols-outlined" style = "border-bottom: 4px solid">image</span>
                 <div>Image caption</div>
               </button>
             </div>
 
-            <div class = "editor-button-container col-sm-4">
-              <button type = "button" class = "btn btn-simple" onclick = "addField('quote')">
+            <div class = "editor-button-container col-sm-4 g-0">
+              <button type = "button" class = "btn-editor" onclick = "addField('quote')">
                 <span class = "material-symbols-outlined">align_horizontal_left</span>
                 <div>Quote</div>
               </button>
             </div>
           </div>
+        </div>
+      </div>
 
+      <hr>
 
-
-          <form id = "metadata">
+      <div class = "container">
+        <div id = "" class = "col-sm-12 col-md-10 offset-md-1">
+          <form id = "metadata" class = "">
             <div class = "form-group row">
-              <div class = "col-sm-2 col-form-label">
-                <label for = "metadata-id">ID</label>
-              </div>
+              <label for = "metadata-id" class = "col-sm-2 col-form-label">URL slug</label>
               <div class = "col-sm-10">
                  <div class="input-group mb-2">
-                  <input id = "metadata-id" type = "text" class="form-control" placeholder = "YYYYMMDD-first-five-words-of-title">
+                  <input id = "metadata-id" type = "text" class = "form-control" placeholder = "YYYYMMDD-first-five-words-of-title">
                   <div class="input-group-prepend">
-                    <button type = "button" class="input-group-text btn btn-simple" onclick = "generateIdforForm()">Generate</button>
+                    <button type = "button" class="input-group-text" onclick = "generateIdforForm()">Generate</button>
                   </div>
                 </div>
               </div>            
             </div>
 
             <div class = "form-group row">
-              <label for = "metadata-author" class="col-sm-2 col-form-label">Author</label>
+              <label for = "metadata-author" class = "col-sm-2 col-form-label">Author</label>
               <div class = "col-sm-10">
-                <input id = "metadata-author" type = "text" class="form-control" placeholder = "Author">
+                <input id = "metadata-author" type = "text" class = "form-control" placeholder = "Author">
               </div>
             </div>
 
             <div class = "form-group row">
-              <label for = "metadata-summary" class="col-sm-2 col-form-label">Summary</label>
+              <label for = "metadata-summary" class = "col-sm-2 col-form-label">Summary</label>
               <div class = "col-sm-10">
-                <textarea id = "metadata-summary" class="form-control" placeholder = "Summary"> </textarea>
+                <textarea id = "metadata-summary" class = "form-control" placeholder = "Summary"> </textarea>
               </div>
             </div>
 
             <div class = "form-group row">
-              <label for = "metadata-thumbnail" class="col-sm-2 col-form-label">Thumbnail</label>
+              <label for = "metadata-thumbnail" class = "col-sm-2 col-form-label">Thumbnail</label>
               <div class = "col-sm-10">
-                <input id = "metadata-thumbnail" type = "text" class="form-control" value = "/images/news/thumbnails/">
+                <input id = "metadata-thumbnail" type = "text" class = "form-control" value = "/images/news/thumbnails/">
               </div>
             </div>
           </form>
 
-          <div id = "delete-save-publish" class = "row">
+          <div class = "delete-save-publish row">
             <div class = "col-sm">
-              <button type = "button" class = "btn btn-danger btn-block col" onclick = "deleteCheck()">Delete</button>
+              <button type = "button" class = "btn delete-btn" onclick = "deleteCheck()">Delete</button>
             </div>
             <div class = "col-sm">
-              <button type = "button" class = "btn btn-simple btn-block" onclick = "decide('save', 'news-drafts')">Save draft</button>
+              <button type = "button" class = "btn" onclick = "decide('save', 'news-drafts')">Save draft</button>
             </div>
             <div class = "col-sm">
-              <button type = "button" class = "btn btn-simple btn-block" onclick = "decide('publish', 'news-articles')">Publish</button>
+              <button type = "button" class = "btn" onclick = "decide('publish', 'news-articles')">Publish</button>
             </div>
           </div>
 
-          <div id = "responses">
-            <div id = "general-response" class = "d-none">
+          <div id = "responses d-none">
+            <div id = "general-response" class = "">
               <p id = "general-response-message"></p>
             </div>
 
-            <div id = "delete-question" class = "d-none">
+            <div id = "delete-question" class = "delete-save-publish d-none">
               <p><strong>Are you sure you want to delete this article? This cannot be undone.</strong></p>
               <div class = "row">
                 <div class = "col">
-                  <button type = "button" class = "btn btn-simple btn-block col" onclick = "deleteNo()">No</button>
+                  <button type = "button" class = "btn" onclick = "deleteNo()">No</button>
                 </div>
                 <div class = "col">
-                  <button type = "button" class = "btn btn-danger btn-block col" onclick = "decide('delete', db)">Yes</button>
+                  <button type = "button" class = "btn delete-btn" onclick = "decide('delete', db)">Yes</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+                <!-- <span class = "material-symbols-outlined" style = "border-bottom: 4px solid">image</span> -->
+      <!-- <div class = "bottom-toolbar">
+        <ul>
+          <li>
+            <button id = "insert-button">Insert to end</button>
+          </li>
+        </ul>
+        <ul class = "bottom-toolbar-menu hide">
+          <li>
+            <button class = "field-button">
+              <span class = "material-symbols-outlined" style = "font-size: 1.8rem">title</span>
+              <div class = "button-text">Heading</div>
+            </button>
+          </li>
+
+          <li>
+            <button class = "field-button">
+              <span class = "material-symbols-outlined">title</span>              
+              <div class = "button-text">Subhead</div>
+            </button>
+          </li>
+          <li>
+            <button class = "field-button">
+              <span class = "material-symbols-outlined" style = "font-weight: bold">notes</span>
+              <div class = "button-text">Lead paragraph</div>
+            </button>
+          </li>
+          <li>
+            <button class = "field-button">
+              <span class = "material-symbols-outlined">format_align_left</span>
+              <div class = "button-text">Paragraph</div>
+            </button>
+          </li>
+          <li>
+            <button class = "field-button">
+              <span class = "material-symbols-outlined">Photo</span>
+              <div class = "button-text">Image</div>
+            </button>
+          </li>
+          <li>
+            <button class = "field-button">
+              <span class = "material-symbols-outlined" style = "border-bottom: 4px solid">image</span>
+              <div class = "button-text">Image caption</div>
+            </button>
+          </li>
+          <li>
+            <button class = "field-button">
+              <span class = "material-symbols-outlined">align_horizontal_left</span>
+              <div class = "button-text">Quote</div>
+            </button>
+          </li>
+        </ul>
+      </div> -->
     </section>
+<!--     <script>
+      $(document).ready(function(){
+        $('#insert-button').click(toggleBottomToolbar);
+      });
+
+      function toggleBottomToolbar(){
+        $('.bottom-toolbar-menu').toggleClass('hide');
+      }
+
+    </script> -->
 
     <script>
       <% if (articleData !== null) { %>

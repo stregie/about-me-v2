@@ -1,4 +1,8 @@
 $(document).ready(function(){
+  $('#new-article-button').click(() => {
+    $(location).attr('href', '/news/editor/edit/');
+  });
+
   $('#edit-draft-button').click(() => {
     $('#editor-list-drafts').removeClass('d-none');
     $('#editor-list-published').addClass('d-none');

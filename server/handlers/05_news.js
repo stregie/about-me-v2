@@ -10,7 +10,7 @@ exports.news = (req, res) => {
     dbo.collection("news-articles").find({}).toArray(function(err, result) {
       if (err) throw err;
       let data = {newsList: result.reverse()}
-      res.render('05_news.ejs', data);
+      res.render('05a_news-main.ejs', data);
       db.close();
     });      
   });
@@ -25,7 +25,7 @@ exports.newsArticle = (req, res) => {
 
     dbo.collection("news-articles").findOne({'metadata.id': id}, function(err, result) {
       if (err) throw err;
-      res.render('05_news-display.ejs', result);
+      res.render('05b_news-article-display.ejs', result);
       db.close();
     });
   });
@@ -55,7 +55,7 @@ exports.articleListEdit = (req, res) => {
 
     readDatabase.then(results => {
       data.responses = results;
-      res.render('05_news-editor-list.ejs', data);
+      res.render('05c_newseditor-main.ejs', data);
       db.close();
     });
   });
@@ -66,7 +66,7 @@ exports.articleEdit = (req, res) => {
   let coll = req.query.db;
   if (!id){
     let data = {articleData: null}
-    res.render('05_news-editor.ejs', data);
+    res.render('05d_newseditor-article-editor.ejs', data);
   } else {    
     MongoClient.connect(mongoUrl, { useUnifiedTopology: true }, function(err, db) {
       if (err) throw err;
@@ -78,7 +78,7 @@ exports.articleEdit = (req, res) => {
           db: coll
         }
         // console.log(data);
-        res.render('05_news-editor.ejs', data);
+        res.render('05d_newseditor-article-editor.ejs', data);
       });
     });
   }
@@ -165,6 +165,6 @@ exports.images = (req, res) => {
     files.forEach(file => {
         data.fileNames.push(file);        
     });
-    res.render('05_news-images.ejs', data);
+    res.render('05e_newseditor-images.ejs', data);
   })
 }

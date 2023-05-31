@@ -3,13 +3,13 @@
 
     <link rel = "stylesheet" href = "/css/05_news.css">
 
-    <div class = "minisite-info">
+    <div id = "news-minisite-info" class = "minisite-info">
       <div class = "container">
         <div class = "row">
           <div class = "minisite-info-text col-md-7 col-lg-8">
             <h1>News</h1>
-            <p>Etiam fermentum enim eget nunc gravida, eu cursus justo eleifend. In condimentum venenatis metus, eget lobortis sapien semper tincidunt. Sed metus libero, viverra nec est vitae, bibendum varius tortor. Nunc sed quam a sapien facilisis mattis. Donec nec orci at lectus consectetur egestas vitae eget augue.</p>
-            <!-- <p>Etiam fermentum enim eget nunc gravida, eu cursus justo eleifend. In condimentum venenatis metus, eget lobortis sapien semper tincidunt. Sed metus libero, viverra nec est vitae, bibendum varius tortor. Nunc sed quam a sapien facilisis mattis. Donec nec orci at lectus consectetur egestas vitae eget augue. Nunc posuere lacus nulla, a lacinia magna consectetur at. Duis placerat, ante vel accumsan auctor, ex metus euismod purus, et commodo diam leo vel nibh.</p> -->
+            <p>This minisite displays news articles in a predefined layout using a templating language (EJS, Embedded JavaScirpt). The articles are stored in MongoDB in JSON format.</p>
+            <p>The German language was chosen as an alternative for Lorem Ipsum - to fill the site with content without drawing too much attention on the content itself.</p>
           </div>
         </div>
       </div>
@@ -18,7 +18,7 @@
     </div>
     
     <section class = "news-minisite">   
-      <div class = "container">
+      <div id = "news-article-list" class = "container">
         <div class = "row">
     <% newsList.forEach((newsItem, index) => { %>
           <div class = "article-summary col-lg-4 col-sm-6">

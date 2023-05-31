@@ -7,7 +7,7 @@ $(document).ready(function(){
   $('#submit-button').click(uploadFiles);
   displaySelectedFiles();
   displayFilesOnServer();
-  setInterval(displayFilesOnServer, 2000);
+  // setInterval(displayFilesOnServer, 2000);
 });
 
 function dragoverHandler(event){
@@ -15,16 +15,16 @@ function dragoverHandler(event){
 };
 
 function dragenterHandler(event){
-  $('#fileuploader-dropzone').css("background-color", "var(--color-bg-3");
+  $('#fileuploader-dropzone').css("background-color", "var(--color-fileuploader-highlight-01");
 };
 
 function dragleaveHandler(event){
-  $('#fileuploader-dropzone').css("background-color", "var(--color-bg-1");
+  $('#fileuploader-dropzone').css("background-color", "var(--color-bg-01");
 };
 
 function dropHandler(event){
   event.preventDefault();
-  $('#fileuploader-dropzone').css("background-color", "var(--color-bg-1");
+  $('#fileuploader-dropzone').css("background-color", "var(--color-bg-01");
   let droppedFiles = event.originalEvent.dataTransfer.files;
   $('#fileuploader-dropzone input').prop('files', droppedFiles);
   displaySelectedFiles();
@@ -32,6 +32,7 @@ function dropHandler(event){
 
 function displaySelectedFiles(){
   let selectedFiles = $('#fileuploader-dropzone input').prop('files');
+  console.log(selectedFiles);
   if (selectedFiles.length === 0){
     return;
   }

@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
 var firstGame = true;
 var cycle = 6; // length of one cycle - can be used adjust speed of game. Min 2
 var score = 0;
-var speed = 1; // This is just a displayed value
+var speed = 3; // This is just a displayed value
 var lowestSpeed = 5;
 document.getElementById('score').textContent = score;
 document.getElementById('speed-display').textContent = speed;
@@ -25,34 +25,6 @@ function changeSpeed(n){
     lowestSpeed = speed;
   }
 };
-
-function testGame(){
-  const canvasHtml = document.getElementById("snake-canvas");
-  const ctx = canvasHtml.getContext("2d");
-  
-  // The new Object() method is used instead an object literal to avoid accessing properties before declaration
-  const canvas = new Object();
-  canvas.squareSize = 20; // side of a square
-  canvas.rightedge = canvasHtml.getAttributeNode("width").value / canvas.squareSize;
-  canvas.bottom = canvasHtml.getAttributeNode("height").value / canvas.squareSize;
-  // canvas.rightedge = canvasHtml.offsetWidth / canvas.squareSize;
-  // canvas.bottom = canvasHtml.offsetHeight / canvas.squareSize;
-  // console.log(canvasHtml.offsetWidth);
-  // console.log(canvasHtml.offsetHeight);
-  canvas.clear = () => { 
-    ctx.clearRect(0, 0, canvas.rightedge * canvas.squareSize, canvas.bottom * canvas.squareSize);
-  };
-  canvas.drawSquare = ([ x, y ], color) => {
-    ctx.fillStyle = color;
-    ctx.fillRect(x * canvas.squareSize, y * canvas.squareSize, canvas.squareSize, canvas.squareSize);
-  };
-  canvas.drawSquare([1, 1], "#FF0000");
-  setTimeout(()=>{
-    canvas.clear();
-  }, 2000)
-}
-
-
 
 function snakeGame() {
   if (!firstGame){

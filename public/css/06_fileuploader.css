@@ -1,6 +1,33 @@
+:root{
+  --color-fileuploader-highlight-01: #555;
+
+}
+
+@media (min-width: 768px) { /* md */
+  .minisite-info{
+    background-image: none;
+  }
+  .minisite-info-image{    
+    background-image: url("/images/design/fileuploader.jpg");    
+  }
+}
+@media (max-width: 767px) { /* sm */
+  .minisite-info{
+    background-image: url("/images/design/fileuploader-dark.jpg");
+  }   
+  .minisite-info-image{
+    display: none;
+  }
+}
+
+#fileuploader-minisite{
+  padding-top: 40px;
+}
 #fileuploader-dropzone{
   height: 200px;
   position:  relative;
+  border: 3px solid var(--color-border-01);
+  background: var(--color-bg-01);
 }
 
 #fileuploader-dropzone > label{
@@ -26,12 +53,20 @@
 #progress-display{
   height:  0%;
   width:  100%;
-  background:  #00000044;
-
+  background:  #FFFFFF44;
   position:  absolute;
   bottom:  0px;
 }
 #selected-files{
-  list-style-type:  none;
+  list-style-type: none;
   font-weight: 500;
+  padding-left: 0px;
+}
+#filelist-table{
+  vertical-align: middle;
+}
+#filelist-table button{
+  color: red;
+  text-transform: capitalize;
+  font-weight: bold;
 }

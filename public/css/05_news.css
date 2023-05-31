@@ -1,55 +1,86 @@
-/* News list */
+:root {
+  --color-news-bg-01: #FFFFFF;
+  --color-news-bg-02: #FFFFFF;
+  --color-news-highlight-01: #EEEEEE;
+  --color-news-highlight-02: #F6F6F6;
+  --color-news-highlight-03: #CED4DA;
+  --color-news-txt-01: #000000;
+  --color-news-txt-02: #569824;
+  --color-news-txt-03: #303030;
+  --color-news-txt-04: #FFFFFF;
+  --color-news-quote: #569824;
+  --color-news-border-01: #000000;
+  --color-news-border-02: #CED4DA;
+  --color-news-danger-01: Red;
+  --color-news-danger-02: Maroon;
+}
+
+/* News - general */
 @media (min-width: 768px) { /* md */
   .minisite-info{
     background-image: none;
   }
-  .minisite-info-image{    
-    background-image: url("/images/design/News2.jpg");    
-  }  
-
+  #news-minisite-info .minisite-info-image{    
+    background-image: url("/images/design/News2.jpg");
+  }
+  #news-editor-minisite-info .minisite-info-image{
+    background-image: url("/images/design/newsroom.jpg");
+  }
 }
+
 @media (max-width: 767px) { /* sm */
+  #news-minisite-info.minisite-info{
+    background-image: url("/images/design/News2-dark.jpg");
+  }   
+  #news-editor-minisite-info.minisite-info{
+    background-image: url("/images/design/newsroom-dark.jpg");
+  }
   .minisite-info-image{
     display: none;
   }
-  .minisite-info{
-    background-image: url("/images/design/News2-dark.jpg");
-  }   
 }
 
-/* News display */
 .news-minisite{
-  background: white;
+  background: var(--color-news-bg-01);
   font-family: 'Open Sans', sans-serif;
+  color: var(--color-news-txt-01);
+}
+.news-minisite a{
+  color: var(--color-news-txt-02);
+}
+
+
+/* News main */
+#news-article-list{
   padding-top: 24px;
-  color: black;
 }
 .article-summary {
-  /*height:  400px;*/
-  margin-bottom:  30px;
-  /*overflow-y: hidden;*/
+  margin-bottom: 30px;
 }
-.article-summary a{
-  color: var(--color-txt-02);
+.news-minisite .article-summary a{
+  color: var(--color-news-txt-01);
 }
 .article-summary h3{
   font-weight: 700;
+  margin-top: 5px;
 }
 .article-summary img {
-/*  border: 3px solid var(--color-border-1);*/
-  border-radius: 15px;
+
+}
+
+/* News article display */
+.news-minisite h2{
+  font-size: 3.5rem;
+  font-weight: 600;
 }
 
 .lead-paragraph {
   font-weight: bold;
 }
 blockquote {
-  border-left: 10px solid var(--color-border-1);
+  border-left: 10px solid var(--color-news-quote);
   padding: 10px 0px 10px 40px;        
   font-weight: bold;
-}
-h3 {
-  margin-top: 20px;
 }
 .article-author-date {
   font-size: 0.8em;
@@ -60,42 +91,43 @@ figcaption {
   font-weight: bold;
 }
 
-/* news editor article list */
+/* news editor main (article list) */
 .editor-list-buttons {
-  margin-top: 10px;
+  padding-top: 24px;
 }
-.editor-button-container {
-/*  width: 100%;*/
-  padding: 5px 15px 5px 15px;
-}
-.editor-button-container button {
+.editor-list-button-container button {
   margin-top: 10px;
   margin-bottom: 10px;
   height: 100px;
   width: 100%;
+  border: 1px solid var(--color-news-border-02);
+  border-radius: 0px;
+  transition: background 0.2s linear;
 }
-.editor-list-buttons .editor-button-container span {
+.editor-list-button-container button:hover {
+  background: #ced4da;
+}
+.editor-list-button-container span {
   font-size: 3rem;
 }
-.editor-list-buttons .editor-button-container div {
-  font-size: 1.2rem;
+.editor-list-button-container div {
+  font-size: 1rem;
 }
 
-.editor-buttons .editor-button-container span {
-  font-size: 2.8rem;
-}
-.editor-buttons .editor-button-container div {
-  font-size: 0.9rem;
-  line-height: 1;
-}
 
-/* news article editor */
-#editor-tools {
-  background: var(--color-bg-3);
-  border-radius: 10px;
-  padding: 20px;
+#editor-list-welcome{
+  padding-top: 50px;
+  padding-bottom: 150px;
+  text-align: center;
+}
+.editor-article-list h1{
   margin-bottom: 20px;
+  margin-top: 40px;
+  font-weight: 800;
+  text-align: center;
 }
+
+/* news article editor, editable fields */
 .article-input {
   border: none;
   color: inherit;
@@ -104,13 +136,11 @@ figcaption {
   width: 100%;
 }
 .article-input:hover {
-  background-color: var(--color-bg-1);
-  border-radius: 2px;
+  background-color: var(--color-news-highlight-01);
 }
 .article-input:focus {
-  outline: 1px solid var(--color-border-2);
-  border-radius: 2px;
-  background-color: #fafafa;
+  background-color: var(--color-news-highlight-02);
+  outline: 1px solid var(--color-news-border-01);
 }
 .article-input-group .toolbar {
   display: none;
@@ -142,13 +172,30 @@ figcaption {
 .delete-icon, .refresh-icon {
   cursor: pointer;
 } 
-.article-input     
-.img-toolbar {
+.article-input .img-toolbar {
   display: block;
 }
 .image-input {
   display: inline;          
   width: 100%;
+  border: 1px solid var(--color-news-border-02);
+  border-radius: 0px;
+  color: var(--color-news-txt-01);
+  padding: 10px;
+}
+.image-input:focus{
+  border-color: #FFF;
+  box-shadow: 0 0 5px 0.15rem var(--color-border-02);
+}
+.image-input::placeholder{
+  color: var(--color-news-txt-03);
+}
+.image-input+div button {
+  background: none;
+  border: 1px solid var(--color-news-border-02);
+  border-radius: 0px;
+  color: var(--color-news-txt-01);
+  padding: 10px;
 }
 .img-pseudobutton {
   border: none;
@@ -161,6 +208,221 @@ figcaption {
   margin-left: auto;
   margin-right: 15px
 }
-#delete-save-publish div {
-  margin-bottom:  16px;
+
+/* news article editor, insert buttons and form */
+#editor-tools{
+  box-sizing: content-box;
+  font-family: "Inter", "Arial", sans-serif;
+  margin-bottom: 40px;
 }
+.editor-tools-title{
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  margin-top: 30px;
+  text-align: center;
+}
+.editor-button-container{
+  border: 1px solid var(--color-news-border-02);
+  outline: 1px solid var(--color-news-border-02);
+}
+.editor-button-container .btn-editor{
+  background: none;
+  border: none;
+  transition: background 0.2s linear;
+  width: 100%;
+}
+.editor-button-container .btn-editor:hover{
+  background: var(--color-news-highlight-03);
+}
+.btn-editor span {
+  font-size: 2.8rem;
+}
+.btn-editor div {
+  font-size: 0.9rem;
+}
+@media (min-width: 576px){
+  .editor-button-container .btn-editor{
+    height: 100px;
+  }
+}
+@media (max-width: 575px){
+  .btn-editor{
+    text-align: left;
+    height: 40px;
+    padding-left: 30px;
+  }
+  .btn-editor span, .btn-editor div{
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+#metadata{
+  font-family: "Inter", "Arial", sans-serif;
+}
+#metadata label {
+  font-weight: 600;
+}
+#metadata button {
+  background: none;
+  border-radius: 0px;
+  padding: 10px;
+  font-weight: 600;
+}
+#metadata input, #metadata textarea{
+  border: 1px solid var(--color-news-border-02);
+  border-radius: 0px;
+  color: var(--color-news-txt-01);
+  padding: 10px;
+}
+#metadata input:focus, #metadata textarea:focus{
+  border-color: #FFF;
+  box-shadow: 0 0 5px 0.15rem var(--color-border-02);
+}
+#metadata input::placeholder, #metadata textarea::placeholder{
+  color: var(--color-news-txt-03);
+}
+
+.delete-save-publish{
+  padding: 20px 0px 60px 0px;
+
+}
+.delete-save-publish button{
+  border: 1px solid var(--color-news-border-02);
+  border-radius: 0;
+  padding: 10px;
+  transition: background 0.2s linear;
+  width: 100%;
+}
+.delete-save-publish button:hover{
+  background: var(--color-news-highlight-03);
+}
+.delete-btn{
+  background: var(--color-news-danger-01);
+  border: 1px solid var(--color-news-danger-02);
+  color: var(--color-news-txt-04);
+}
+.delete-save-publish .delete-btn:hover{
+  background: var(--color-news-danger-02);
+  color: var(--color-news-txt-04);
+}
+
+@media (max-width: 575px){
+  #metadata input, #metadata textarea{
+  }
+  #delete-save-publish button{
+    margin-bottom: 10px;
+  }
+}
+@media (min-width: 576px){
+  #metadata input, #metadata textarea{
+    margin-bottom: 20px;
+  }
+}
+
+
+
+
+
+
+
+/* Discarded idea of placing the insert buttons to a fixed-to-bottom toolbar */
+
+/*.bottom-toolbar{
+  font-family: "Inter", "Arial", sans-serif;
+  font-size: 1.2rem;
+  width: 100%;
+  bottom: 0;
+  position: fixed;
+}
+#insert-button{
+  font-weight: 600;
+}
+.bottom-toolbar button{
+  background: none;
+  border: none;  
+  color: white;
+}
+.bottom-toolbar ul{
+  padding: 0px;
+  margin-bottom: 0px;
+}
+.bottom-toolbar li {
+  list-style: none;
+}
+@media (min-width: 830px){
+  .bottom-toolbar{
+    text-align: center;
+    background: #000000AA;
+
+  }
+  #insert-button{
+    display: inline-block;
+    vertical-align: middle;
+    border: 1px solid cornsilk;
+    pointer-events: none;
+  }
+  .bottom-toolbar ul{
+    border: 1px solid grey;
+    display: inline-block;
+    height: 80px;
+  }
+  .bottom-toolbar li{
+    border: 1px solid white;
+    display: inline-block;
+    margin: 0px;
+  }
+  .field-button{
+    padding: 10px;
+  }
+  .field-button div {
+    border: 1px solid cornsilk;
+  }
+  .field-button:hover{
+    background: #222222AA;
+  }
+
+}
+@media (max-width: 829px){
+  .bottom-toolbar{
+    line-height: 60px;
+    background: #000000;
+  }
+  #insert-button{
+    display: block;
+    width: 100%;
+  }
+  .bottom-toolbar ul{
+    max-height: 450px;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease-in-out;    
+  }
+  .bottom-toolbar ul.hide{
+    max-height: 0px;    
+  }
+  .bottom-toolbar li{
+    display: block;
+
+  }
+  .bottom-toolbar .field-button{
+    padding-left: 10px;
+    width: 100%;
+    text-align: left;
+    border-top: 1px solid #AAA;
+  }
+  .bottom-toolbar .field-button:hover{
+    background: #333;
+  }
+  .bottom-toolbar .field-button span{
+    display: inline-block;
+
+  }
+
+  .bottom-toolbar .field-button div{
+    display: inline-block;
+    padding-left: 20px;
+  }
+}*/
+

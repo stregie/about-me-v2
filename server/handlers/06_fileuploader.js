@@ -9,7 +9,7 @@ const awsFolder = 'about-me/fileuploader/';
 
 exports.fileList = (req, res) => {
   const awsParams = {
-    Bucket: process.env.AWS_BUCKET
+    Bucket: process.env.CYCLIC_BUCKET_NAME
   };
 
   s3.listObjects(awsParams, (err, data) => {
@@ -56,7 +56,7 @@ exports.upload = (req, res) => {
       console.log('readFile data', data);
 
       let awsParams = {
-        Bucket: process.env.AWS_BUCKET,
+        Bucket: process.env.CYCLIC_BUCKET_NAME,
         Key: awsKey,
         Body: data
       };
@@ -84,7 +84,7 @@ exports.download = (req, res) => {
   const tmpPath = `/tmp/${fileName}`;
 
   const params = {
-    Bucket: process.env.AWS_BUCKET,
+    Bucket: process.env.CYCLIC_BUCKET_NAME,
     Key: awsKey
   };
 
@@ -114,7 +114,7 @@ exports.delete = (req, res) => {
   const awsKey = awsFolder + fileName;
 
   const awsParams = {
-    Bucket: process.env.AWS_BUCKET,
+    Bucket: process.env.CYCLIC_BUCKET_NAME,
     Key: awsKey
   };
 

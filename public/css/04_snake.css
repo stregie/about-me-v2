@@ -3,50 +3,72 @@
     background-image: none;
   }
   .minisite-info-image{    
-    background-image: url("/images/design/Nokia_snake.jpg");    
-  }  
-
+    background-image: url("/images/design/snake.jpg");    
+  }
 }
 @media (max-width: 767px) { /* sm */
+  .minisite-info{
+    background-image :url("/images/design/snake-dark.jpg");
+  }   
   .minisite-info-image{
     display: none;
   }
-  .minisite-info{
-    background-image: url("/images/design/Nokia_snake-dark.jpg");
-  }   
 }
+
+
+
 #game-controls{
   margin-bottom: 20px;
 }
 #game-controls div{
   display: inline-block;
 }
-#speed-controls button{
-  width: 67px;
+@media (min-width: 768px) {
+  #speed-controls button{
+    height: 60px;
+    width: 60px;
+  }
+  #game-controls .bordered-box{
+    width: 50px;
+    text-align: center;
+  }
+  .game-controls-label, .game-controls-display {
+    font-size: 1.4rem;
+  }
 }
-#game-controls .bordered-box{
-  width: 50px;
-  text-align: center;
+@media (max-width: 768px) {
+  #speed-controls button{
+    height: 7vw;
+    width: 7vw;
+    padding: 0px;
+    font-size: 3vw;
+  }
+  .btn-hs{
+    height: 7vw;
+    padding: 0px 1vw;
+    font-size: 3vw;
+  }
+  #game-controls .bordered-box{
+    width: 7vw;
+    text-align: center;
+  }
+  .game-controls-label, .game-controls-display {
+    font-size: 2.5vw;
+  }
 }
-.game-controls-label, .game-controls-display {
-  font-size: 1.4rem;
-}
+
+
 
 #snake-game{
-  margin-bottom: 20px;
-
-  
+  margin-bottom: 20px;  
 }
 #snake-game canvas{
   border: 5px solid black;
   background: var(--color-bg-01);
-
-/*  height: 220px;
-  width: 400px;*/
 }
 
 #highscore{
-  background: var(--color-bg-03);
+/*  background: var(--color-bg-03);*/
 }
 
 @media (min-width: 1400px) {

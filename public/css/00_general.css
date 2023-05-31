@@ -112,55 +112,47 @@ a:hover{
   width: 100%;
 }
 
+
+
 .minisite-info{
   background: var(--color-bg-01);
-  background-position-x: center;
-  background-position-y: center;
   position: relative;
 }
 .minisite-info-image{
+  background-position-y: center;
+  background-repeat: no-repeat;
+
 }
-@media (min-width: 1400px) { /* md */
+@media (min-width: 1400px) {
   .minisite-info-image{  
     background-position-x: right;
   }
 }
-@media (max-width: 1399px) { /* md */
+@media (max-width: 1399px) {
   .minisite-info-image{  
     background-position-x: center;
   }
 }
 
-
-@media (min-width: 768px) { /* md */
+@media (min-width: 768px) {
   .minisite-info{
     background-image: none;
   }
   .minisite-info-image{
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 30%;
-    height: 100%;
-/*    background-image: url("/images/design/Nokia_snake.jpg");*/
     background-size: auto 100%;
-    background-repeat: no-repeat;
-    background-position-y: center;
-/*    background-position-x: center;*/
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30%;
   }  
   .minisite-info-text{
     padding: 60px 0px
   }
-
 }
 @media (max-width: 767px) { /* sm */
   .minisite-info{
-/*    background-image: url("/images/design/Nokia_snake-dark.jpg");*/
-    background-size: cover;
-    background-repeat: no-repeat;
-/*    background-position-x: center;*/
-    background-position-y: center;
-
+    background-size: cover;    
   }    
   .minisite-info-image{
     display: none;

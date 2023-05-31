@@ -79,11 +79,9 @@ a .main-minisite-item{
 #contact-form input:focus, #contact-form textarea:focus{
   border-color: #FFF;
   box-shadow: 0 0 5px 0.15rem var(--color-border-02);
-/*  background: green;*/
 }
 #contact-form input::placeholder, #contact-form textarea::placeholder{
   color: var(--color-txt-03);
-
 }
 #contact-form .contact-feedback{
   color: red;
