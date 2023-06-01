@@ -111,3 +111,29 @@
     width: 340px;
   }
 }
+
+#mobile-controls{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding-top: 20px;
+  margin: auto;
+  width: 80%;
+}
+#mobile-controls .grid-item{
+  height: 15vw;
+  padding: 10px;
+}
+#mobile-controls .snake-mobile-button{
+  font-weight: bold;
+  height: 100%;
+  padding: 0px;
+  width: 100%;
+}
+#mobile-controls .snake-mobile-button span{
+  margin: auto;
+}
+@media (min-width: 576px){
+  #mobile-controls{
+    display: none;
+  }
+}

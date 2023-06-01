@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementById('start-button').addEventListener('click', snakeGame);
-  // document.getElementById('start-button').addEventListener('click', testGame);
   document.getElementById('btn-dec-speed').addEventListener('click', function(){ changeSpeed(-1) });
   document.getElementById('btn-inc-speed').addEventListener('click', function(){ changeSpeed(+1) });
   document.getElementById('btn-highscore').addEventListener('click', showHighScore);
   document.getElementById('btn-back').addEventListener('click', backToGame);
+
+
 });
 
 var firstGame = true;
@@ -151,6 +152,29 @@ function snakeGame() {
   };
   document.addEventListener('keydown', handleKeyPress, false);
 
+  /* Mobile view control keys */
+  document.querySelector('#snake-up').onclick = () => {
+    let k = {code: "KeyW"}
+    k.preventDefault = () => true;
+    handleKeyPress(k);
+  };
+  document.querySelector('#snake-down').onclick = () => {
+    let k = {code: "KeyS"}
+    k.preventDefault = () => true;
+    handleKeyPress(k);
+  };
+  document.querySelector('#snake-left').onclick = () => {
+    let k = {code: "KeyA"}
+    k.preventDefault = () => true;
+    handleKeyPress(k);
+  };
+  document.querySelector('#snake-right').onclick = () => {
+    let k = {code: "KeyD"}
+    k.preventDefault = () => true;
+    handleKeyPress(k);
+  };
+
+
 
   let tick = 0;
 
@@ -189,6 +213,7 @@ function showHighScore(){
   document.getElementById('highscore').classList.remove('d-none');
   document.getElementById('start-btn-container').classList.add('d-none');
   document.getElementById('speed-controls').classList.add('d-none');
+  document.getElementById('mobile-controls').classList.add('d-none');
 
   fetch('/snake/highscore')
   .then(res => res.json())
@@ -213,6 +238,7 @@ function backToGame(){
   document.getElementById('highscore').classList.add('d-none');
   document.getElementById('start-btn-container').classList.remove('d-none');
   document.getElementById('speed-controls').classList.remove('d-none');
+  document.getElementById('mobile-controls').classList.remove('d-none');
 };
 
 function submitScore(){

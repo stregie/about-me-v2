@@ -16,6 +16,7 @@
   --color-txt-01: #FFFFFF;
   --color-txt-02: #000000;
   --color-txt-03: #303030;
+
   
 
   /* colors from v1 design */
@@ -159,6 +160,37 @@ a:hover{
   }
   .minisite-info-text{
     padding: 20px 0px
+  }
+}
+
+#error404-page{
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: black;
+  text-align: right;
+  text-shadow: 0px 0px 5px white;
+  width: 100%;
+}
+#error404-page h1{
+  font-size: 6vw;
+  font-weight: 800;
+}
+#error404-page p{
+  font-size: 3vw;
+  font-weight: 400;
+}
+@media (min-width: 700px){
+  #error404-page{
+    background-image: url("/images/main/404_ice-16-6.jpg");
+    height: 37.5vw;
+    padding: 2.5vw;
+  }
+}
+@media (max-width: 699px){
+  #error404-page{
+    background-image: url("/images/main/404_ice_color correction.jpg");
+    height: 56.25vw;
+    padding: 4.5vw 3vw;
   }
 }
 
