@@ -195,7 +195,7 @@ function snakeGame() {
     }
   };
 
-  const game = setInterval(gameLoop, 5);
+  const game = setInterval(gameLoop, 30);
 
   const gameOver = (reason) => {
     snake.growth++; // Even though the "game" interval is cleared, the last cycle runs and 
