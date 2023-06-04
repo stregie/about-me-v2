@@ -65,8 +65,61 @@
 #filelist-table{
   vertical-align: middle;
 }
+#filelist-table td{
+  overflow: hidden;
+  word-wrap: break-word;
+}
 #filelist-table button{
   color: red;
   text-transform: capitalize;
   font-weight: bold;
+}
+
+@media (min-width: 1400px) { /* xxl */  
+  #filelist-table-title{
+    text-align: center;
+  }  
+  #filelist-table td{
+    max-width: 1000px;
+  }    
+}
+@media (min-width: 1200px) and (max-width: 1399px) { /* lg */    
+  #filelist-table-title{
+    text-align: center;
+  }  
+  #filelist-table td{
+    max-width: 800px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) { /* lg */  
+  #filelist-table-title{
+    text-align: center;
+  }  
+  #filelist-table td{
+    max-width: 600px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) { /* md */    
+  #filelist-table-title{
+    text-align: center;
+  }  
+  #filelist-table td{
+    max-width: 430px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  #filelist-table-title{
+    text-align: left;
+  }  
+  #filelist-table td{
+    max-width: 50vw;
+  }
+}
+@media (min-width: 380px) and (max-width: 575px) {
+  #filelist-table-title{
+    text-align: left;
+  }
+  #filelist-table td{
+    max-width: 120vw;
+  }
 }

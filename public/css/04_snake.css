@@ -111,6 +111,12 @@
     width: 340px;
   }
 }
+@media (max-width: 380px) {
+  #snake-game canvas{
+    height: 121px;
+    width: 220px;
+  }
+}
 
 #mobile-controls{
   display: grid;
@@ -120,8 +126,8 @@
   width: 80%;
 }
 #mobile-controls .grid-item{
-  height: 15vw;
-  padding: 10px;
+  height: 20vw;
+  padding: 2vw;
 }
 #mobile-controls .snake-mobile-button{
   font-weight: bold;
@@ -130,6 +136,7 @@
   width: 100%;
 }
 #mobile-controls .snake-mobile-button span{
+  font-size: 10vw;
   margin: auto;
 }
 @media (min-width: 576px){

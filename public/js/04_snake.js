@@ -29,7 +29,7 @@ function changeSpeed(n){
 
 function snakeGame() {
   if (!firstGame){
-    return
+    window.location.reload();
   } else {
     firstGame = false;
   }

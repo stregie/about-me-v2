@@ -3,10 +3,24 @@ $(document).ready(function(){
   $('.navigation-dropdown-btn').click(toggleDropdown);
 });
 
-// Open and close navigation menu in mobile view
-function toggleOffCanvas(){
-  $('.navigation-menu').toggleClass('hide');
-  $(this).toggleClass('active');
+// Open and close navigation menu in mobile view - workaround to delay display: none after sliding transition finished
+function toggleOffCanvas(){      
+  let navigationMenu = document.querySelector('.navigation-menu');
+  if (navigationMenu.classList.contains('hide')) {
+    navigationMenu.classList.remove('hide');
+    setTimeout(() => {
+      navigationMenu.classList.remove('slid-right');
+    }, 20);
+  } else {
+    navigationMenu.classList.add('slid-right');
+    navigationMenu.addEventListener('transitionend', () => {
+      navigationMenu.classList.add('hide');
+    }, {
+      capture: false,
+      once: true,
+      passive: false
+    });
+  }
 };
 
 // Open and close dropdown menus in mobile view

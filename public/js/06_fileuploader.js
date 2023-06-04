@@ -7,7 +7,7 @@ $(document).ready(function(){
   $('#submit-button').click(uploadFiles);
   displaySelectedFiles();
   displayFilesOnServer();
-  // setInterval(displayFilesOnServer, 2000);
+  setInterval(displayFilesOnServer, 2000);
 });
 
 function dragoverHandler(event){
