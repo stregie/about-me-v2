@@ -108,6 +108,23 @@ a:hover{
   color: var(--color-txt-02) !important;
 /*  border: none;*/
 }
+.btn-minisite-info{
+  background: var(--color-item-01);
+  border-radius: 0px;
+  color: var(--color-txt-02);
+  font-size: 0.9rem;
+  padding: 10px;
+  margin-left: auto;
+}
+.btn-minisite-info:hover{
+  background: var(--color-item-03) !important;
+  color: var(--color-txt-02);
+}
+.btn-minisite-info:active{
+  background: var(--color-item-02) !important;
+  color: var(--color-txt-02) !important;
+/*  border: none;*/
+}
 .btn-block{
   display: block;
   width: 100%;
@@ -138,6 +155,7 @@ a:hover{
 @media (min-width: 768px) {
   .minisite-info{
     background-image: none;
+    position: relative;
   }
   .minisite-info-image{
     background-size: auto 100%;
@@ -148,7 +166,9 @@ a:hover{
     width: 30%;
   }  
   .minisite-info-text{
-    padding: 60px 0px
+    padding-top: 30px;
+    padding-bottom: 30px;
+
   }
 }
 @media (max-width: 767px) { /* sm */
@@ -161,6 +181,28 @@ a:hover{
   .minisite-info-text{
     padding: 20px 12px
   }
+}
+
+.code-details{
+  display: none;
+  background: var(--color-bg-01);
+  padding-bottom: 30px;
+  overflow: hidden;
+  padding-top: 30px;
+  position: absolute;
+  width: 100%;
+  box-shadow: 0px 8px 8px 4px #222;
+}
+.code-label{
+  font-style: italic;
+}
+pre.code-box{
+  height: 240px;
+  margin-bottom: 30px;
+  border-radius: 0px;
+}
+.code-box code{
+/*  font-size: 0.6rem;*/
 }
 
 #error404-page{

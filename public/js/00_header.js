@@ -4,7 +4,8 @@ $(document).ready(function(){
 });
 
 // Open and close navigation menu in mobile view - workaround to delay display: none after sliding transition finished
-function toggleOffCanvas(){      
+function toggleOffCanvas(){ 
+  $(this).toggleClass('active');     
   let navigationMenu = document.querySelector('.navigation-menu');
   if (navigationMenu.classList.contains('hide')) {
     navigationMenu.classList.remove('hide');
