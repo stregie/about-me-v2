@@ -16,6 +16,7 @@
   --color-txt-01: #FFFFFF;
   --color-txt-02: #000000;
   --color-txt-03: #303030;
+  --color-txt-04: #A2A2A2;
 
   
 
@@ -60,10 +61,10 @@ a:hover{
   padding: 60px 0px;
   font-size: 0.9rem;
 }
-.content-block:nth-of-type(odd){
+div.content-block:nth-of-type(odd){
   background: var(--color-bg-01);
 }
-.content-block:nth-of-type(even){
+div.content-block:nth-of-type(even){
   background: var(--color-bg-02);
 }
 /*.content-block a{
@@ -186,19 +187,28 @@ a:hover{
 .code-details{
   display: none;
   background: var(--color-bg-01);
-  padding-bottom: 30px;
+  box-shadow: 0px 8px 6px 3px #222;
   overflow: hidden;
+  padding-bottom: 30px;
   padding-top: 30px;
   position: absolute;
   width: 100%;
-  box-shadow: 0px 8px 8px 4px #222;
+  z-index: 1000;
 }
 .code-label{
+  display: block;
   font-style: italic;
 }
+.code-label-path{
+  color: var(--color-txt-04);
+  display: block;
+  font-style: italic;
+  font-size: 0.8rem;
+
+}
 pre.code-box{
-  height: 240px;
   margin-bottom: 30px;
+  max-height: 240px;
   border-radius: 0px;
 }
 .code-box code{

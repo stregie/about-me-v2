@@ -9,12 +9,41 @@
             <h1>Snake</h1>
             <p>The classic snake game on a 40 × 22 board. Written in native JavaScript, graphics created with Canvas.</p>
             <p>Controls: <b>W, S, A, D</b> or <b>arrow keys</b> on desktop, on-screen buttons on mobile. Reloads page to restart game.</p>
+            <div class = "d-flex">
+              <button class = "btn btn-minisite-info">Details</button>
+            </div>
           </div>
         </div>
       </div>
       <div class = "minisite-info-image d-none d-md-block">
       </div>
     </div>
+
+    <div class = "code-details">
+      <div class = "container">
+        <div class = "row">
+          <div class = "col">
+            <h2>Code highlights</h2>
+            <p>This game was written while I was learning the basics of JavaScirpt. It made me especially proud as the main idea occured to me during morning commute, and it worked.</p>
+            <p>The core of the game is the game loop. The main logic can be represented with the following flow chart. A keyboard event initiates a new cycle. The flow chart is slightly simplified for the sake of clarity.</p>            
+            <img class = "img-fluid" src = "/images/design/snake-flowchart.jpg">            
+            <p>The position of each element on the board (blocks of the snake body, apple, walls) are defined as a 2D array.</p>
+            <h3>Potential improvements</h3>
+            <ul>
+              <li>Restarting the game results in multiple instances of the game in simultaneous execution. It is avoided by forcing a page restart when a second game is initiated. This can be fixed by restructuring the code.</li>
+              <li>Functions invoked in the game loop contain external if / else logic and invocations of further functions as side effects. Therefore, just by looking at the game loop code does not fully reveal the logic of the game. This would also require the restructuring of the code.</li>
+              <li>It can be further improved by advanced graphics with a rendering system, such as <a href = "https://pixijs.com/">PixiJS</a>.</li>
+            </ul>
+
+            <div class = "d-flex">
+              <button class = "btn btn-minisite-info">Hide</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div></div>
 
     <div class = "content-block">
       <div class = "container" id = "aaa">

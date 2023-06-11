@@ -9,12 +9,82 @@
             <h1>File uploader</h1>
             <p>The uploaded files are stored in <b>Amazon S3</b> cloud service. The maximum upload size is limited to <b>4MB</b>.</p>
             <p>File streams would be the best solution to handle large files. Unfortunately streaming requests or responses is not allowed with Cyclic.</p>
+            <div class = "d-flex">
+              <button class = "btn btn-minisite-info">Details</button>
+            </div>
           </div>
         </div>
       </div>
       <div class = "minisite-info-image d-none d-md-block">
       </div>
-    </div>  
+    </div>
+
+    <div class = "code-details">
+      <div class = "container">
+        <div class = "row">
+          <div class = "col">
+            <h2>Code highlights</h2>
+            <p>An <code>&lt;input type = "file" multiple&gt;</code> element is hidden behind the dropzone which handles file selecting. The selected files are submitted with the <code>XMLHttpRequest</code> object instead <code>fetch</code>, as it can handle event listeners for upload progress.</p>
+
+            <p>On the backend side, the received data is parsed with <a href = "https://www.npmjs.com/package/formidable">Formidable</a> and temporarily saved to the file system of the server. Then, the contents of the file is read with <code>fs.readFile</code> and uploaded to the AWS S3 bucket with the AWS SDK.</p>
+
+            <label class = "code-label">Node.js - Uploading file</label>
+            <label class = "code-label-path">/server/handlers/06_fileuploader.js</label>
+            <pre class = "code-box"><code class="language-js">exports.upload = (req, res) => {
+  const form = formidable({ multiples: true });
+
+  form.parse(req, (err, fields, files) => {
+    if (err) console.log('form.parse err', err);
+  });
+
+  form.on('file', (formname, file) => {
+    let awsKey = awsFolder + file.originalFilename;
+
+    fs.readFile(file.filepath, (err, data) => {
+      if (err) console.log('readFile err', err);
+    
+      let awsParams = {
+        Bucket: process.env.CYCLIC_BUCKET_NAME,
+        Key: awsKey,
+        Body: data
+      };
+
+      s3.upload(awsParams, (err, data) => {
+        if(err) {
+          console.log(err);
+          res.status(err.statusCode).send("Upload was not successful: " + err.code);
+        } else {
+          console.log(`S3: ${awsKey} uploaded successfully`);
+        }
+      });
+    });
+  });
+
+  form.once('end', () => {
+    console.log('form.once end');
+    res.send(`Files uploaded successfully.`);
+  });
+};</code></pre>
+
+            <p>Downloading and deleting is also performed with the AWS SDK. The file list is dynamically updated by polling every 2 seconds.</p>
+
+            <h3>Potential improvements</h3>
+            <ul>
+              <li>More robust and transparent error handling</li>
+              <li>File streams for upload larger files</li>
+              <li>WebSockets or Server Sent Events instead polling</li>
+              <li>Ability to remove individual files from the selected files list</li>
+              <li>Upload progress should reflect the uploading to AWS S3 instead uploading to the temporary storage</li>
+              <li>Download files directly with AWS SDK for JavaScript in the browser</li>
+            </ul>
+
+            <div class = "d-flex">
+              <button class = "btn btn-minisite-info">Hide</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <section id = "fileuploader-minisite">
       <div class = "container">

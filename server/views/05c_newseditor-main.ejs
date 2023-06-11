@@ -8,12 +8,93 @@
         <div class = "row">
           <div class = "minisite-info-text col-md-7 col-lg-8">
             <h1>Article editor</h1>
-            <p>A WYSIWYG editor for the news section. An input field / text area is hidden behind each element and paragraph, inheriting the styling of the corresponding HTML tag.</p>
-            <p>jQuery is used for the interactions such as inserting new fields, moving or deleting them and loading articles from or saving to the server.</p>
+            <p>A WYSIWYG editor for the news section. An input field / text area is hidden behind each element and paragraph. jQuery is used for all interactions.</p>
+            <p>Although it serves well for this use-case, this was mainly created for studying purposes. Using an ready-to-use embeddable rich text editor such as the open source <a href = "https://quilljs.com/">Quill</a> would be more suitable for a modern user experience rather than creating one from scratch.</p>
+            <div class = "d-flex">
+              <button class = "btn btn-minisite-info">Details</button>
+            </div>
           </div>
         </div>
       </div>
       <div class = "minisite-info-image d-none d-md-block">
+      </div>
+    </div>
+
+    <div class = "code-details">
+      <div class = "container">
+        <div class = "row">
+          <div class = "col">
+            <h2>Code highlights</h2>
+            <p>The What You See Is What You Get effect is created by the following CSS trick:</p>
+
+            <label class = "code-label">HTML - Article input fields</label>
+            <label class = "code-label-path">/server/views/05d_newseditor-article-editor.ejs</label>
+            <pre class = "code-box"><code class="language-html">&lt;div class = "article-input-group" element = "heading"&gt;
+  &lt;h2&gt;&lt;textarea class = "article-input" rows = "1"&gt;Heading&lt;/textarea&gt;&lt;/h2&gt;
+  ...
+&lt;/div&gt;
+
+&lt;div class = "article-input-group" element = "paragraph"&gt;
+  &lt;p&gt;&lt;textarea class = "article-input" rows = "1"&gt;Paragraph&lt;/textarea&gt;&lt;/p&gt;
+  ...
+&lt;/div&gt;
+
+&lt;div class = "article-input-group" element = "blockquote"&gt;
+  &lt;blockquote&gt;&lt;textarea class = "article-input" rows = "1"&gt;Quote&lt;/textarea&gt;&lt;/blockquote&gt;
+  ...
+&lt;/div&gt;</code></pre>
+
+          <label class = "code-label">CSS - Article input fields</label>
+          <label class = "code-label-path">/public/css/05_news.css</label>
+          <pre class = "code-box"><code class="language-css">.article-input {
+  background: inherit;
+  color: inherit;
+  font: inherit;
+  ...
+}</code></pre>
+
+            <p>Resizing textareas was achieved with the jQuery autoResize tool by James Padolsey. The feature to rearrange elements was achieved by the Sortable function of jQuery UI.</p>
+            <p>The JSON structure (presented at the news mini-site) is built by the following jQuery code. Later, this data is submitted to the server in slightly different ways depending on whether it is a new article or a draft, and whether it is saved as a draft or published.</p>
+            <label class = "code-label">jQuery - Reading input fields and creating the JSON structure.</label>
+            <label class = "code-label-path">/public/js/05_newseditor.js</label>
+            <pre class = "code-box"><code class="language-js">function readContents(){
+  let data = {
+    metadata: {
+      title: $('#article-fields').find('h2').find('textarea').val(),
+      date: new Date(),
+      id: $('#metadata-id').val(),
+      author: $('#metadata-author').val(),
+      summary: $('#metadata-summary').val(),
+      thumbnail: $('#metadata-thumbnail').val()
+    },
+    article: [],
+    comments: [] // Comments were not implemented finally
+  };
+  
+  let fields = $('#article-fields').find('.article-input-group');
+  for (let i = 0; i < fields.length; i++){
+    data.article[i] = {element: $(fields[i]).attr('element')};          
+    if(data.article[i].element === "image"){
+      data.article[i].content = $(fields[i]).find('input').val();          
+    } else {
+      data.article[i].content = $(fields[i]).find('textarea').val();
+    }
+  }
+
+  return data;
+};</code></pre>
+          
+            <h3>Potential improvements</h3>
+            <p>As stated before, a ready-to-use rich text editor, such as <a href = "https://quilljs.com/">Quill</a> would be a more convinient solution for this purpose, and further development of this editor wouldn't worth the effort. The only important issue is that currently anyone can edit the articles, who visits the site.</p>
+            <ul>
+              <li>Password protection for code editor with <a href = "https://www.passportjs.org/">Passport</a></li>
+            </ul>
+
+            <div class = "d-flex">
+              <button class = "btn btn-minisite-info">Hide</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

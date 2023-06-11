@@ -19,6 +19,7 @@
       <div class = "minisite-info-image d-none d-md-block">
       </div>
     </div>
+    
     <div class = "code-details">
       <div class = "container">
         <div class = "row">
@@ -27,6 +28,7 @@
             <p>The structure of each article can be represented as the following format. When an article is requested, it can be identified by its ID in the metadata, which is the same as the URL slug. The contents of the article are represented as an array, which will be displayed in the same order as stored in the database.</p>
 
             <label class = "code-label">JSON - Article structure</label>
+            <label class = "code-label-path">MongoDB, news-articles collection</label>
             <pre class = "code-box"><code class="language-js">{
   "metadata": {
     "id": "...",
@@ -53,7 +55,8 @@
 
           <p>The templating engine complements each element of the array with the corresponding HTML tags based on the type of of the element and renders the article for display. EJS uses <code>&lt;%</code> and <code>%&gt;</code> symbols for identifying JavaScript inside the HTML structure.</p>
 
-          <label class = "code-label">EJS - Templating engine</label>
+          <label class = "code-label">Node.js / EJS - Templating engine</label>
+          <label class = "code-label-path">/server/views/05b_news-article-display.ejs</label>
           <pre class = "code-box"><code class="language-ejs">&lt;% article.forEach((item, index) =&gt; { -%&gt;
   &lt;% if (item.element === "heading") { %&gt;
     &lt;h2&gt;&lt;%= item.content %&gt;&lt;/h2&gt;
@@ -71,8 +74,10 @@
             <p>This mini-site can be further improved by the following:</p>
             <ul>
               <li>Search bar using Elastisearch</li>
-              <li>News categories</li>
-              <li>Recommendations for related articles at the bottom of the displayed article</li>
+              <li>Different layout for important and less important articles</li>
+              <li>Categories (such as politics, economy, tech etc.)</li>
+              <li>Comment section</li>
+              <li>Recommendations for related articles at the bottom</li>
             </ul>
 
             <div class = "d-flex">

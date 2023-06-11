@@ -46,14 +46,14 @@ exports.upload = (req, res) => {
   });
 
   form.on('file', (formname, file) => {
-    console.log('form.on file.filepath', file.filepath);
-    console.log('form.on file.originalFilename', file.originalFilename);
+    // console.log('form.on file.filepath', file.filepath);
+    // console.log('form.on file.originalFilename', file.originalFilename);
 
     let awsKey = awsFolder + file.originalFilename;
 
     fs.readFile(file.filepath, (err, data) => {
-      console.log('readFile err', err);
-      console.log('readFile data', data);
+      if (err) console.log('readFile err', err);
+      // console.log('readFile data', data);
 
       let awsParams = {
         Bucket: process.env.CYCLIC_BUCKET_NAME,
@@ -70,7 +70,7 @@ exports.upload = (req, res) => {
         }
       });
     });
-  })
+  });
 
   form.once('end', () => {
     console.log('form.once end');
