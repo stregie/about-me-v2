@@ -1,8 +1,68 @@
 <%# <html> %>
 <%- include('00a_header.ejs') %>
 
-    <script defer="defer" src="/react/static/js/main.1029306c.js"></script><link href="/react/static/css/main.d8f32b68.css" rel="stylesheet">
+      <script defer="defer" src="/react/static/js/main.8219014d.js"></script>
+      <link href="/react/static/css/main.5268cc1e.css" rel="stylesheet">
+      <noscript>You need to enable JavaScript to run this app.</noscript>
+      <link rel = "stylesheet" href = "/css/07_react.css">
 
-    <noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div>
+      <div class = "minisite-info">
+        <div class = "container">
+          <div class = "row">
+            <div class = "minisite-info-text col-md-7 col-lg-8">
+              <h1>Image gallery</h1>
+              <p>Created with React, integrated into the existing multi-page Node.js app.</p>
+              <p>Displays images stored in the public directory within a modal. Supports arrow keys to change images. Responsive. Handles small and large, portrait and landscape images.</p>
+              <div class = "d-flex">
+                <button class = "btn btn-minisite-info">Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class = "minisite-info-image d-none d-md-block">
+        </div>
+      </div>
+
+
+
+      <div class = "code-details">
+        <div class = "container">
+          <div class = "row">
+            <div class = "col">
+              <h2>Code highlights</h2>
+              <p>This minisite was initiated with Create React App.</p>
+              <p>To integrate the Single Page React App to the existing Multi-Page App Node.js environment, the <code>&lt;div id = &quot;root&quot;&gt;&lt;&#47;div&gt;</code> as well as links to scripts and stylesheets from the default <code>index.html</code> were manually inserted to the corresponding Node.js view, <code>07_react.ejs</code>, so the navbar, footer and general CSS remains included.</p>
+
+              <label class = "code-label">HTML - Integrating React App</label>
+              <label class = "code-label-path">/server/views/07_react.ejs</label>
+              <pre class = "code-box"><code class="language-html">&lt;script defer="defer" src="/react/static/js/main.1029306c.js"&gt;&lt;/script&gt;
+&lt;link href="/react/static/css/main.d8f32b68.css" rel="stylesheet"&gt;
+
+&lt;div id="root"&gt;&lt;/div&gt;</code></pre>
+            
+              <p>The app consists of the following compontents. The structure aims to implement unidirectional parent-to-children data flow, however in some cases passing data from children to parent (such as selecting an image, or opening / closing the modal) was inevitable (marked with <span style = "color: #AA0000"><b>red</b></span>). All states were passed on as props as the small app does not require the useContext hook or state container such as Redux. Router was included in case more minisites are created in React in the future.</p>
+              <p></p>
+              <img class = "img-fluid" src = "/images/minisite-info/gallery-flowchart.png">
+              <h3>Potential improvements</h3>
+              <ul>
+                <li>Swiping for mobile</li>
+                <li>Zoom feature</li>  
+                <li>Close modal by clicking outside</li>
+                <li>Modern layout with the <a href = "https://masonry.desandro.com/">Masonry</a> library</li>
+              </ul>
+              <p>Instead of developing a new gallery module, an existing one could be also used such as <a href = "https://photoswipe.com/">PhotoSwipe</a>.</p>
+
+              <div class = "d-flex">
+                <button class = "btn btn-minisite-info">Hide</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="root"></div>
+
+
 <%- include('00b_footer.ejs') %>
 <%# </html> %>

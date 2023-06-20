@@ -21,19 +21,19 @@
     background-image: none;
   }
   #news-minisite-info .minisite-info-image{    
-    background-image: url("/images/design/News2.jpg");
+    background-image: url("/images/minisite-info/news.jpg");
   }
   #news-editor-minisite-info .minisite-info-image{
-    background-image: url("/images/design/newsroom.jpg");
+    background-image: url("/images/minisite-info/newsroom.jpg");
   }
 }
 
 @media (max-width: 767px) { /* sm */
   #news-minisite-info.minisite-info{
-    background-image: url("/images/design/News2-dark.jpg");
+    background-image: url("/images/minisite-info/news-dark.jpg");
   }   
   #news-editor-minisite-info.minisite-info{
-    background-image: url("/images/design/newsroom-dark.jpg");
+    background-image: url("/images/minisite-info/newsroom-dark.jpg");
   }
   .minisite-info-image{
     display: none;

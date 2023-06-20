@@ -1,21 +1,88 @@
-.aboutme-list-container{
-  background: var(--color-bg-3);
-  border-radius: 10px;
-  /*padding:  20px;*/
-  margin-bottom: 20px;
+/*#university-image{
+  background-image: url('/images/aboutme/new/bme.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+
+
+}*/
+.container-wide{
+  max-width: 1920px;
+  margin: auto;
 }
-.aboutme-list-container h4{
-  font-size: 1.8em;
-  font-weight: bold;
+.container-wide img{
+  float: left;
+  width: 502px;
+  height: 286.8px;
+}
+
+.grid-left-img{
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+@media (min-width: 992px) {
+  .grid-left-img div:nth-child(1){
+    grid-row-end: span 2;
+  }
+}
+@media (min-width: 992px) {
+}
+div.content-block{
+  padding-top: 30px;
+  padding-bottom: 10px;
+}
+#last-content-block{
+  padding-bottom: 40px;
 
 }
-.aboutme-list-container img{
-  border-radius: 10px 10px 0px 0px;
+#last-content-block .content-block-item{
+  margin-bottom: 0px;
 }
-.aboutme-list-container p{
-  margin-bottom: 10px;
-  line-height:  20px;
+
+#top-parallax{
+  background-attachment: fixed;
+  background-image: url('/images/aboutme/library2.jpg');
+/*  background-position: center calc(100% - 80px);*/
+  background-repeat: no-repeat;
+
 }
-.aboutme-list-container .text{
-  padding: 0px 30px 20px 30px;
+
+#bottom-parallax{
+  background-attachment: fixed;
+  background-color: black;
+  background-image: url('/images/aboutme/new/triglav.jpg');
+  background-position: center 100%;
+/*  background-position: center calc(100% - 80px);*/
+  background-repeat: no-repeat;
+/*  background-size: auto;*/
+}
+@media (min-width: 576px) {
+  #top-parallax{
+/*    background-position: center calc(300px - 30vw);*/
+/*    background-position: center calc(-10vw + 60px);*/
+    background-position: center calc(-10vw);
+    background-size: 100%;
+    height: 300px;
+  }
+  #bottom-parallax{
+    background-size: 100%;
+    height: 40vw;
+  }
+
+}
+@media (max-width: 575px) {
+  #top-parallax{  
+    background-position: center 60px;
+    background-size: 150%;
+    height: 55vw;
+  }
+  #bottom-parallax{  
+    background-size: 150%;
+    height: 64vw;
+  }
 }

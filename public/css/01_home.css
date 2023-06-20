@@ -2,7 +2,7 @@
   position: relative;
 }
 #welcome-image{
-
+  width: 100vw;
 }
 #welcome-text-container{
   background: linear-gradient(to right, #00000000, #000000AA);

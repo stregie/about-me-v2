@@ -3,12 +3,12 @@
     background-image: none;
   }
   .minisite-info-image{    
-    background-image: url("/images/design/snake.jpg");    
+    background-image: url("/images/minisite-info/snake.jpg");    
   }
 }
 @media (max-width: 767px) { /* sm */
   .minisite-info{
-    background-image :url("/images/design/snake-dark.jpg");
+    background-image :url("/images/minisite-info/snake-dark.jpg");
   }   
   .minisite-info-image{
     display: none;
@@ -73,8 +73,8 @@
 
 @media (min-width: 1400px) {
   #snake-game canvas{
-    height: 715px;
-    width: 1310px;
+    height: 616px;
+    width: 1120px;
   }  
 }
 @media (min-width: 1200px) and (max-width: 1399px) {

@@ -1,6 +1,5 @@
 <%# <html> %>
 <%- include('00a_header.ejs') %>
-
     <link rel = "stylesheet" href = "/css/05_news.css">
 
     <div id = "news-minisite-info" class = "minisite-info">
@@ -8,7 +7,7 @@
         <div class = "row">
           <div class = "minisite-info-text col-md-7 col-lg-8">
             <h1>News</h1>
-            <p>This minisite displays news articles in a predefined layout using a templating language (EJS, Embedded JavaScirpt). The articles are stored in MongoDB in JSON format.</p>
+            <p>This minisite displays news articles in a predefined layout using a templating language (<a href = "https://ejs.co/">EJS</a>, Embedded JavaScirpt). The articles are stored in MongoDB in JSON format.</p>
             <p>The German language was chosen as an alternative for Lorem Ipsum - to fill the site with content without drawing too much attention on the content itself.</p>
             <div class = "d-flex">
               <button class = "btn btn-minisite-info">Details</button>
@@ -19,6 +18,8 @@
       <div class = "minisite-info-image d-none d-md-block">
       </div>
     </div>
+
+
     
     <div class = "code-details">
       <div class = "container">
@@ -53,31 +54,31 @@
   }
 }</code></pre>
 
-          <p>The templating engine complements each element of the array with the corresponding HTML tags based on the type of of the element and renders the article for display. EJS uses <code>&lt;%</code> and <code>%&gt;</code> symbols for identifying JavaScript inside the HTML structure.</p>
+            <p>The templating engine complements each element of the array with the corresponding HTML tags based on the type of the element and renders the article for display. EJS uses <code>&lt;%</code> and <code>%&gt;</code> symbols for identifying JavaScript inside the HTML structure and <code>&lt;%=</code> and <code>%&gt;</code> symbols for inserting the value of a variable.</p>
 
-          <label class = "code-label">Node.js / EJS - Templating engine</label>
-          <label class = "code-label-path">/server/views/05b_news-article-display.ejs</label>
-          <pre class = "code-box"><code class="language-ejs">&lt;% article.forEach((item, index) =&gt; { -%&gt;
+            <label class = "code-label">Node.js / EJS - Templating engine</label>
+            <label class = "code-label-path">/server/views/05b_news-article-display.ejs</label>
+            <pre class = "code-box"><code class="language-ejs">&lt;% article.forEach((item, index) =&gt; { %&gt;
   &lt;% if (item.element === "heading") { %&gt;
     &lt;h2&gt;&lt;%= item.content %&gt;&lt;/h2&gt;
-  &lt;%}-%&gt;
+  &lt;% } %&gt;
   &lt;% if (item.element === "paragraph") { %&gt;
-    &lt;p&gt;&lt;%=item.content%&gt;&lt;/p&gt;
-  &lt;%}-%&gt;
+    &lt;p&gt;&lt;%= item.content %&gt;&lt;/p&gt;
+  &lt;% } %&gt;
   &lt;% if (item.element === "image") { %&gt;
     &lt;img class = "img-fluid" src = "&lt;%= item.content %&gt;"&gt;
-  &lt;%}-%&gt;
+  &lt;% } %&gt;
   ...
-&lt;% }); -%&gt;</code></pre>
+&lt;% }); %&gt;</code></pre>
           
             <h3>Potential improvements</h3>
             <p>This mini-site can be further improved by the following:</p>
             <ul>
               <li>Search bar using Elastisearch</li>
-              <li>Different layout for important and less important articles</li>
+              <li>Different layout for more and less important articles</li>
               <li>Categories (such as politics, economy, tech etc.)</li>
-              <li>Comment section</li>
               <li>Recommendations for related articles at the bottom</li>
+              <li>Comment section</li>
             </ul>
 
             <div class = "d-flex">

@@ -3,8 +3,9 @@
   --color-bg-01: #333333;
   --color-bg-02: #444444;
   --color-bg-03: #CCC;
+  --color-bg-04: #EEE;
   --color-bg-navbar-01: #000000;
-  --color-bg-navbar-02: #333333;
+  --color-bg-navbar-02: #252525;
   --color-bg-navbar-03: #555555;
   --color-navbar-border-01: #666;
   --color-border-01: #000000;
@@ -17,26 +18,6 @@
   --color-txt-02: #000000;
   --color-txt-03: #303030;
   --color-txt-04: #A2A2A2;
-
-  
-
-  /* colors from v1 design */
-
-  --color-bg-1: #f2f8f3ff;
-  --color-bg-2: #d6eadcff;
-  --color-bg-3: #bbddc3ff;
-  --color-bg-4: #9fd0a9ff;
-  --color-border-1: #3a7d44ff;
-  --color-border-2: #1a381eff;
-  /*--color-item-0: #fff;*/
-  /*--color-item-1: #f2f8f3ff;*/
-  /*--color-item-2: #9fd0a9ff;*/
-  --color-item-3: #3a7d44ff;
-  --color-item-4: #1a381eff;
-  /*--color-text-1: #000;*/
-  --color-text-2: #3a7d44ff;
-  --color-text-3: #2A5B31ff;
-  --color-text-4: #1a381eff;
 }
 html {
   background: var(--color-bg-navbar-01);
@@ -57,8 +38,8 @@ a:hover{
 
 .content-block{
   color: var(--color-txt-01);
-/*  font-family: "Inter", "Arial", sans-serif;*/
   padding: 60px 0px;
+  position: relative;
   font-size: 0.9rem;
 }
 div.content-block:nth-of-type(odd){
@@ -135,21 +116,22 @@ div.content-block:nth-of-type(even){
 
 .minisite-info{
   background: var(--color-bg-01);
+  background-position: center center;
   position: relative;
 }
 .minisite-info-image{
-  background-position-y: center;
+  background-position: center center;
   background-repeat: no-repeat;
 
 }
 @media (min-width: 1400px) {
   .minisite-info-image{  
-    background-position-x: right;
+/*    background-position-x: right;*/
   }
 }
 @media (max-width: 1399px) {
   .minisite-info-image{  
-    background-position-x: center;
+/*    background-position-x: center;*/
   }
 }
 
@@ -193,7 +175,7 @@ div.content-block:nth-of-type(even){
   padding-top: 30px;
   position: absolute;
   width: 100%;
-  z-index: 1000;
+  z-index: 100;
 }
 .code-label{
   display: block;

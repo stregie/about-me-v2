@@ -15,9 +15,10 @@
           </div>
         </div>
       </div>
-      <div class = "minisite-info-image d-none d-md-block">
-      </div>
+      <div class = "minisite-info-image d-none d-md-block"></div>
     </div>
+
+
 
     <div class = "code-details">
       <div class = "container">
@@ -26,12 +27,13 @@
             <h2>Code highlights</h2>
             <p>This game was written while I was learning the basics of JavaScirpt. It made me especially proud as the main idea occured to me during morning commute, and it worked.</p>
             <p>The core of the game is the game loop. The main logic can be represented with the following flow chart. A keyboard event initiates a new cycle. The flow chart is slightly simplified for the sake of clarity.</p>            
-            <img class = "img-fluid" src = "/images/design/snake-flowchart.jpg">            
-            <p>The position of each element on the board (blocks of the snake body, apple, walls) are defined as a 2D array.</p>
+            <p>The position of each object on the board (blocks of the snake body, apple) are defined as an array containing the coordinates of each block.</p>
+            <img class = "img-fluid" src = "/images/minisite-info/snake-flowchart.jpg">
+            <p>Changing the speed of the game is achieved by modifying the length of the cycle. This would also allow "cheating", when a player collects scores on low speed and finishes on high speed. Therefore the lowest speed level is recorded in the highscore.           
             <h3>Potential improvements</h3>
             <ul>
               <li>Restarting the game results in multiple instances of the game in simultaneous execution. It is avoided by forcing a page restart when a second game is initiated. This can be fixed by restructuring the code.</li>
-              <li>Functions invoked in the game loop contain external if / else logic and invocations of further functions as side effects. Therefore, just by looking at the game loop code does not fully reveal the logic of the game. This would also require the restructuring of the code.</li>
+              <li>Functions invoked in the game loop contain external if / else logic and invocations of further functions as side effects. It is not the best coding practice since just by looking at the game loop code does not fully reveal the logic of the game. This would also require the restructuring of the code.</li>
               <li>It can be further improved by advanced graphics with a rendering system, such as <a href = "https://pixijs.com/">PixiJS</a>.</li>
             </ul>
 
@@ -45,10 +47,12 @@
 
     <div></div>
 
+
+
+
     <div class = "content-block">
-      <div class = "container" id = "aaa">
-        <div class = "row">
-      
+      <div class = "container">
+        <div class = "row">      
             <div id = "game-controls">
               <div id = "speed-controls" class = "col-6">
                 <button id = "btn-dec-speed" class = "btn btn-simple btn-sp">-</button>

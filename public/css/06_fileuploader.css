@@ -8,12 +8,12 @@
     background-image: none;
   }
   .minisite-info-image{    
-    background-image: url("/images/design/fileuploader.jpg");    
+    background-image: url("/images/minisite-info/fileuploader.jpg");    
   }
 }
 @media (max-width: 767px) { /* sm */
   .minisite-info{
-    background-image: url("/images/design/fileuploader-dark.jpg");
+    background-image: url("/images/minisite-info/fileuploader-dark.jpg");
   }   
   .minisite-info-image{
     display: none;

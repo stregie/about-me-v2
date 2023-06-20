@@ -8,8 +8,8 @@
         <div class = "row">
           <div class = "minisite-info-text col-md-7 col-lg-8">
             <h1>Article editor</h1>
-            <p>A WYSIWYG editor for the news section. An input field / text area is hidden behind each element and paragraph. jQuery is used for all interactions.</p>
-            <p>Although it serves well for this use-case, this was mainly created for studying purposes. Using an ready-to-use embeddable rich text editor such as the open source <a href = "https://quilljs.com/">Quill</a> would be more suitable for a modern user experience rather than creating one from scratch.</p>
+            <p>A WYSIWYG editor for the news section. An input field / text area is hidden behind each element (such as heading, paragraph or image). jQuery is used for all interactions.</p>
+            <p>Although it serves well for this use-case, this was mainly created for studying purposes. A ready-to-use embeddable rich text editor such as the open source <a href = "https://quilljs.com/">Quill</a> would be more suitable for a modern user experience rather than creating one from scratch.</p>
             <div class = "d-flex">
               <button class = "btn btn-minisite-info">Details</button>
             </div>
@@ -19,6 +19,8 @@
       <div class = "minisite-info-image d-none d-md-block">
       </div>
     </div>
+
+
 
     <div class = "code-details">
       <div class = "container">
@@ -54,7 +56,7 @@
 }</code></pre>
 
             <p>Resizing textareas was achieved with the jQuery autoResize tool by James Padolsey. The feature to rearrange elements was achieved by the Sortable function of jQuery UI.</p>
-            <p>The JSON structure (presented at the news mini-site) is built by the following jQuery code. Later, this data is submitted to the server in slightly different ways depending on whether it is a new article or a draft, and whether it is saved as a draft or published.</p>
+            <p>The JSON structure (presented at the news mini-site) is constructed by the following jQuery code. Later, this data is submitted to the server with the appropriate API depending on whether it is a new article or a draft, and whether it is saved as a draft or published.</p>
             <label class = "code-label">jQuery - Reading input fields and creating the JSON structure.</label>
             <label class = "code-label-path">/public/js/05_newseditor.js</label>
             <pre class = "code-box"><code class="language-js">function readContents(){
@@ -87,7 +89,7 @@
             <h3>Potential improvements</h3>
             <p>As stated before, a ready-to-use rich text editor, such as <a href = "https://quilljs.com/">Quill</a> would be a more convinient solution for this purpose, and further development of this editor wouldn't worth the effort. The only important issue is that currently anyone can edit the articles, who visits the site.</p>
             <ul>
-              <li>Password protection for code editor with <a href = "https://www.passportjs.org/">Passport</a></li>
+              <li>Password protection for code editor with <a href = "https://www.passportjs.org/">Passport.js</a></li>
             </ul>
 
             <div class = "d-flex">
@@ -125,10 +127,14 @@
           </div>
         </div>
 
+
+
         <div id = "editor-list-welcome">
           <p>Feel free to edit any of the articles in the draft or in the published section. No worries, the database has a backup.</p>
           <p>You can also give a new URL slug to an existing draft to "save as".</p>
         </div>
+
+
 
       <% if (drafts.length > 0) { %>      
         <section id = "editor-list-drafts" class = "editor-article-list d-none">
@@ -144,6 +150,8 @@
           </div>
         </section>
       <% } %>
+
+      
 
       <% if (published.length > 0) { %>
         <section id = "editor-list-published" class = "editor-article-list d-none">

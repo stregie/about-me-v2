@@ -104,7 +104,8 @@ function uploadFiles(){
     console.log(request.response);
     $('#fileuploader-dropzone label').text(request.response);
     $('#progress-display').css("height", 0 + "%");
-    displayFilesOnServer();          
+    displayFilesOnServer();
+    $('#selected-files').html('<li>None</li>');      
   });
 
   request.send(data);

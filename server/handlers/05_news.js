@@ -156,15 +156,3 @@ exports.delete = (req, res) => {
     });
   });
 };
-
-exports.images = (req, res) => {
-  fs.readdir('./public/images/news/', (err, files) => {
-    let data = {
-      fileNames: []
-    };
-    files.forEach(file => {
-        data.fileNames.push(file);        
-    });
-    res.render('05e_newseditor-images.ejs', data);
-  })
-}

@@ -83,7 +83,7 @@ html{
 .navigation-menu .navigation-dropdown-btn .navigation-dropdown-arrow{
   height: 10px;
   width: 10px;
-  background-image: url("/images/design/arrow_white.png");
+  background-image: url("/images/header-footer/arrow_white.png");
   background-size: contain;
   background-repeat: no-repeat;
   display: inline-block;
@@ -183,7 +183,7 @@ html{
     max-height: 0px;
     overflow: hidden;
     transition: max-height 0.3s;
-    z-index: 100;
+    z-index: 110;
   }
   .navigation-dropdown:hover > .navigation-dropdown-menu{  
     max-height: 320px;
@@ -212,7 +212,7 @@ html{
     z-index: 10000;*/
   }
   .navigation ul{
-    z-index: 100000;
+    z-index: 10000;
   }
   .navigation li{
 
@@ -319,7 +319,6 @@ html{
     position: fixed;
     right: 0;
     top: 150;
-/*    transition: right 0.6s, visibility 0.6s;*/
     transition: right 0.6s;
     width: 100%;
   }
@@ -340,6 +339,22 @@ html{
 }
 
 footer{
-  height: 80px;
   background: var(--color-bg-navbar-01);
+}
+.footer-urls{
+  display: block;
+  padding: 20px 0px;
+  text-align: right;
+}
+.footer-urls div{
+  display: block;
+}
+.footer-urls img{
+  height: 40px;
+  opacity: 0.7;
+  padding: 0px 10px;
+  transition: opacity 0.2s;
+}
+.footer-urls img:hover{
+  opacity: 1;
 }

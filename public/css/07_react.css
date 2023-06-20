@@ -1,0 +1,22 @@
+/* Minisite info */
+.minisite-info{
+}
+@media (min-width: 768px) { /* md */
+  .minisite-info{
+    background-image: none;
+  }
+  .minisite-info-image{    
+    background-image: url("/images/minisite-info/gallery.jpg");    
+  }
+}
+@media (max-width: 767px) { /* sm */
+  .minisite-info{
+    background-image: url("/images/minisite-info/gallery-dark.jpg");
+  }   
+  .minisite-info-image{
+    display: none;
+  }
+}
+#select-album label {
+  display: inline-block !important;
+}
