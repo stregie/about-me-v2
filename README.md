@@ -1,9 +1,10 @@
 Portfolio site of Tamás Solymos, second version.
 
-URL and repositories:
+Deployed at:
 http://solymostamas.cyclic.app/
-https://github.com/stregie/about-me-v2
-https://github.com/stregie/about-me-v2-reactdev/
+
+Repository for React module (Image gallery):
+https://github.com/stregie/about-me-react-ts/
 
 Frontend:
 - HTML: /server/views/
