@@ -7,7 +7,7 @@
         <div class = "row">
           <div class = "minisite-info-text col-md-7 col-lg-8">
             <h1>Snake</h1>
-            <p>The classic snake game on a 40 × 22 board. Written in native JavaScript, graphics created with Canvas.</p>
+            <p>The classic snake game on a 40 × 22 board. Written in native JavaScript, graphics created with Canvas. Highscores stored in a PostgreSQL database.</p>
             <p>Controls: <b>W, S, A, D</b> or <b>arrow keys</b> on desktop, on-screen buttons on mobile. Reloads page to restart game.</p>
             <div class = "d-flex">
               <button class = "btn btn-minisite-info">Details</button>
@@ -32,8 +32,9 @@
             <h3>Potential improvements</h3>
             <ul>
               <li>Restarting the game results in multiple instances of the game in simultaneous execution. It is avoided by forcing a page restart when a second game is initiated. This can be fixed by restructuring the code.</li>
+              <li>Rarely the new apple is spawned at the head of the snake. In such cases it does not consume it, and the apple is shown on the body of the snake until it leaves it behind.</li>
               <li>Functions invoked in the game loop contain external if / else logic and invocations of further functions as side effects. It is not the best coding practice since just by looking at the game loop code does not fully reveal the logic of the game. This would also require the restructuring of the code.</li>
-              <li>It can be further improved by advanced graphics with a rendering system, such as <a href = "https://pixijs.com/">PixiJS</a>.</li>
+              <li>Graphics can be improved with a rendering system, such as <a href = "https://pixijs.com/">PixiJS</a>.</li>
             </ul>
 
             <div class = "d-flex">

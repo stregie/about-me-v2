@@ -115,20 +115,25 @@ function snakeGame() {
 
   const handleKeyPress = (k) => {
     snake.currentDirection = [...snake.direction]; // Stores the last direction before the keystrok
+    console.log(k.code);
 
     switch (k.code){
       case 'KeyW':
+      case 'ArrowUp':
         k.preventDefault(); // to prevent browser scrolling
         snake.direction = [0, -1];
         break;
+      case 'ArrowDown':
       case 'KeyS':
         k.preventDefault();
         snake.direction = [0, 1];
         break;
+      case 'ArrowLeft':
       case 'KeyA':
         k.preventDefault();
         snake.direction = [-1, 0];
         break;
+      case 'ArrowRight':
       case 'KeyD':
         k.preventDefault();
         snake.direction = [1, 0];
@@ -152,7 +157,7 @@ function snakeGame() {
   };
   document.addEventListener('keydown', handleKeyPress, false);
 
-  /* Mobile view control keys */
+  // Mobile view control keys. One of my ugliest hacks.
   document.querySelector('#snake-up').onclick = () => {
     let k = {code: "KeyW"}
     k.preventDefault = () => true;

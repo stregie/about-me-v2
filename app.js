@@ -22,7 +22,6 @@ app.use(function (req, res, next) {
   res.status(404).render('00c_404', null);
 });
 
-const PORT = process.env.PORT;
-app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}, Environment: ${process.env.NODE_ENV}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Server listening on ${process.env.PORT}, Environment: ${process.env.NODE_ENV}`);
 });

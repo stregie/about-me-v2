@@ -19,10 +19,6 @@ exports.fileList = (req, res) => {
         filename: imgfile,
         filesize: stats.size
       };
-      // filelist[index].filesize = stats.size;
-      // filelist[index] = {filename: imgfile};
-      // let stats = fs.statSync(dirpath + "/" + imgfile);
-      // filelist[index].filesize = stats.size;
     });
     res.json(filelist);
   });

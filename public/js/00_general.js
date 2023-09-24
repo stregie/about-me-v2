@@ -5,5 +5,4 @@ $(document).ready(()=>{
 function toggleCodeDetails(){
   // $('.code-details').toggle(300, 'linear', blurPage);
   $('.code-details').toggle(300);
-  console.log('a');
 };
