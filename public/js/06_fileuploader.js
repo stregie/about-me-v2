@@ -91,7 +91,7 @@ function uploadFiles(){
   }
 
   let request = new XMLHttpRequest();
-  request.open('PUT', '/fileuploader/file'); 
+  request.open('POST', '/fileuploader/file'); 
 
   request.upload.addEventListener('progress', function(e) {
     let percent_completed = Math.floor((e.loaded / e.total) * 100);

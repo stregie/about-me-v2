@@ -41,8 +41,8 @@ exports.upload = (req, res) => {
 
   form.parse(req, (err, fields, files) => {
     if (err) console.log('form.parse err', err);
-    console.log('form.parse files', files);
-    console.log('form.parse files fired');
+    // console.log('form.parse files', files);
+    // console.log('form.parse files fired');
   });
 
   form.on('file', (formname, file) => {
@@ -73,7 +73,7 @@ exports.upload = (req, res) => {
   });
 
   form.once('end', () => {
-    console.log('form.once end');
+    // console.log('form.once end');
     res.send(`Files uploaded successfully.`);
   });
 };
@@ -102,7 +102,7 @@ exports.download = (req, res) => {
           fs.unlink(tmpPath, (err) => {
             if (err) console.log(err);
           });
-          console.log('temporary file deleted');
+          // console.log('temporary file deleted');
         }
       });
     }

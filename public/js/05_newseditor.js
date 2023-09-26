@@ -125,21 +125,24 @@ function decide(action, collection){
 
 function submit(action, collection){
   if (action === "insert"){
-    var url = '/news/editor/insert/?db=' + collection;
+    var url = '/news/editor/article/?db=' + collection;
+    var method = 'POST';
     var data = readContents();
   }
   if (action === "update"){
-    var url = '/news/editor/update?db=' + collection;
+    var url = '/news/editor/article?db=' + collection;
+    var method = 'PUT';
     var data = readContents();
   }
   if (action === "delete"){
-    var url = '/news/editor/delete?db=' + collection;
+    var url = '/news/editor/article?db=' + collection;
+    var method = 'DELETE';
     var data = {
       id: $('#metadata-id').val()
     };
   }
   fetch(url, {
-    method: 'POST',
+    method: method,
     headers: {
       'Content-Type': 'application/json'
     },

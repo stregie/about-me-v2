@@ -31,13 +31,13 @@ router.post('/snake/score/', snake.saveScore);
 router.get('/snake/highscore/', snake.getHighscore);
 
 router.get('/news/editor/checkid/', news.checkID);
-router.post('/news/editor/insert', news.insert);
-router.post('/news/editor/update', news.update);
-router.post('/news/editor/delete', news.delete);
+router.post('/news/editor/article', news.insert);
+router.put('/news/editor/article', news.update);
+router.delete('/news/editor/article', news.delete);
 
 router.get('/fileuploader/filelist', fileuploader.fileList);
-router.put('/fileuploader/file', fileuploader.upload);
 router.get('/fileuploader/file', fileuploader.download);
+router.post('/fileuploader/file', fileuploader.upload);
 router.delete('/fileuploader/file', fileuploader.delete);
 
 router.get('/reactapi/getfilelist/', react.fileList);
