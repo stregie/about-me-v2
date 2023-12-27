@@ -5,18 +5,31 @@
 
 
   <section id = "maincontent">
+
     <div id = "welcome">
       <img id = "welcome-image" src = "/images/main/st.jpg" class = "img-fluid">
       <div id = "welcome-text-container">
-        <h2>Hi, I'm Tamás Solymos</h2>
-        <p>And here's what I'm capable of</p>
+        <h2 class = "before-scroll">Hi, I'm Tamás Solymos</h2>
+        <p class = "before-scroll">And here's what I'm capable of</p>
       </div>
     </div>
 
 
+    <div class = "content-block" style = "padding: 0px">
+    </div>
+
+<!--     <div id = "breakpoint-detector" style = "text-align: center" class = "d-non">
+      <div class = "d-block d-sm-none">xs</div>
+      <div class = "d-none d-sm-block d-md-none">sm</div>
+      <div class = "d-none d-md-block d-lg-none">md</div>
+      <div class = "d-none d-lg-block d-xl-none">lg</div>
+      <div class = "d-none d-xl-block d-xxl-none">xl</div>
+      <div class = "d-none d-xxl-block">xxl</div>
+    </div> -->
+
 
     <div id = "main-introduction" class = "content-block">
-      <div class = "container">
+      <div class = "container before-scroll">
         <div class = "row">
           <div class = "col-sm-12">
             <div>I am a chemical engineer from pharma R&D, learning web development since 2021.<br>
@@ -28,18 +41,34 @@
 
 
 
-    <div class = "content-block">
-      <div class = "container">
+    <div id = "main-stack" class = "content-block">
+      <div class = "container before-scroll">
         <div class = "row">
           <div class = "col-sm-12 col-lg-7">
             <div class = "content-block-item">
               <h3>Aim for full-stack</h3>
               <p>Specialization is essential, but at this point I tried to strike a balance between learning frontend and backend development to be able to create a fully functional website. For this site, I used the following languages, technologies and concepts:</p>
-              <p><b>Frontend:</b> HTML, CSS, JavaScript (ES6+), Bootstrap 5, jQuery, React, TypeScript<br>
-              <b>Backend:</b> Node.js (Express), npm, REST APIs, MongoDB, PostgreSQL, AWS S3</p>
-              <p>I also learned the basics of Vue.Js, Next.js, Sass, Tailwind CSS, Django (Python), although I haven't yet finished any projects with them suitable for showcase.</p>
+              <p class = "main-stack-skills"><u>Frontend</u>: HTML, CSS, Bootstrap 5, JavaScript (ES6+), jQuery, React, TypeScript<br>
+              <u>Backend</u>: Node.js (Express), npm, REST APIs, MongoDB, PostgreSQL, AWS S3</p>
+              <p>I also learned the basics of <b>Vue.Js, Next.js, Sass, Tailwind CSS, Python (Django / Flask)</b>, although I haven't yet finished any projects with them suitable for showcase.</p>
             </div>
-            
+          </div>
+          <div class = "col-sm-12 col-lg-5 d-flex">
+            <img src = "/images/main/laptop-desk.jpg" class = "img-fluid align-self-center">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id = "main-strengths" class = "content-block">
+      <div class = "container before-scroll">
+        <div class = "row">
+          <!-- <div class = "col-md-5 d-none d-xl-flex"> -->
+          <div class = "col-xl-5 d-none d-xl-flex">
+            <img src = "/images/main/XRPD.jpg" class = "img-fluid align-self-center">
+          </div>
+
+          <div class = "col-sm-12 col-xl-7">            
             <div class = "content-block-item">
               <h3>Scientific background</h3>
               <p>My experience in pharmaceutical industry and my educational background provides numerous transferable skills such as analytical thinking, attention to details, ability to break down complex problems into their simple elements, adaptability and continuous learning.</p>
@@ -50,18 +79,19 @@
               <p>Even if a ready-to-use solution was available, I wrote the majority of the code from scratch whenever I could to gain a deeper understanding of the underlaying concepts. As I experienced, this approach also provided the ability adopt new libraries and frameworks with ease.</p>
             </div>
           </div>
-            
-          <div class = "col-sm-12 col-lg-5 d-flex">
-            <img src = "/images/main/laptop-desk.jpg" class = "img-fluid align-self-center">
+
+          <div class = "col-sm-12 d-flex d-xl-none justify-content-center">
+            <img src = "/images/main/XRPD.jpg" class = "img-fluid">
           </div>
         </div>
       </div>
     </div>
+            
 
 
 
-    <div class = "content-block">
-      <div class = "container">
+    <div id = "main-minisites" class = "content-block">
+      <div class = "container before-scroll">
         <div class = "row">
           <div class = "col-sm-10 offset-sm-1 content-block-top-text">
             <h2>Mini-sites</h2>
@@ -74,10 +104,11 @@
 
         <div class = "row">
           <div class = "col-sm-6 col-lg-4 g-2">
-            <a href = "/snake/"><div class = "main-minisite-item">
+            <a href = "/snake/"><div id = "main-minisite-item-snake" class = "main-minisite-item before-scroll">
+            <!-- <a href = "/snake/"><div class = "main-minisite-item"> -->
               <h4>Snake</h4>
               <div class = "main-minisite-image">
-                <img class = "img-fluid" src = "/images/main/snake2.jpg">
+                <img class = "img-fluid" src = "/images/main/snake.jpg">
                 <div class = "main-minisite-item-text">
                   In-browser version of the classic snake game, created with native JavaScript. Highscores are stored in a PostgreSQL database.<br><br>
                   The game can be played both on desktop and mobile.
@@ -87,7 +118,7 @@
           </div>
 
           <div class = "col-sm-6 col-lg-4 g-2">
-            <a href = "/news/"><div class = "main-minisite-item">
+            <a href = "/news/"><div id = "main-minisite-item-news" class = "main-minisite-item before-scroll">
               <h4>News</h4>
               <div class = "main-minisite-image">
                 <img class = "img-fluid" src = "/images/main/news.jpg">
@@ -100,7 +131,7 @@
           </div>
 
           <div class = "col-sm-6 col-lg-4 g-2">
-            <a href = "/news/editor/"><div class = "main-minisite-item">
+            <a href = "/news/editor/"><div id = "main-minisite-item-editor" class = "main-minisite-item before-scroll">
               <h4>Article Editor</h4>
               <div class = "main-minisite-image">
                 <img class = "img-fluid" src = "/images/main/editor.jpg">
@@ -112,7 +143,7 @@
           </div>
 
           <div class = "col-sm-6 col-lg-4 offset-lg-2 g-2">
-            <a href = "/fileuploader/"><div class = "main-minisite-item">
+            <a href = "/fileuploader/"><div id = "main-minisite-item-fileuploader" class = "main-minisite-item before-scroll">
               <h4>File uploader</h4>
               <div class = "main-minisite-image">
                 <img class = "img-fluid" src = "/images/main/file-uploader.jpg">
@@ -125,7 +156,7 @@
           </div>
 
           <div class = "col-sm-6 offset-sm-3 col-lg-4 offset-lg-0 g-2">
-            <a href = "/react/gallery/"><div class = "main-minisite-item">
+            <a href = "/react/gallery/"><div id = "main-minisite-item-gallery" class = "main-minisite-item before-scroll">
               <h4>Gallery</h4>
               <div class = "main-minisite-image">
                 <img class = "img-fluid" src = "/images/main/gallery.jpg">

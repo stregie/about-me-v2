@@ -3,7 +3,51 @@ $(document).ready(function(){
   $('#contact-enable').click(enableFields);
   $('#contact-disable').click(disableFields);
   // $('#contact-switch').click(switchView);
+  document.querySelector("#welcome-text-container h2").classList.remove("before-scroll");
+  document.querySelector("#welcome-text-container p").classList.remove("before-scroll");
+  
+  // Triggers animation when element appears on display
+  document.addEventListener("scroll", (event) => {
+    let timer = 200;
+    let displayBottom = window.scrollY + document.documentElement.clientHeight;
+    let mainIntroOffset = document.querySelector("#main-introduction").offsetTop;
+    let mainStackOffset = document.querySelector("#main-stack").offsetTop;
+    let mainStrengthsOffset = document.querySelector("#main-strengths").offsetTop;
+    let mainMinisitesOffset = document.querySelector("#main-minisites").offsetTop;
+    
+    if (mainIntroOffset <= displayBottom){
+      document.querySelector("#main-introduction div").classList.remove("before-scroll");
+    }
+    if (mainStackOffset <= displayBottom - 60){
+      document.querySelector("#main-stack div").classList.remove("before-scroll");
+    }
+    if (mainStrengthsOffset <= displayBottom - 60){
+      document.querySelector("#main-strengths div").classList.remove("before-scroll");
+    }
+    if (mainMinisitesOffset <= displayBottom - 60){
+      document.querySelector("#main-minisites div").classList.remove("before-scroll");
+      document.querySelector("#main-minisite-item-snake").classList.remove("before-scroll");
+      setTimeout(() => {
+        document.querySelector("#main-minisite-item-news").classList.remove("before-scroll");
+      }, timer);
+      setTimeout(() => {
+        document.querySelector("#main-minisite-item-editor").classList.remove("before-scroll");
+      }, 2 * timer);
+      setTimeout(() => {
+        document.querySelector("#main-minisite-item-fileuploader").classList.remove("before-scroll");
+      }, 3 * timer);
+      setTimeout(() => {
+        document.querySelector("#main-minisite-item-gallery").classList.remove("before-scroll");
+      }, 4 * timer);
+
+    }
+    console.log("scroll triggered");
+  });
+
+  document.dispatchEvent(new CustomEvent('scroll'));
 });
+
+
 
 // Contact submit handler
 function submit(){

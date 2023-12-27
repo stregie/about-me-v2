@@ -46,7 +46,7 @@ div.content-block{
 
 #top-parallax{
   background-attachment: fixed;
-  background-image: url('/images/aboutme/library2.jpg');
+  background-image: url('/images/aboutme/library.jpg');
 /*  background-position: center calc(100% - 80px);*/
   background-repeat: no-repeat;
 
@@ -55,7 +55,7 @@ div.content-block{
 #bottom-parallax{
   background-attachment: fixed;
   background-color: black;
-  background-image: url('/images/aboutme/new/triglav.jpg');
+  background-image: url('/images/aboutme/triglav.jpg');
   background-position: center 100%;
 /*  background-position: center calc(100% - 80px);*/
   background-repeat: no-repeat;

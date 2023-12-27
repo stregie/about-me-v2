@@ -1,3 +1,6 @@
+#maincontent {
+  --timer: 1s;
+}
 #welcome{
   position: relative;
 }
@@ -26,10 +29,64 @@
   font-size: 2.5vw;
   text-shadow: 0px 0px 5px black;
 }
+#welcome-text-container h2,
+#welcome-text-container p{
+  transition: transform var(--timer) ease-in-out, opacity var(--timer);
+}
+#welcome-text-container h2.before-scroll,
+#welcome-text-container p.before-scroll{
+  opacity: 0;
+  transform: translate(0px, 8vw);
+}
 #main-introduction {
   font-size: 1.4rem;
   font-style: italic;
   text-align: right;
+}
+#main-introduction div,
+#main-stack div,
+#main-strengths div,
+#main-minisites div {
+  transition: transform var(--timer) ease-out, opacity var(--timer) ease-in;
+}
+#main-introduction div.before-scroll{
+  opacity: 0;
+  transform: translate(100vw);
+} 
+#main-stack div.before-scroll{
+  opacity: 0;
+  transform: translate(-100vw);
+} 
+#main-strengths div.before-scroll{
+  opacity: 0;
+  transform: translate(100vw);
+}
+#main-minisites .container.before-scroll{
+  opacity: 0;
+  transform: translate(0px, 300px);
+}
+#main-minisite-item-snake.before-scroll,
+#main-minisite-item-news.before-scroll,
+#main-minisite-item-editor.before-scroll,
+#main-minisite-item-fileuploader.before-scroll,
+#main-minisite-item-gallery.before-scroll
+{
+  opacity: 0;
+  transform: translate(0px, 800px);
+}
+
+.content-block-item h3{
+  color: var(--color-item-01);
+  font-size: 3rem;
+}
+#main-stack .main-stack-skills{
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+#main-minisites h2 {
+  color: var(--color-item-01);
+  font-size: 3.5rem;
 }
 
 .main-minisite-image{
@@ -57,7 +114,7 @@ a .main-minisite-item{
   overflow: hidden;
 }
 .main-minisite-image img{
-  transition: transform 0.3s;  
+  transition: transform 0.3s !important;  
 }
 .main-minisite-item:hover .main-minisite-image img{
   transform: scale(1.05);
@@ -117,7 +174,7 @@ a .main-minisite-item{
     position: absolute;
     padding: 40px;
     text-align: center;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s !important;
   }
   .main-minisite-item:hover .main-minisite-item-text{
     display: block;

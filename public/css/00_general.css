@@ -41,6 +41,7 @@ a:hover{
   padding: 60px 0px;
   position: relative;
   font-size: 0.9rem;
+  overflow: hidden;
 }
 div.content-block:nth-of-type(odd){
   background: var(--color-bg-01);
@@ -222,7 +223,7 @@ pre.code-box{
 }
 @media (max-width: 699px){
   #error404-page{
-    background-image: url("/images/main/404_ice_color correction.jpg");
+    background-image: url("/images/main/404_ice.jpg");
     height: 56.25vw;
     padding: 4.5vw 3vw;
   }
