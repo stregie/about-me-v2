@@ -1,0 +1,114 @@
+[
+  {
+    "id": "001",
+    "filename": "note01.txt",
+    "extension": "txt",
+    "size": 346,
+    "path": "/Grimstad/notes/"
+  },
+  {
+    "id": "002",
+    "filename": "note02.txt",
+    "extension": "txt",
+    "size": 7532,
+    "path": "/Grimstad/notes/"
+  },
+  {
+    "id": "003",
+    "filename": "note03.txt",
+    "extension": "txt",
+    "size": 8765,
+    "path": "/Grimstad/notes/"
+  },
+  {
+    "id": "004",
+    "filename": "vessels.xlsx",
+    "extension": "xlsx",
+    "size": 1947823,
+    "path": "/Grimstad/ships/"
+  },
+  {
+    "id": "005",
+    "filename": "contract.docx",
+    "extension": "docx",
+    "size": 6843886,
+    "path": "/Grimstad/contracts/dufour/2023/"
+  },
+  {
+    "id": "006",
+    "filename": "sails.xlsx",
+    "extension": "xlsx",
+    "size": 2985644,
+    "path": "/Larvik/ships/dragon/"
+  },
+  {
+    "id": "007",
+    "filename": "sails.xlsx",
+    "extension": "xlsx",
+    "size": 954788,
+    "path": "/Larvik/ships/asso/"
+  },
+  {
+    "id": "008",
+    "filename": "members.xlsx",
+    "extension": "xlsx",
+    "size": 5552370,
+    "path": "/Larvik/"
+  },
+  {
+    "id": "009",
+    "filename": "rentals.xlsx",
+    "extension": "xlsx",
+    "size": 32622945,
+    "path": "/Larvik/"
+  },
+  {
+    "id": "010",
+    "filename": "DSC2328.jpg",
+    "extension": "jpg",
+    "size": 4873985,
+    "path": "/Florø/gallery/regatta/Vårseilasen 28/"
+  },
+  {
+    "id": "011",
+    "filename": "DSCF2329.jpg",
+    "extension": "jpg",
+    "size": 38567298,
+    "path": "/Florø/gallery/regatta/Vårseilasen 28/"
+  },
+  {
+    "id": "012",
+    "filename": "DSCF2330.jpg",
+    "extension": "jpg",
+    "size": 4847684,
+    "path": "/Florø/gallery/regatta/Vårseilasen 28/"
+  },
+  {
+    "id": "013",
+    "filename": "DSCF2331.jpg",
+    "extension": "jpg",
+    "size": 3932548,
+    "path": "/Florø/gallery/regatta/Vårseilasen 28/"
+  },
+  {
+    "id": "014",
+    "filename": "DSCF2332.jpg",
+    "extension": "jpg",
+    "size": 4187675,
+    "path": "/Florø/gallery/regatta/Vårseilasen 28/"
+  },
+  {
+    "id": "015",
+    "filename": "members.xlsx",
+    "extension": "jpg",
+    "size": 3768303,
+    "path": "/Florø/"
+  },
+  {
+    "id": "016",
+    "filename": "rentals.xlsx",
+    "extension": "xlsx",
+    "size": 7672346,
+    "path": "/Florø/"
+  }
+]

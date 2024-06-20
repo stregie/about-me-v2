@@ -1,8 +1,7 @@
 const fs = require('fs');
 const formidable = require('formidable');
 const path = require('path');
-
-const AWS = require('aws-sdk');
+const AWS = require('@aws-sdk/client-s3');
 const s3 = new AWS.S3;
 
 const awsFolder = 'about-me/fileuploader/';
@@ -61,7 +60,7 @@ exports.upload = (req, res) => {
         Body: data
       };
 
-      s3.upload(awsParams, (err, data) => {
+      s3.putObject(awsParams, (err, data) => {
         if(err) {
           console.log(err);
           res.status(err.statusCode).send("Upload was not successful: " + err.code);
@@ -90,10 +89,9 @@ exports.download = (req, res) => {
 
   s3.getObject(params, (err, data) => {
     if (err) {
-      console.log(err);
       res.status(err.statusCode).send("Download unsuccessful: " + err.code);
     } else {
-      fs.writeFileSync(tmpPath, data.Body);
+      fs.writeFileSync(tmpPath, data.Body.toString());
       
       res.download(tmpPath, (err) => {
         if (err) {

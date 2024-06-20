@@ -141,7 +141,7 @@ exports.insert = (req, res) => {
     } else {
       let dbo = db.db("introduction-site");
 
-      dbo.collection(coll).insertOne(data, function(err, result) {
+      dbo.collection("fileuploader-files").insertOne(data, function(err, result) {
         if (err) {
           console.log(err);
           res.status(502).send(`502: Delivery failed: database error.`);

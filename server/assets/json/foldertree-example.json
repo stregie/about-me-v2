@@ -1,0 +1,80 @@
+[
+  {
+    "name": "Florø",
+    "expanded": false,
+    "children": [
+      {
+        "name": "gallery",
+        "expanded": false,
+        "children": [
+          {
+            "name": "regatta",
+            "expanded": false,
+            "children": [
+              {
+                "name": "Vårseilasen 28",
+                "expanded": false,
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Grimstad",
+    "expanded": false,
+    "children": [
+      {
+        "name": "contracts",
+        "expanded": false,
+        "children": [
+          {
+            "name": "dufour",
+            "expanded": false,
+            "children": [
+              {
+                "name": "2023",
+                "expanded": false,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "notes",
+        "expanded": false,
+        "children": []
+      },
+      {
+        "name": "ships",
+        "expanded": false,
+        "children": []
+      }
+    ]
+  },
+  {
+    "name": "Larvik",
+    "expanded": false,
+    "children": [
+      {
+        "name": "ships",
+        "expanded": false,
+        "children": [
+          {
+            "name": "asso",
+            "expanded": false,
+            "children": []
+          },
+          {
+            "name": "dragon",
+            "expanded": false,
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]

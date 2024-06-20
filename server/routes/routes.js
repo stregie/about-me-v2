@@ -6,7 +6,8 @@ const contact = require('../handlers/03_contact.js');
 const snake = require('../handlers/04_snake.js');
 const news = require('../handlers/05_news.js');
 const fileuploader = require('../handlers/06_fileuploader.js');
-const react = require('../handlers/07_react.js');
+const fileuploaderVue = require('../handlers/06_fileuploader-vue.js');
+const react = require('../handlers/07_gallery-react.js');
 
 
 
@@ -42,6 +43,16 @@ router.delete('/fileuploader/file', fileuploader.delete);
 
 router.get('/reactapi/getfilelist/', react.fileList);
 router.get('/reactapi/images/:album/:image', react.sendImage);
+
+router.get('/vueapi/fetchtest', fileuploaderVue.fetchtest);
+router.put('/vueapi/upload', fileuploaderVue.upload);
+router.get('/vueapi/filelist', fileuploaderVue.filelist);
+router.get('/vueapi/foldertree', fileuploaderVue.foldertree);
+router.get('/vueapi/file', fileuploaderVue.download);
+router.delete('/vueapi/file', fileuploaderVue.deletefile);
+
+router.get('/vueapi/filelisttest', fileuploaderVue.filelisttest);
+router.get('/vueapi/foldertreetest', fileuploaderVue.foldertreetest);
 
 
 
