@@ -14,13 +14,13 @@ const folderTreeExample = require('../assets/json/foldertree-example.json');
 
 const awsFolder = 'about-me/fileuploaderVue/';
 
-exports.fetchtest = (req, res) => {
+export const fetchtest = (req, res) => {
   setTimeout(() => {
     res.send("Stuff from the server");
   }, 2000);
 };
 
-exports.upload = (req, res) => {
+export const upload = (req, res) => {
   const form = formidable({ multiples: true });
 
   const extensionOf = (filename) => {
@@ -106,7 +106,7 @@ exports.upload = (req, res) => {
   });
 };
 
-exports.filelist = (req, res) => {
+export const filelist = (req, res) => {
   MongoClient.connect(mongoUrl, { useUnifiedTopology: true }, function(err, db) {
     if (err) {
       console.log(err);
@@ -127,7 +127,7 @@ exports.filelist = (req, res) => {
   });
 };
 
-exports.foldertree = (req, res) => {
+export const foldertree = (req, res) => {
   MongoClient.connect(mongoUrl, { useUnifiedTopology: true }, function(err, db) {
     if (err) {
       console.log(err);
@@ -171,7 +171,7 @@ exports.foldertree = (req, res) => {
   });
 };
 
-exports.download = (req, res) => {
+export const download = (req, res) => {
   const fileid = req.query.id;
   const awsKey = awsFolder + fileid;
   const awsParams = {
@@ -226,7 +226,7 @@ exports.download = (req, res) => {
   });
 };
 
-exports.deletefile = (req, res) => {
+export const deletefile = (req, res) => {
   const fileid = req.query.id;
   console.log("Delete", fileid);
 
@@ -252,11 +252,11 @@ exports.deletefile = (req, res) => {
 };
 
 // Test stuff
-exports.filelisttest = (req, res) => {
+export const filelisttest = (req, res) => {
   res.json(fileListExample);
 };
 
-exports.foldertreetest = (req, res) => {
+export const foldertreetest = (req, res) => {
   let tree = [];
   let uniquePaths = listUniquePaths(fileListExample);
   let pathArrayList = uniquePaths.map(pathString => {

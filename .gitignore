@@ -1,6 +1,7 @@
 # Custom files
 .gitignore
 development.env
+.env
 cmdhere.lnk
 start_browsersync.lnk
 start_server.lnk

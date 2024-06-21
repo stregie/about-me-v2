@@ -1,7 +1,8 @@
-const { Client } = require('pg');
+import pg from 'pg';
+const { Client } = pg;
 const pgConfig = process.env.POSTGRESQL_URL;
 
-exports.saveScore = (req, res) => {
+export const saveScore = (req, res) => {
   let data = req.body;
   let sqlQuery = {
     text: 'INSERT INTO snake_highscore (Player, Score, Speed) VALUES($1, $2, $3);',
@@ -23,7 +24,7 @@ exports.saveScore = (req, res) => {
   });
 };
 
-exports.getHighscore = (req, res) => {
+export const getHighscore = (req, res) => {
   let sqlQuery = 'SELECT * FROM snake_highscore ORDER BY Score DESC, Speed DESC, ID DESC LIMIT 10;';
 
   const client = new Client(pgConfig);

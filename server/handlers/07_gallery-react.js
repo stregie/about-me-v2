@@ -1,7 +1,12 @@
-const path = require('path');
-const fs = require('fs');
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
 
-exports.fileList = (req, res) => {
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export const fileList = (req, res) => {
   let album = req.query.album;
   let dirpath = path.join(__dirname, '..', '..', '/public/images/', album);
   
@@ -24,7 +29,7 @@ exports.fileList = (req, res) => {
   });
 };
 
-exports.sendImage = (req, res) => {
+export const sendImage = (req, res) => {
   let album = req.params.album;
   let imgname = req.params.image;
 

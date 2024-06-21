@@ -1,16 +1,13 @@
-// import path from 'path';
-// import * as envVars from './server/config/env-vars.js';
-// import * as express from 'express';
-// import * as ejs from 'ejs';
-// import * as bodyParser from 'body-parser';
-
-const path = require('path');
-const envVars = require('./server/config/env-vars.js');
-const express = require('express');
-const ejs = require('ejs');
-const bodyParser = require('body-parser');
+import 'dotenv/config';
+import express from 'express';
+import path from 'path';
+import ejs from 'ejs';
+import { fileURLToPath } from 'url';
+import routes from './server/routes/routes.js';
 
 const app = express();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.engine('ejs', ejs.__express);
 app.set('view engine', 'ejs');
@@ -19,9 +16,7 @@ app.set('views', path.join(__dirname, 'server', 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json()) 
 app.use(express.urlencoded({ extended: true }))
-app.use(bodyParser.urlencoded({ extended: true }))
 
-const routes = require('./server/routes/routes');
 app.use('/', routes);
 
 app.use(function (req, res, next) {
@@ -31,3 +26,5 @@ app.use(function (req, res, next) {
 app.listen(process.env.PORT, () => {
   console.log(`Server listening on ${process.env.PORT}, Environment: ${process.env.NODE_ENV}`);
 });
+
+export default app;

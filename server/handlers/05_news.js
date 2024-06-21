@@ -1,8 +1,10 @@
-const MongoClient = require('mongodb').MongoClient;
-const fs = require('fs');
+import { MongoClient } from 'mongodb';
+
 const mongoUrl = process.env.MONGODB_URL;
 
-exports.news = (req, res) => {
+
+
+export const news = (req, res) => {
   MongoClient.connect(mongoUrl, { useUnifiedTopology: true }, function(err, db) {
     if (err) {
       console.log(err);
@@ -24,7 +26,7 @@ exports.news = (req, res) => {
   });
 };
 
-exports.newsArticle = (req, res) => {
+export const newsArticle = (req, res) => {
   let id = req.params.articleid;
 
   MongoClient.connect(mongoUrl, { useUnifiedTopology: true }, function(err, db) {
@@ -47,7 +49,7 @@ exports.newsArticle = (req, res) => {
   });
 };
 
-exports.articleListEdit = (req, res) => {
+export const articleListEdit = (req, res) => {
   var data = {};
   MongoClient.connect(mongoUrl, { useUnifiedTopology: true }, function(err, db) {
     if (err) {
@@ -81,7 +83,7 @@ exports.articleListEdit = (req, res) => {
   });
 };
 
-exports.articleEdit = (req, res) => {
+export const articleEdit = (req, res) => {
   let id = req.query.id;
   let coll = req.query.db;
   if (!id){
@@ -108,7 +110,7 @@ exports.articleEdit = (req, res) => {
   }
 };
 
-exports.checkID = (req, res) => {
+export const checkID = (req, res) => {
   let id = req.query.id;
   let coll = req.query.db;
 
@@ -130,9 +132,12 @@ exports.checkID = (req, res) => {
   });
 };
 
-exports.insert = (req, res) => {
+export const insertArticle = (req, res) => {
+  console.log("insertArticle");
   let coll = req.query.db;
   let data = req.body;
+  console.log(data);
+  console.log(coll);
   
   MongoClient.connect(mongoUrl, { useUnifiedTopology: true }, function(err, db) {
     if (err) {
@@ -141,12 +146,13 @@ exports.insert = (req, res) => {
     } else {
       let dbo = db.db("introduction-site");
 
-      dbo.collection("fileuploader-files").insertOne(data, function(err, result) {
+      dbo.collection(coll).insertOne(data, function(err, result) {
         if (err) {
           console.log(err);
           res.status(502).send(`502: Delivery failed: database error.`);
         } else {
           res.send("Article inserted to " + coll);
+          console.log("Articcle inserted to " + coll);
           db.close();
         }
       });
@@ -154,7 +160,7 @@ exports.insert = (req, res) => {
   });
 };
 
-exports.update = (req, res) => {
+export const updateArticle = (req, res) => {
   let coll = req.query.db;
   let data = req.body;
   let id = data.metadata.id;
@@ -185,7 +191,7 @@ exports.update = (req, res) => {
   });
 };
 
-exports.delete = (req, res) => {
+export const deleteArticle = (req, res) => {
   let id = req.body.id;
   let coll = req.query.db;
 

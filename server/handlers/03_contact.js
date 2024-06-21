@@ -1,7 +1,7 @@
-const MongoClient = require('mongodb').MongoClient;
+import { MongoClient } from 'mongodb';
 const mongoUrl = process.env.MONGODB_URL;
 
-exports.submit = (req, res) => {
+export const submit = (req, res) => {
   let mongodat = {
     name: req.body.contactname,
     mail: req.body.contactmail,
