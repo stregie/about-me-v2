@@ -5,6 +5,7 @@ const mongoUrl = process.env.MONGODB_URL;
 
 
 export const news = (req, res) => {
+  console.log("MongoUrl", mongoUrl);
   MongoClient.connect(mongoUrl, { useUnifiedTopology: true }, function(err, db) {
     if (err) {
       console.log(err);
