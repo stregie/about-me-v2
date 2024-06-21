@@ -1,6 +1,6 @@
 import pg from 'pg';
 const { Client } = pg;
-const pgConfig = process.env.POSTGRESQL_URL;
+const pgConfig = process.env.POSTGRES_URL;
 
 export const saveScore = (req, res) => {
   let data = req.body;
