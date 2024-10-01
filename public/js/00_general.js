@@ -1,5 +1,6 @@
 $(document).ready(()=>{
   $('.btn-minisite-info').click(toggleCodeDetails);
+  // toggleCodeDetails();
 });
 
 function toggleCodeDetails(){

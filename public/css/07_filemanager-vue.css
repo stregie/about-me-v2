@@ -1,0 +1,32 @@
+/*:root{
+  --color-fileuploader-highlight-01: #555;
+}*/
+#file-manager-details-topics details {
+  margin-bottom: 20px;
+}
+
+#file-manager-details-topics summary {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+#file-manager-details-topics summary:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 768px) { /* md */
+  .minisite-info{
+    background-image: none;
+  }
+  .minisite-info-image{    
+    background-image: url("/images/minisite-info/filemanager.jpg");    
+  }
+}
+@media (max-width: 767px) { /* sm */
+  .minisite-info{
+    background-image: url("/images/minisite-info/filemanager-dark.jpg");
+  }   
+  .minisite-info-image{
+    display: none;
+  }
+}

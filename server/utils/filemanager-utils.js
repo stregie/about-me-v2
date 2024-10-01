@@ -1,12 +1,12 @@
 // pathArray example: ['Folder1', 'Subfolder3', 'Sub-subfolder2']
 // pathString example: '/Folder1/Subfolder3/Sub-subfolder2/'
 
-function pathToArray(pathString){
+export function pathToArray(pathString){
   return pathString.slice(1, -1).split("/");
 };
 
 // Lists all pathString values from a jaon containing file records. Removes duplicates
-function listUniquePaths(filesjson){
+export function listUniquePaths(filesjson){
   let allPaths = filesjson.map(fileEntry => {
     return fileEntry.path;
   });
@@ -16,7 +16,7 @@ function listUniquePaths(filesjson){
 };
 
 // Finds a specific node in a tree by pathArray. Returns the copy of that node
-function readNode(tree, pathArray){
+export function readNode(tree, pathArray){
   if(!tree || tree.length === 0) {
     return null;
   }
@@ -39,7 +39,7 @@ function readNode(tree, pathArray){
 
 // Determines the index of each node and child node
 // Example: ['Folder1', 'Subfolder3', 'Sub-subfolder2'] => [0, 2, 1]
-function findPathIndex(tree, pathArray, pathIndexArray){
+export function findPathIndex(tree, pathArray, pathIndexArray){
   if(!pathIndexArray){
     pathIndexArray = [];
   }
@@ -71,7 +71,7 @@ function findPathIndex(tree, pathArray, pathIndexArray){
 
 // Inserts a new node as the last child specified by a pathArray.
 // Returns a copy, the original needs to be updated
-function insertNode(tree, pathArray, nodeToInsert){
+export function insertNode(tree, pathArray, nodeToInsert){
   let pathIndex = findPathIndex(tree, pathArray);
   if (!pathIndex) {
     tree.push(nodeToInsert);
@@ -88,7 +88,7 @@ function insertNode(tree, pathArray, nodeToInsert){
 
 // Replaces the specified key to the specified value of a node specified by a pathArray
 // Returns a copy, the original needs to be updated
-function updateNode(tree, pathArray, key, value){
+export function updateNode(tree, pathArray, key, value){
   let pathIndex = findPathIndex(tree, pathArray);
   let node = tree[pathIndex[0]];
   for (let i = 1; i < pathIndex.length; i++){
@@ -98,5 +98,3 @@ function updateNode(tree, pathArray, key, value){
 
   return tree;
 };
-
-module.exports = { pathToArray, listUniquePaths, readNode, findPathIndex, insertNode, updateNode};

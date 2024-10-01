@@ -4,8 +4,6 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById('btn-inc-speed').addEventListener('click', function(){ changeSpeed(+1) });
   document.getElementById('btn-highscore').addEventListener('click', showHighScore);
   document.getElementById('btn-back').addEventListener('click', backToGame);
-
-
 });
 
 var firstGame = true;
@@ -224,7 +222,6 @@ function showHighScore(){
   .then(res => res.json())
   .then(data => {    
     displayData(data);
-    console.log(data);
   })
 };
 

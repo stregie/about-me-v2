@@ -91,24 +91,29 @@ function decide(action, collection){
     alert("This article doesn't have an ID!");
     return
   }
-  let geturl = '/news/editor/checkid/?id=' + id + '&db=' + collection;
+  let geturl = '/news/editor/checkid/?id=' + id + '&coll=' + collection;
 
   fetch(geturl)
   .then(res => res.json())
   .then(exist => {
     if(exist === true && action === "save"){
+      console.log('exist, save -> update in drafts');
       submit("update", "news-drafts");
     }
     if(exist === false && action === "save"){
+      console.log('!exist, save -> insert in drafts');
       submit("insert", "news-drafts");
     }
     if(exist === true && action === "publish"){
+      console.log('exist, publish -> update in articles');
       submit("update", "news-articles");
     }
     if(exist === false && action === "publish"){
+      console.log('!exist, publish -> insert in articles');
       submit("insert", "news-articles");
     }
     if(exist === true && action === "delete"){
+      console.log(`!exist, publish -> delete in ${collection}`);
       console.log("decide delete", collection);
       submit("delete", collection);
     }
@@ -125,17 +130,17 @@ function decide(action, collection){
 
 function submit(action, collection){
   if (action === "insert"){
-    var url = '/news/editor/article/?db=' + collection;
+    var url = '/news/editor/article/?coll=' + collection;
     var method = 'POST';
     var data = readContents();
   }
   if (action === "update"){
-    var url = '/news/editor/article?db=' + collection;
+    var url = '/news/editor/article/?coll=' + collection;
     var method = 'PUT';
     var data = readContents();
   }
   if (action === "delete"){
-    var url = '/news/editor/article?db=' + collection;
+    var url = '/news/editor/article/?coll=' + collection;
     var method = 'DELETE';
     var data = {
       id: $('#metadata-id').val()
@@ -171,7 +176,7 @@ function deleteCheck(){
     alert("This article doesn't have an ID!");
     return
   }
-  let geturl = '/news/editor/checkid/?id=' + id + '&db=' + db;
+  let geturl = '/news/editor/checkid/?id=' + id + '&coll=' + db;
   fetch(geturl)
   .then(res => res.json())
   .then(response => {

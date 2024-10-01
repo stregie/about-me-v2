@@ -142,8 +142,8 @@
           <div class = "row">
           <% drafts.forEach((articleItem, index) => { %>
             <div class = "article-summary col-lg-4 col-sm-6">
-              <a href = "/news/editor/edit/?id=<%= articleItem.metadata.id %>&db=news-drafts"><img class = "img-fluid img-border" src = "<%= articleItem.metadata.thumbnail %>"></a>
-              <a href = "/news/editor/edit/?id=<%= articleItem.metadata.id %>&db=news-drafts"><h3><%= articleItem.metadata.title %></h3></a>
+              <a href = "/news/editor/edit/?id=<%= articleItem.metadata.id %>&coll=news-drafts"><img class = "img-fluid img-border" src = "<%= articleItem.metadata.thumbnail %>"></a>
+              <a href = "/news/editor/edit/?id=<%= articleItem.metadata.id %>&coll=news-drafts"><h3><%= articleItem.metadata.title %></h3></a>
               <p><%= articleItem.metadata.summary %></p>
             </div>
           <% }) %>
@@ -159,8 +159,8 @@
           <div class = "row">
           <% published.forEach((articleItem, index) => { %>
             <div class = "article-summary col-lg-4 col-sm-6">
-              <a href = "/news/editor/edit/?id=<%= articleItem.metadata.id %>&db=news-articles"><img class = "img-fluid img-border" src = "<%= articleItem.metadata.thumbnail %>"></a>
-              <a href = "/news/editor/edit/?id=<%= articleItem.metadata.id %>&db=news-articles"><h3><%= articleItem.metadata.title %></h3></a>
+              <a href = "/news/editor/edit/?id=<%= articleItem.metadata.id %>&coll=news-articles"><img class = "img-fluid img-border" src = "<%= articleItem.metadata.thumbnail %>"></a>
+              <a href = "/news/editor/edit/?id=<%= articleItem.metadata.id %>&coll=news-articles"><h3><%= articleItem.metadata.title %></h3></a>
               <p><%= articleItem.metadata.summary %></p>
             </div>
           <% }) %>

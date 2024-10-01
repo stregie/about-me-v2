@@ -1,0 +1,204 @@
+<%# <html> %>
+<%- include('00a_header.ejs') %>
+    <link rel = "stylesheet" href = "/css/07_filemanager-vue.css">
+
+    <script type="module" crossorigin src="/vue/assets/index-CFsMe33B.js"></script>
+    <link rel="stylesheet" crossorigin href="/vue/assets/index-CUYABdyE.css">
+          
+
+    <div class = "minisite-info">
+      <div class = "container">
+        <div class = "row">
+          <div class = "minisite-info-text col-md-7 col-lg-8">
+            <h1>File manager</h1>
+            <p>A Vue.js app to store and manage files in the cloud, similar in some aspects to OneDrive or Google Drive. Vercel Blob is used as an external file storage, metadata stored in MongoDB.</p>
+            <p>Uploads currently limited at 4MB.</p>
+            <div class = "d-flex">
+              <button class = "btn btn-minisite-info">Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class = "minisite-info-image d-none d-md-block">
+      </div>
+    </div>
+
+    <div class = "code-details">
+      <div class = "container">
+        <div class = "row">
+          <div class = "col">
+            <h2>App details</h2>
+            <p>If you'd like to read more about how the app works, please choose from one of the topics below.</p>
+
+            <div id = "file-manager-details-topics">
+              <!-- <details open> -->
+              <details>
+                <summary>App structure, components</summary>
+                <img class = "img-fluid" src = "/images/minisite-info/filemanager-diagram.jpg">
+              </details>
+
+              <details>
+                <summary>Global state management with Pinia</summary>
+                <p>The majority of the logic behind the app can be found in the state management store, Pinia, as most states, computed properties and methods need to be accessible by multiple components.</p>
+                <h4>Stores:</h4>
+                <ul>
+                  <li>Component Display: Visibility of UI elements</li>
+                  <li>Files: related to files only (available files, file actions)</li>
+                  <li>Folders: related to folders only (available folders, folder tree, generation, folder actions)</li>
+                  <li>Files and Folders: related to both (such as sortby and filter options)</li>
+                  <li>Upload: handling uploads</li>
+                </ul>
+              </details>
+
+              <details>
+                <summary>File metadata in MongoDB</summary>
+                <p>Each file has a record in MongoDB containing the following properties:</p>
+                <label class = "code-label">File metadata example</label>
+                <pre class = "code-box"><code class="language-js">{
+  "_id": {
+    "$oid": "4551faaff02bcaa63bb8f1be"
+  },
+  "fileid": "2e4c6f5d-6162-33f8-af01-7497d70ba5fd",
+  "filename": "memo.docx",
+  "extension": "docx",
+  "size": 6437250,
+  "path": "/meetings/20241126_product-kickoff/",
+  "status": "available",
+  "uploaddate": {
+    "$date": "2024-11-28T06:26:55.524Z"
+  },
+  "url": "https://80ddburmm4eyts3l.public.blob.vercel-storage.com/about-me/filemanager/2e4c6f5d-6162-33f8-af01-7497d70ba5fd",
+  "downloadUrl": "https://80ddburmm4eyts3l.public.blob.vercel-storage.com/about-me/filemanager/2e4c6f5d-6162-33f8-af01-7497d70ba5fd?download=1"
+}</code></pre>
+              <p>All data displayed in the app (such as filename, size, path etc.) are based on these entries. Created when a new file is uploaded.</p>
+              </details>
+
+              <details>
+                <summary>Folder tree parser</summary>
+                <p>In order to display the folders in a tree structure in the sidebar component, the following object is generated from the path properties of file metadatas.</p>
+
+                <label class = "code-label">Folder tree example</label>
+                <label class = "code-label-path">folderTree state in /src/stores/use-folders-store.js</label>
+                <pre class = "code-box"><code class="language-js">[
+  {
+    "name": "Folder-1",
+    "expanded": true,
+    "children": [
+      {
+        "name": "Subfolder-1",
+        "expanded": false,
+        "children": []
+      },
+      {
+        "name": "Subfolder-2",
+        "expanded": false,
+        "children": [
+          {
+            "name": "Sub-subfolder-1",
+            "expanded": false,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Folder-2",
+    "expanded": false,
+    "children": []
+  }
+]</code></pre>
+
+                <p>The tree generation is consisted of the following steps:</p>
+                <ol>
+                  <li>Start with an empty tree.</li>
+                  <li>Collect all unique paths into an array.</li>
+                  <li>Determine for each folder in the array: Can it be found in the existing tree?</li>
+                  <li>If not, insert it.</li>
+                </ol>
+
+                <label class = "code-label">Tree generating</label>
+                <label class = "code-label-path">folderTree state in /src/utils/foldertree.js</label>
+                <pre class = "code-box"><code class="language-js">function createFolderTree(filesjson){
+  let tree = [];
+  let uniquePaths = listUniquePaths(filesjson);
+  let pathArrayList = uniquePaths.map(pathString => {
+    return pathToArray(pathString);
+  });
+
+  pathArrayList.forEach(pathArray => {
+    let parentPathArray = [];
+    for (let i = 0; i < pathArray.length; i++){
+      let currentPathArray = pathArray.slice(0, i + 1);
+      if (readNode(tree, currentPathArray) === null){
+        let nodeToInsert = {
+          "name": pathArray[i],
+          "expanded": false,
+          "children": []
+        }
+
+        let newTree = insertNode(tree, parentPathArray, nodeToInsert);
+        tree = newTree;
+      }
+      parentPathArray = pathArray.slice(0, i + 1);
+    }
+  });
+
+  return tree;
+}</code></pre>
+              </details>
+
+              <details>
+                <summary>External file storage service (Vercel Blob), server operations.</summary>
+                <p>The files are uploaded and stored to Vercel Blob, a solution similar to Amazon S3.</p>
+                <p>Although the service allows direct access from the client for both downloads and uploads, these operations are currently directed through the Node.js server to allow more control over it. On the downside, the size of uploaded files are limited.</p><p>All files are uploaded to the same directory saved by their unique IDs as filenames.</p>
+              </details>
+
+              <details>
+                <summary>Integratig the Vue.js app to the portfolio site</summary>
+                <p>Similarly to the Image Gallery App, the single page Vue app had to be integrated to the existing site to keep the original header and footer.</p>
+                <p>To achieve this, the following HTML code from the index.html of the Vue bundle is inserted to the HTML code of the current page.</p>
+                <label class = "code-label">Integration of Vue App</label>
+                <label class = "code-label-path">/server/views/06_filemanager-vue.ejs</label>
+                <pre class = "code-box"><code class="language-html">&lt;html lang = "en"&gt;
+  &lt;head&gt;
+    ...
+    &lt;script type="module" crossorigin src="/vue/assets/index-_QLA5UIX.js"&gt;&lt;/script&gt;
+    &lt;link rel="stylesheet" crossorigin href="/vue/assets/index-BMF2kqAh.css"&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    ...
+    &lt;nav&gt;...&lt;/nav&gt;
+    &lt;div class = "minisite-info"&gt;...&lt;/div&gt;
+    &lt;div id = "app"&gt;&lt;/div&gt;
+    ...
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+              </details>
+
+              <details>
+                <summary>Potential improvements</summary>
+                <ul>
+                  <li>CRON jobs could be set to automatically delete files in Trash after 30 days.</li>
+                  <li>A checkbox could be placed in the filelist to allow operatione on multiple files or folders at the same time.</li>
+                  <li>Drag & drop uploads could be implemented for easier uploads.</li>
+                  <li>Detailed view could display the files in medium-sized tiles to provide additional information such as preview of images, documents.</li>
+                  <li>Refactoring the code using the setup API of Vue instead the outdated options API.</li>
+                  <li>Loading skeleton</li>
+                </ul>
+              </details>
+            </div>            
+
+            <div class = "d-flex">
+              <button class = "btn btn-minisite-info">Hide</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="app"></div>
+
+<%- include('00b_footer.ejs') %>
+<%# </html> %>

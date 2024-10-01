@@ -1,217 +1,196 @@
 import { MongoClient } from 'mongodb';
 
 const mongoUrl = process.env.MONGODB_URL;
+const dbName = 'introduction-site';
 
 
 
-export const news = (req, res) => {
-  console.log("MongoUrl", mongoUrl);
-  MongoClient.connect(mongoUrl, { useUnifiedTopology: true }, function(err, db) {
-    if (err) {
-      console.log(err);
-      res.status(502).send(`502: Delivery failed: database error.`);
-    } else {
-      let dbo = db.db("introduction-site");
+export const news = async (req, res) => {
+  const client = new MongoClient(mongoUrl);
 
-      dbo.collection("news-articles").find({}).toArray(function(err, result) {
-        if (err) {
-          console.log(err);
-          res.status(502).send(`Delivery failed: database error.`);
-        } else {
-          let data = {newsList: result.reverse()}
-          res.render('05a_news-main.ejs', data);
-          db.close();
-        }
-      });
-    }      
-  });
-};
+  try {
+    await client.connect();
+    const db = client.db(dbName);
+    const collection = db.collection('news-articles');
+    const result = await collection.find({}).toArray();
 
-export const newsArticle = (req, res) => {
-  let id = req.params.articleid;
+    const articleList = {newsList: result.reverse()}
 
-  MongoClient.connect(mongoUrl, { useUnifiedTopology: true }, function(err, db) {
-    if (err) {
-      console.log(err);
-      res.status(502).send(`502: Delivery failed: database error.`);
-    } else {
-      let dbo = db.db("introduction-site");
-
-      dbo.collection("news-articles").findOne({'metadata.id': id}, function(err, result) {
-        if (err) {
-          console.log(err);
-          res.status(502).send(`502: Delivery failed: database error.`);
-        } else {
-          res.render('05b_news-article-display.ejs', result);
-          db.close();
-        }
-      });
-    }
-  });
-};
-
-export const articleListEdit = (req, res) => {
-  var data = {};
-  MongoClient.connect(mongoUrl, { useUnifiedTopology: true }, function(err, db) {
-    if (err) {
-      console.log(err);
-      res.status(502).send(`502: Delivery failed: database error.`);
-    } else {
-      let dbo = db.db("introduction-site");
-
-      const readDatabase = Promise.all([
-        new Promise((resolve, reject) => {
-          dbo.collection("news-drafts").find({}).toArray(function(err, result) {
-            data.drafts = result.reverse();
-            resolve("Drafts articles read from database");
-          });
-        }),
-
-        new Promise((resolve, reject) => {
-          dbo.collection("news-articles").find({}).toArray(function(err, result) {
-            data.published = result.reverse();
-            resolve("Published articles read from database");
-          });
-        })    
-      ]).catch(err => console.log("Promise was rejected!", err));
-
-      readDatabase.then(results => {
-        data.responses = results;
-        res.render('05c_newseditor-main.ejs', data);
-        db.close();
-      });
-    }
-  });
-};
-
-export const articleEdit = (req, res) => {
-  let id = req.query.id;
-  let coll = req.query.db;
-  if (!id){
-    let data = {articleData: null}
-    res.render('05d_newseditor-article-editor.ejs', data);
-  } else {    
-    MongoClient.connect(mongoUrl, { useUnifiedTopology: true }, function(err, db) {
-      if (err) {
-        console.log(err);
-        res.status(502).send(`502: Delivery failed: database error.`);
-      } else {
-        let dbo = db.db("introduction-site");
-
-        dbo.collection(coll).findOne({'metadata.id': id}, function(err, result) {
-          let data = {
-            articleData: result,
-            db: coll
-          }
-          // console.log(data);
-          res.render('05d_newseditor-article-editor.ejs', data);
-        });
-      }
-    });
+    res.render('05a_news-main.ejs', articleList);
+  } catch(error) {
+    console.error(error);
+    res.status(502).send("Database error");;
+  } finally {
+    client.close();
   }
 };
 
-export const checkID = (req, res) => {
-  let id = req.query.id;
-  let coll = req.query.db;
+export const newsArticle = async (req, res) => {
+  const client = new MongoClient(mongoUrl);
+  const id = req.params.articleid;
 
-  MongoClient.connect(mongoUrl, { useUnifiedTopology: true }, function(err, db) {
-    if (err) {
-      console.log(err);
-      res.status(502).send(`502: Delivery failed: database error.`);
-    } else {
-      let dbo = db.db("introduction-site");
-
-      dbo.collection(coll).findOne({'metadata.id': id}, function(err, result) {
-        if(result){
-          res.json(true);
-        } else {
-          res.json(false);
-        }
-      });
-    }
-  });
+  try {
+    await client.connect();
+    const db = client.db(dbName);
+    const collection = db.collection('news-articles');
+    const article = await collection.findOne({'metadata.id': id});
+    
+    res.render('05b_news-article-display.ejs', article);
+  } catch(error) {
+    console.error(error);
+    res.status(502).send("Database error");;
+  } finally {
+    client.close();
+  }
 };
 
-export const insertArticle = (req, res) => {
-  console.log("insertArticle");
-  let coll = req.query.db;
-  let data = req.body;
-  console.log(data);
-  console.log(coll);
+export const articleListEdit = async (req, res) => {
+  const client = new MongoClient(mongoUrl);
+
+  try {
+    await client.connect();
+    const db = client.db(dbName);
+    const drafts = await db.collection('news-drafts').find({}).toArray();
+    const published = await db.collection('news-articles').find({}).toArray();
+    
+    const data = {
+      drafts: drafts.reverse(),
+      published: published.reverse()
+    };
+    
+    res.render('05c_newseditor-main.ejs', data);
+  } catch(error) {
+    console.error(error);
+    res.status(502).send("Database error");;
+  } finally {
+    client.close();
+  }
+};
+
+export const articleEdit = async (req, res) => {
+  const client = new MongoClient(mongoUrl);
+  const id = req.query.id;
+  const collectionName = req.query.coll;
+  // console.log(`articleEdit, id: ${id}; coll: ${collectionName}`);
   
-  MongoClient.connect(mongoUrl, { useUnifiedTopology: true }, function(err, db) {
-    if (err) {
-      console.log(err);
-      res.status(502).send(`502: Delivery failed: database error.`);
-    } else {
-      let dbo = db.db("introduction-site");
+  if (!id) {
+    let data = {articleData: null}
+    res.render('05d_newseditor-article-editor.ejs', data);
+    return;
+  }
 
-      dbo.collection(coll).insertOne(data, function(err, result) {
-        if (err) {
-          console.log(err);
-          res.status(502).send(`502: Delivery failed: database error.`);
-        } else {
-          res.send("Article inserted to " + coll);
-          console.log("Articcle inserted to " + coll);
-          db.close();
-        }
-      });
+  try {
+    await client.connect();
+    const db = client.db(dbName);
+    const collection = db.collection(collectionName);
+    const result = await collection.findOne({'metadata.id': id});
+    const data = {
+      articleData: result,
+      db: collectionName
     }
-  });
+    res.render('05d_newseditor-article-editor.ejs', data);
+  } catch(error) {
+    console.error(error);
+    res.status(502).send("Database error");;
+  } finally {
+    client.close();
+  }
 };
 
-export const updateArticle = (req, res) => {
-  let coll = req.query.db;
-  let data = req.body;
-  let id = data.metadata.id;
-  let newvalues = {
+export const checkID = async (req, res) => {
+  const client = new MongoClient(mongoUrl);
+  const id = req.query.id;
+  const collectionName = req.query.coll;
+  // console.log(`checkID, id: ${id}; coll: ${collectionName}`);
+
+  try {
+    await client.connect();
+    const db = client.db(dbName);
+    const collection = db.collection(collectionName);
+    const result = await collection.findOne({'metadata.id': id});
+    // console.log(result);
+
+    if (result) {
+      console.log("true");
+      res.json(true);
+    } else {
+      console.log("false");
+      res.json(false);
+    }
+  } catch(error) {
+    console.error("catch error", error);
+    res.status(502).send("Database error");;
+  } finally {
+    client.close();
+  }
+};
+
+export const insertArticle = async (req, res) => {
+  const client = new MongoClient(mongoUrl);
+  const collectionName = req.query.coll;
+  const article = req.body;
+  // console.log("insertArticle");
+
+  try {
+    await client.connect();
+    const db = client.db(dbName);
+    const collection = db.collection(collectionName);
+    const result = await collection.insertOne(article);
+    // console.log(result);
+    res.send("Article inserted to " + collectionName);
+  } catch(error) {
+    console.error(error);
+    res.status(502).send("Database error");;
+  } finally {
+    client.close();
+  }
+};
+
+export const updateArticle = async (req, res) => {
+  const client = new MongoClient(mongoUrl);
+  const collectionName = req.query.coll;
+  const data = req.body;
+  const id = data.metadata.id;
+  const newvalues = {
     $set: {
       metadata: data.metadata,
       article: data.article      
     }
   }
-  
-  MongoClient.connect(mongoUrl, { useUnifiedTopology: true }, function(err, db) {
-    if (err) {
-      console.log(err);
-      res.status(502).send(`502: Delivery failed: database error.`);
-    } else {
-      let dbo = db.db("introduction-site");
+  // console.log("updateArticle");
 
-      dbo.collection(coll).updateOne({'metadata.id': id}, newvalues, function(err, result) {
-        if (err) {
-          console.log(err);
-          res.status(502).send(`502: Delivery failed: database error.`);
-        } else {
-          res.send("Article updated in " + coll);
-          db.close();
-        }
-      });
-    }
-  });
+  try {
+    await client.connect();
+    const db = client.db(dbName);
+    const collection = db.collection(collectionName);
+    const result = await collection.updateOne({'metadata.id': id}, newvalues);
+    // console.log(result);
+    res.send("Article updated in " + collectionName);
+  } catch(error) {
+    console.error(error);
+    res.status(502).send("Database error");;
+  } finally {
+    client.close();
+  }
 };
 
-export const deleteArticle = (req, res) => {
-  let id = req.body.id;
-  let coll = req.query.db;
+export const deleteArticle = async (req, res) => {
+  const client = new MongoClient(mongoUrl);
+  const id = req.body.id;
+  const collectionName = req.query.coll;
+  // console.log("deleteArticle");
 
-  MongoClient.connect(mongoUrl, { useUnifiedTopology: true }, function(err, db) {
-    if (err) {
-      console.log(err);
-      res.status(502).send(`502: Delivery failed: database error.`);
-    } else {
-      let dbo = db.db("introduction-site");
-
-      dbo.collection(coll).deleteOne({'metadata.id': id}, function(err, result) {
-        if (err) {
-          console.log(err);
-          res.status(502).send(`502: Delivery failed: database error.`);
-        } else {
-          res.send('Document ID "' + id + '" deleted successfully!');
-          db.close();
-        }
-      });
-    }
-  });
+  try {
+    await client.connect();
+    const db = client.db(dbName);
+    const collection = db.collection(collectionName);
+    const result = await collection.deleteOne({'metadata.id': id});
+    // console.log(result);
+    res.send('Document ID "' + id + '" deleted successfully!');
+  } catch(error) {
+    console.error(error);
+    res.status(502).send("Database error");;
+  } finally {
+    client.close();
+  }
 };
