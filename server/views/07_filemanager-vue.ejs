@@ -2,16 +2,15 @@
 <%- include('00a_header.ejs') %>
     <link rel = "stylesheet" href = "/css/07_filemanager-vue.css">
 
-    <script type="module" crossorigin src="/vue/assets/index-CFsMe33B.js"></script>
-    <link rel="stylesheet" crossorigin href="/vue/assets/index-CUYABdyE.css">
-          
+    <script type="module" crossorigin src="/vue/assets/index-D_fr9XsU.js"></script>
+    <link rel="stylesheet" crossorigin href="/vue/assets/index-BFKdTeCr.css">
 
     <div class = "minisite-info">
       <div class = "container">
         <div class = "row">
           <div class = "minisite-info-text col-md-7 col-lg-8">
             <h1>File manager</h1>
-            <p>A Vue.js app to store and manage files in the cloud, similar in some aspects to OneDrive or Google Drive. Vercel Blob is used as an external file storage, metadata stored in MongoDB.</p>
+            <p>A complex Vue.js app to store, view or manage files in the cloud.</p>
             <p>Uploads currently limited at 4MB.</p>
             <div class = "d-flex">
               <button class = "btn btn-minisite-info">Details</button>
@@ -31,8 +30,7 @@
             <p>If you'd like to read more about how the app works, please choose from one of the topics below.</p>
 
             <div id = "file-manager-details-topics">
-              <!-- <details open> -->
-              <details>
+              <details open>
                 <summary>App structure, components</summary>
                 <img class = "img-fluid" src = "/images/minisite-info/filemanager-diagram.jpg">
               </details>
@@ -149,7 +147,7 @@
               </details>
 
               <details>
-                <summary>External file storage service (Vercel Blob), server operations.</summary>
+                <summary>External file storage service (Vercel Blob), server operations</summary>
                 <p>The files are uploaded and stored to Vercel Blob, a solution similar to Amazon S3.</p>
                 <p>Although the service allows direct access from the client for both downloads and uploads, these operations are currently directed through the Node.js server to allow more control over it. On the downside, the size of uploaded files are limited.</p><p>All files are uploaded to the same directory saved by their unique IDs as filenames.</p>
               </details>

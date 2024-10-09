@@ -365,7 +365,37 @@ export const renameFile = async (req, res) => {
   } finally {
     client.close();
   }
-}
+};
+
+// export const previewFile = async (req, res) => {
+//   const client = new MongoClient(mongoUrl);
+//   const fileid = req.query.id;
+//   
+//   try {
+//     // Get file metadata from database
+//     await client.connect();
+//     const db = client.db(dbName);
+//     const collection = db.collection('filemanager-files');
+//     const fileMetaData = await collection.findOne({fileid: fileid});
+//     if (!fileMetaData) {
+//       throw new Error(`File metadata not found in the database (id: ${fileid})`);
+//     };
+//     
+//     
+//     // Download from Vercel Blob storage
+//     const vercelResponse = await fetch(fileMetaData.url);
+//     if (vercelResponse.status === 404) {
+//       throw new Error(`${fileid} not found in the storage`);
+//     }
+//     
+//     // Send file as filestream as response with the proper filename
+//     res.setHeader('Content-Disposition', `attachment; filename="${fileMetaData.filename}"`);
+//     vercelResponse.body.pipe(res);
+//   } catch (error) {
+//     console.error('Error downloading file: ', error.message);
+//     res.status(500).send('Error downloading file');
+//   }
+// };
 
 
 // APIs for helping development
@@ -416,6 +446,8 @@ export const foldertreetest = async (req, res) => {
     res.status(500).json({message: "An error has occured"})
   }
 };
+
+
 
 
 
