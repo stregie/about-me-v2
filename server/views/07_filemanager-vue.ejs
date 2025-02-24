@@ -33,27 +33,32 @@
             <div id = "file-manager-details-topics">
               <details open>
                 <summary>App structure, components</summary>
-                <img class = "img-fluid" src = "/images/minisite-info/filemanager-diagram.jpg">
+                <div class = "details-content">
+                  <img class = "img-fluid" src = "/images/minisite-info/filemanager-diagram.jpg">
+                </div>
               </details>
 
               <details>
                 <summary>Global state management with Pinia</summary>
-                <p>The majority of the logic behind the app can be found in the state management store, Pinia, as most states, computed properties and methods need to be accessible by multiple components.</p>
-                <h4>Stores:</h4>
-                <ul>
-                  <li>Component Display: Visibility of UI elements</li>
-                  <li>Files: related to files only (available files, file actions)</li>
-                  <li>Folders: related to folders only (available folders, folder tree, generation, folder actions)</li>
-                  <li>Files and Folders: related to both (such as sortby and filter options)</li>
-                  <li>Upload: handling uploads</li>
-                </ul>
+                <div class = "details-content">
+                  <p>The majority of the logic behind the app can be found in the state management store, Pinia, as most states, computed properties and methods need to be accessible by multiple components.</p>
+                  <h4>Stores:</h4>
+                  <ul>
+                    <li>Component Display: Visibility of UI elements</li>
+                    <li>Files: related to files only (available files, file actions)</li>
+                    <li>Folders: related to folders only (available folders, folder tree, generation, folder actions)</li>
+                    <li>Files and Folders: related to both (such as sortby and filter options)</li>
+                    <li>Upload: handling uploads</li>
+                  </ul>
+                </div>
               </details>
 
               <details>
                 <summary>File metadata in MongoDB</summary>
-                <p>Each file has a record in MongoDB containing the following properties:</p>
-                <label class = "code-label">File metadata example</label>
-                <pre class = "code-box"><code class="language-js">{
+                <div class = "details-content">
+                  <p>Each file has a record in MongoDB containing the following properties:</p>
+                  <label class = "code-label">File metadata example</label>
+                  <pre class = "code-box"><code class="language-js">{
   "_id": {
     "$oid": "4551faaff02bcaa63bb8f1be"
   },
@@ -69,16 +74,18 @@
   "url": "https://80ddburmm4eyts3l.public.blob.vercel-storage.com/about-me/filemanager/2e4c6f5d-6162-33f8-af01-7497d70ba5fd",
   "downloadUrl": "https://80ddburmm4eyts3l.public.blob.vercel-storage.com/about-me/filemanager/2e4c6f5d-6162-33f8-af01-7497d70ba5fd?download=1"
 }</code></pre>
-              <p>All data displayed in the app (such as filename, size, path etc.) are based on these entries. Created when a new file is uploaded.</p>
+                  <p>All data displayed in the app (such as filename, size, path etc.) are based on these entries. Created when a new file is uploaded.</p>
+                </div>
               </details>
 
               <details>
                 <summary>Folder tree parser</summary>
-                <p>In order to display the folders in a tree structure in the sidebar component, the following object is generated from the path properties of file metadatas.</p>
+                <div class = "details-content">  
+                  <p>In order to display the folders in a tree structure in the sidebar component, the following object is generated from the path properties of file metadatas.</p>
 
-                <label class = "code-label">Folder tree example</label>
-                <label class = "code-label-path">folderTree state in /src/stores/use-folders-store.js</label>
-                <pre class = "code-box"><code class="language-js">[
+                  <label class = "code-label">Folder tree example</label>
+                  <label class = "code-label-path">folderTree state in /src/stores/use-folders-store.js</label>
+                  <pre class = "code-box"><code class="language-js">[
   {
     "name": "Folder-1",
     "expanded": true,
@@ -145,21 +152,25 @@
 
   return tree;
 }</code></pre>
+                </div>
               </details>
 
               <details>
                 <summary>External file storage service (Vercel Blob), server operations</summary>
-                <p>The files are uploaded and stored to Vercel Blob, a solution similar to Amazon S3.</p>
-                <p>Although the service allows direct access from the client for both downloads and uploads, these operations are currently directed through the Node.js server to allow more control over it. On the downside, the size of uploaded files are limited.</p><p>All files are uploaded to the same directory saved by their unique IDs as filenames.</p>
+                <div class = "details-content">
+                  <p>The files are uploaded and stored to Vercel Blob, a solution similar to Amazon S3.</p>
+                  <p>Although the service allows direct access from the client for both downloads and uploads, these operations are currently directed through the Node.js server to allow more control over it. On the downside, the size of uploaded files are limited.</p><p>All files are uploaded to the same directory saved by their unique IDs as filenames.</p>
+                </div>
               </details>
 
               <details>
                 <summary>Integratig the Vue.js app to the portfolio site</summary>
-                <p>Similarly to the Image Gallery App, the single page Vue app had to be integrated to the existing site to keep the original header and footer.</p>
-                <p>To achieve this, the following HTML code from the index.html of the Vue bundle is inserted to the HTML code of the current page.</p>
-                <label class = "code-label">Integration of Vue App</label>
-                <label class = "code-label-path">/server/views/06_filemanager-vue.ejs</label>
-                <pre class = "code-box"><code class="language-html">&lt;html lang = "en"&gt;
+                <div class = "details-content">
+                  <p>Similarly to the Image Gallery App, the single page Vue app had to be integrated to the existing site to keep the original header and footer.</p>
+                  <p>To achieve this, the following HTML code from the index.html of the Vue bundle is inserted to the HTML code of the current page.</p>
+                  <label class = "code-label">Integration of Vue App</label>
+                  <label class = "code-label-path">/server/views/06_filemanager-vue.ejs</label>
+                  <pre class = "code-box"><code class="language-html">&lt;html lang = "en"&gt;
   &lt;head&gt;
     ...
     &lt;script type="module" crossorigin src="/vue/assets/index-_QLA5UIX.js"&gt;&lt;/script&gt;
@@ -174,18 +185,21 @@
     ...
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
+                </div>
               </details>
 
               <details>
                 <summary>Potential improvements</summary>
-                <ul>
-                  <li>CRON jobs could be set to automatically delete files in Trash after 30 days.</li>
-                  <li>A checkbox could be placed in the filelist to allow operations on multiple files or folders at the same time.</li>
-                  <li>Drag & drop uploads could be implemented for easier uploads.</li>
-                  <li>Detailed view could display the files in medium-sized tiles to provide additional information such as preview of images, documents.</li>
-                  <li>Refactoring the code using the setup API of Vue instead the less recent options API.</li>
-                  <li>Loading skeleton</li>
-                </ul>
+                <div class = "details-content">
+                  <ul>
+                    <li>CRON jobs could be set to automatically delete files in Trash after 30 days.</li>
+                    <li>A checkbox could be placed in the filelist to allow operations on multiple files or folders at the same time.</li>
+                    <li>Drag & drop uploads could be implemented for easier uploads.</li>
+                    <li>Detailed view could display the files in medium-sized tiles to provide additional information such as preview of images, documents.</li>
+                    <li>Refactoring the code using the setup API of Vue instead the less recent options API.</li>
+                    <li>Loading skeleton</li>
+                  </ul>
+                </div>
               </details>
             </div>            
 

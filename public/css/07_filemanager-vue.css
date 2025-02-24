@@ -1,8 +1,6 @@
-/*:root{
-  --color-fileuploader-highlight-01: #555;
-}*/
-#file-manager-details-topics details {
-  margin-bottom: 20px;
+#file-manager-details-topics details .details-content{
+  margin-bottom: 40px;
+  padding-left: 22px;
 }
 
 #file-manager-details-topics summary {
@@ -18,14 +16,17 @@
   .minisite-info{
     background-image: none;
   }
+
   .minisite-info-image{    
     background-image: url("/images/minisite-info/filemanager.jpg");    
   }
 }
+
 @media (max-width: 767px) { /* sm */
   .minisite-info{
     background-image: url("/images/minisite-info/filemanager-dark.jpg");
   }   
+
   .minisite-info-image{
     display: none;
   }
